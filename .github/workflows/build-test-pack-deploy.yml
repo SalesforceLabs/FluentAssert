@@ -1,0 +1,18 @@
+name: FluentAssert Workflow
+
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - uses: sfdx-actions/setup-sfdx@v1
+        with:
+          sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
+      - name: sfdx-test-run
+        run: |
+          sfdx force:org:create --setdefaultusername --definitionfile config/project-scratch-def.json --wait 10 --durationdays 1
+          sfdx force:source:push
+          sfdx force:apex:test:run --wait 10 --resultformat human --codecoverage --testlevel RunLocalTests
+          sfdx force:org:delete --noprompt
