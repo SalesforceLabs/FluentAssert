@@ -1,6 +1,4 @@
 recommendedDefaults: 0.9.16
-sourceRoot: templates
-outputRoot: generated
 modes: [
     ignore(apex/),
     ignore(common/),
