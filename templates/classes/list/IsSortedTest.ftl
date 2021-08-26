@@ -9,7 +9,6 @@
 <@pp.dropOutputFile />
 <@com.apexClass className="${classPrefix}ListIsSortedTest" path="/classes/list/"/>
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class ${classPrefix}ListIsSortedTest {
     @IsTest
     static void testPositiveScenarios() {

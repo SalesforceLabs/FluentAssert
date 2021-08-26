@@ -34,9 +34,23 @@ jobs:
               echo "Apex was NOT generated before comitting. Please generate and commit changes."
               exit 1
           fi
+  code-quality:
+    name: Code Quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Setup SFDX
+        uses: sfdx-actions/setup-sfdx@v1
+        with:
+          sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
+      - name: Run Code Scanner / PMD
+        run: |
+          sfdx plugins:install @salesforce/sfdx-scanner
+          sfdx scanner:run --target './**/*.cls' --pmdconfig=ruleset.xml --severity-threshold=2
   test:
     runs-on: ubuntu-latest
-    needs: generate
+    needs: [generate, code-quality]
     name: Run All Tests
     steps:
       - name: Check out repository

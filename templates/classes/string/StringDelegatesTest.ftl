@@ -240,7 +240,6 @@
 <#list stringDelegates as sd>
 <@com.apexClass className="${classPrefix}String${sd.method?cap_first}Test" path="/classes/string/"/>
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class ${classPrefix}String${sd.method?cap_first}Test {
     @IsTest
     static void testPositiveScenarios() {

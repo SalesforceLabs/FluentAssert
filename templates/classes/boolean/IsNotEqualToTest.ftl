@@ -9,7 +9,6 @@
 <@pp.dropOutputFile />
 <@com.apexClass className="${classPrefix}BooleanIsNotEqualToTest" path="/classes/boolean/"/>
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class ${classPrefix}BooleanIsNotEqualToTest {
     @IsTest
     static void testPassingScenarios() {

@@ -16,7 +16,6 @@
 <#list numberDataTypes as numberDataType>
   <@com.apexClass className="${classPrefix}${numberDataType.nativeDataType}IsNotNegativeTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class ${classPrefix}${numberDataType.nativeDataType}IsNotNegativeTest {
     @IsTest
     static void testPositiveScenarios() {

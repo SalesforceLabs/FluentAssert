@@ -5,7 +5,6 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class FATimeIsSameTest {
     private static final Time SELF = Time.newInstance(1, 2, 3, 4);
     private static final Object OTHER = Time.newInstance(1, 2, 3, 4).addMilliseconds(1);

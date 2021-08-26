@@ -9,7 +9,6 @@
 <@pp.dropOutputFile />
 <@com.apexClass className="${classPrefix}ListAssertMapNavigatorTest" path="/classes/"/>
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class ${classPrefix}ListAssertMapNavigatorTest {
     @IsTest
     static void testBack() {

@@ -9,7 +9,6 @@
 <@pp.dropOutputFile />
 <@com.apexClass className="${classPrefix}ListContainsSubsequenceTest" path="/classes/list/"/>
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class ${classPrefix}ListContainsSubsequenceTest {
     private static final List<String> EMPTY_LIST = new List<String>();
     private static final List<String> PART_OF_ALPHABET = new List<String>{

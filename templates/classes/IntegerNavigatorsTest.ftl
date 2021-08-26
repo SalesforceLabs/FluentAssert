@@ -17,7 +17,6 @@
 <#list navigators as n>
   <@com.apexClass className="${classPrefix}IntegerAssert${n.nativeDataType}NavigatorTest" path="/classes/"/>
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class ${classPrefix}IntegerAssert${n.nativeDataType}NavigatorTest {
 
     @IsTest

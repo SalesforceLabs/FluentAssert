@@ -15,7 +15,6 @@
 <#list dataTypes as dataType>
   <@com.apexClass className="${classPrefix}${dataType.native}IsAfterTest" path="/classes/${dataType.native?lower_case}/"/>
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class ${classPrefix}${dataType.native}IsAfterTest {
     @IsTest
     static void testPositiveScenarios() {

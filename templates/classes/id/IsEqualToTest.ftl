@@ -9,7 +9,6 @@
 <@pp.dropOutputFile />
 <@com.apexClass className="${classPrefix}IdIsEqualToTest" path="/classes/id/"/>
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class ${classPrefix}IdIsEqualToTest {
     @IsTest
     static void testPassingScenarios() {

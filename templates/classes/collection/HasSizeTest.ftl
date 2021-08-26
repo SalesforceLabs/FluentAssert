@@ -16,7 +16,6 @@
 <#list numberDataTypes as numberDataType>
   <@com.apexClass className="${classPrefix}${numberDataType.type?keep_before('<')}HasSizeTest" path="/classes/${numberDataType.type?lower_case?keep_before('<')}/"/>
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class ${classPrefix}${numberDataType.type?keep_before('<')}HasSizeTest {
     @IsTest
     static void testPositiveScenarios() {
