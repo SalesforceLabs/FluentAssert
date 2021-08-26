@@ -2,17 +2,64 @@ name: FluentAssert Workflow
 
 on: [push]
 jobs:
-  test:
+  generate:
+    name: Apex generated?
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
-      - uses: sfdx-actions/setup-sfdx@v1
+      - name: Install FMPP
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+      - name: Verify Apex generation
+        run: |
+          PRE_GEN_CHECKSUM=`git ls-files force-app/main/generated | xargs sha256sum | cut -d" " -f1 | sha256sum | cut -d" " -f1`
+          # Delete existing Apex
+          rm -rf force-app/main/generated 
+
+          # Install FMPP
+          wget -O fmpp.tar.gz --quiet http://prdownloads.sourceforge.net/fmpp/fmpp_0.9.16.tar.gz
+          tar -xf fmpp.tar.gz
+          
+          # Generate Apex
+          chmod +x fmpp/bin/fmpp
+          ./fmpp/bin/fmpp --quiet -C templates/config.fmpp -S templates -O force-app/main/generated
+
+          POST_GEN_CHECKSUM=`git ls-files force-app/main/generated | xargs sha256sum | cut -d" " -f1 | sha256sum | cut -d" " -f1`
+          if [ "$PRE_GEN_CHECKSUM" = "$POST_GEN_CHECKSUM" ]; then
+              echo "Apex was generated and comitted correct."
+          else
+              echo "Apex was NOT generated before comitting. Please generate and commit changes."
+              exit 1
+          fi
+  test:
+    runs-on: ubuntu-latest
+    needs: generate
+    name: Run All Tests
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Setup SFDX
+        uses: sfdx-actions/setup-sfdx@v1
         with:
           sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
-      - name: sfdx-test-run
+      - name: Run All Tests
         run: |
           sfdx force:org:create --setdefaultusername --definitionfile config/project-scratch-def.json --wait 10 --durationdays 1
           sfdx force:source:push
-          sfdx force:apex:test:run --wait 10 --resultformat human --codecoverage --testlevel RunLocalTests
+          sfdx force:apex:test:run --wait 10 --resultformat human -d apex-test-result --codecoverage --testlevel RunLocalTests
+
+          TEST_RUN_ID=`cat apex-test-result/test-run-id.txt`
+          TEST_RUN_COVERAGE=$(jq '.summary.testRunCoverage' apex-test-result/test-result-${TEST_RUN_ID}.json)
+          TEST_RUN_COVERAGE_PERC=$(echo "$TEST_RUN_COVERAGE" | tr -dc '0-9')
+          if [ "$TEST_RUN_COVERAGE_PERC" -ge "100" ]
+          then
+            echo "Your coverage of ${TEST_RUN_COVERAGE_PERC}% meets the requirements. Good job!"
+          else
+            echo "Your coverage of ${TEST_RUN_COVERAGE_PERC}% is below the requirements."
+            exit 1
+          fi
+
           sfdx force:org:delete --noprompt
