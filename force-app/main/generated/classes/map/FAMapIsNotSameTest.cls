@@ -5,7 +5,6 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class FAMapIsNotSameTest {
     private static final Map<Object, Object> SELF = new Map<Object, Object>{'X' => 'X'};
     private static final Object OTHER = new Map<Object, Object>{'Y' => 'Y'};

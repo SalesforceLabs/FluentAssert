@@ -26,7 +26,6 @@
 <#list dataTypes as dt>
 <@com.apexClass className="${classPrefix}${dt.type?keep_before('<')}IsSameTest" path="/classes/${dt.type?lower_case?keep_before('<')}/"/>
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class ${classPrefix}${dt.type?keep_before('<')}IsSameTest {
     private static final ${dt.type} SELF = ${dt.self};
     private static final Object OTHER = ${dt.other};

@@ -5,7 +5,6 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class FADatetimeIsNotSameTest {
     private static final Datetime SELF = Datetime.now();
     private static final Object OTHER = Datetime.now().addDays(1);

@@ -5,7 +5,6 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class FASetContainsAnyOfTest {
     private static final Set<Object> EMPTY = new Set<Object>();
     private static final Set<Object> PART_OF_ALPHABET = new Set<Object>{

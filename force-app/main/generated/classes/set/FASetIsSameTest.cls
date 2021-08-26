@@ -5,7 +5,6 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class FASetIsSameTest {
     private static final Set<Object> SELF = new Set<Object>();
     private static final Object OTHER = new Set<Object>();

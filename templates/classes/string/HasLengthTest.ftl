@@ -9,7 +9,6 @@
 <@pp.dropOutputFile />
 <@com.apexClass className="${classPrefix}StringHasLengthTest" path="/classes/string/"/>
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class ${classPrefix}StringHasLengthTest {
     @IsTest
     static void testPositiveScenarios() {

@@ -5,7 +5,6 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class FAListContainsOnlyTest {
     private static final List<Object> EMPTY = new List<Object>();
     private static final List<Object> ABC = new List<Object> {

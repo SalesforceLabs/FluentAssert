@@ -14,7 +14,6 @@
 <#list numberDataTypes as numberDataType>
   <@com.apexClass className="${classPrefix}${numberDataType.nativeDataType}ContainsOnlyTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class ${classPrefix}${numberDataType.nativeDataType}ContainsOnlyTest {
     private static final ${numberDataType.castingValue} EMPTY = new ${numberDataType.castingValue}();
     private static final ${numberDataType.castingValue} ABC = new ${numberDataType.castingValue} {

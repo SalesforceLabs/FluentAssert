@@ -9,7 +9,6 @@
 <@pp.dropOutputFile />
 <@com.apexClass className="${classPrefix}MapContainsTest" path="/classes/map/"/>
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class ${classPrefix}MapContainsTest {
     private static final Map<Object, Object> EMPTY = new Map<Object, Object>();
     private static final Map<Object, Object> ABC = new Map<Object, Object>{

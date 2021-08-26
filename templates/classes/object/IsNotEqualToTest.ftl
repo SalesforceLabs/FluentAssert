@@ -19,7 +19,6 @@
 <#list dataTypes as dataType>
 <@com.apexClass className="${classPrefix}${dataType.native}IsNotEqualToTest" path="/classes/${dataType.native?lower_case}/"/>
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class ${classPrefix}${dataType.native}IsNotEqualToTest {
     @IsTest
     static void testPassingScenarios() {

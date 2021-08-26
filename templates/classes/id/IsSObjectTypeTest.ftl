@@ -9,7 +9,6 @@
 <@pp.dropOutputFile />
 <@com.apexClass className="${classPrefix}IdIsSObjectTypeTest" path="/classes/id/"/>
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class ${classPrefix}IdIsSObjectTypeTest {
     @IsTest
     static void testPassingScenarios() {

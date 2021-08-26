@@ -25,7 +25,6 @@
 <#list dataTypes as dataType>
 <@com.apexClass className="${classPrefix}${dataType.type}IsIn${colType}Test" path="/classes/${dataType.type?lower_case}/"/>
 @IsTest
-@SuppressWarnings('PMD.ApexUnitTestClassShouldHaveAsserts')
 public class ${classPrefix}${dataType.type}IsIn${colType}Test {
     @IsTest
     static void testPassingScenarios() {
