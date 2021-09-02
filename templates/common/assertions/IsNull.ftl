@@ -10,9 +10,6 @@
      * @throws FluentAssert.AssertException if actual is not null.
      */
     public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert isNull() {
-        if(actual != null) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} to be null', new List<Object> {actual}));
-        }
+        assert(actual == null, 'Expecting {0} to be null', new List<Object> {actual});
         return this;
     }
-    

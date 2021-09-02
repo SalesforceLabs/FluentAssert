@@ -30,9 +30,6 @@
             }
         }
 
-        if (!unexpectedValues.isEmpty() || !missingValues.isEmpty()) {
-            throw new FluentAssert.AssertException(String.format('Was expecting actual to contain only {0}, but found {1} while not finding {2}', new List<Object>{expected, unexpectedValues, missingValues}));
-        }
-
+        assert(unexpectedValues.isEmpty() && missingValues.isEmpty(), 'Was expecting actual to contain only {0}, but found {1} while not finding {2}', new List<Object>{expected, unexpectedValues, missingValues});
         return this;
     }

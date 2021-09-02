@@ -15,21 +15,6 @@
     public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert doesNotContainSubsequence(List<Object> expected) {
         notNull(actual, 'actual');
         notEmpty(expected, 'expected');
-        Integer subsequenceIndex = 0;
-        Integer subsequenceStartIndex = 0;
-
-        for (Integer index = 0; index < actual.size(); index++) {
-            Object actualNext = actual[index];
-            Object subsequenceNext = expected[subsequenceIndex];
-            if (actualNext.equals(subsequenceNext)) {
-                if (subsequenceIndex == 0) {
-                    subsequenceStartIndex = index;
-                }
-                subsequenceIndex++;
-            }
-            if (subsequenceIndex == expected.size()) {
-                throw new FluentAssert.AssertException(String.format('Was expecting actual not to contain the subsequence {0}', new List<Object> {expected}));
-            }
-        }
+        assert(!${classPrefix}ListSubsequenceUtil.containsSubsequence(actual, expected), 'Was expecting actual not to contain the subsequence {0}', new List<Object> {expected});
         return this;
     }

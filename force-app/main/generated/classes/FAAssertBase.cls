@@ -33,4 +33,10 @@ public virtual inherited sharing class FAAssertBase {
             throw iae;
         }
     }
+
+    protected void assert(Boolean condition, String messageToFormat, List<Object> formattingArguments) {
+        if(!condition) {
+            throw new FluentAssert.AssertException(String.format(messageToFormat, formattingArguments));
+        }
+    }
 }

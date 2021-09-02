@@ -18,6 +18,7 @@ public class FAIdAssert extends FAAssertBase {
         this.actual = actual;
     }
 
+    
     /**
      * @description Asserts that `actual` is equal to `expected`.
      * @param expected expected value to assert against
@@ -28,10 +29,19 @@ public class FAIdAssert extends FAAssertBase {
     public FAIdAssert isEqualTo(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-
-        if(actual != expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} to be equal', new List<Object> {expected, actual}));
-        }
+        assert(actual == expected, 'Expecting {0} and {1} to be equal', new List<Object> {expected, actual});
+        return this;
+    } 
+    /**
+     * @description Verifies that the actual is contained in expectedIn.
+     * @param expectedIn collection that must contain actual
+     * @return this to allow further assert in a fluent manner
+     * @throws NullPointerException if actual or expectedIn is null
+     * @throws FluentAssert.AssertException if actual is not in expectedIn
+     */
+    public FAIdAssert isIn(List<Object> expectedIn) {
+        notNull(actual, 'actual');
+        assert(expectedIn.contains(actual), 'Was expecting {0} to be in {1}', new List<Object> {actual, expectedIn});
         return this;
     }
 
@@ -44,28 +54,10 @@ public class FAIdAssert extends FAAssertBase {
      */
     public FAIdAssert isIn(Set<Object> expectedIn) {
         notNull(actual, 'actual');
-
-        if(!expectedIn.contains(actual)) {
-            throw new FluentAssert.AssertException(String.format('Was expecting {0} to be in {1}', new List<Object> {actual, expectedIn}));
-        }
+        assert(expectedIn.contains(actual), 'Was expecting {0} to be in {1}', new List<Object> {actual, expectedIn});
         return this;
     }
-    /**
-     * @description Verifies that the actual is contained in expectedIn.
-     * @param expectedIn collection that must contain actual
-     * @return this to allow further assert in a fluent manner
-     * @throws NullPointerException if actual or expectedIn is null
-     * @throws FluentAssert.AssertException if actual is not in expectedIn
-     */
-    public FAIdAssert isIn(List<Object> expectedIn) {
-        notNull(actual, 'actual');
-
-        if(!expectedIn.contains(actual)) {
-            throw new FluentAssert.AssertException(String.format('Was expecting {0} to be in {1}', new List<Object> {actual, expectedIn}));
-        }
-        return this;
-    }
-
+ 
     /**
      * @description Asserts that `actual` is not equal to `expected`.
      * @param expected expected value to assert against
@@ -76,25 +68,18 @@ public class FAIdAssert extends FAAssertBase {
     public FAIdAssert isNotEqualTo(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        
-        if(actual == expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} not to be equal', new List<Object> {expected, actual}));
-        }
+        assert(actual != expected, 'Expecting {0} and {1} not to be equal', new List<Object> {expected, actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is not null.
      * @return this to allow further assert in a fluent manner
      * @throws FluentAssert.AssertException if actual is null.
      */
     public FAIdAssert isNotNull() {
-        if(actual == null) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} not to be null', new List<Object> {actual}));
-        }
+        assert(actual != null, 'Expecting {0} not to be null', new List<Object> {actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is not same (part of memory) as `expected`.
      * @param expected expected value to assert against
@@ -105,25 +90,18 @@ public class FAIdAssert extends FAAssertBase {
     public FAIdAssert isNotSame(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        
-        if(actual === expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} not to be same', new List<Object> {expected, actual}));
-        }
+        assert(actual !== expected, 'Expecting {0} and {1} not to be same', new List<Object> {expected, actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is null.
      * @return this to allow further assert in a fluent manner
      * @throws FluentAssert.AssertException if actual is not null.
      */
     public FAIdAssert isNull() {
-        if(actual != null) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} to be null', new List<Object> {actual}));
-        }
+        assert(actual == null, 'Expecting {0} to be null', new List<Object> {actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is same (part of memory) as `expected`.
      * @param expected expected value to assert against
@@ -134,13 +112,9 @@ public class FAIdAssert extends FAAssertBase {
     public FAIdAssert isSame(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        
-        if(actual !== expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} to be same', new List<Object> {expected, actual}));
-        }
+        assert(actual === expected, 'Expecting {0} and {1} to be same', new List<Object> {expected, actual});
         return this;
-    }
-
+    } 
     /**
      * @description Verifies that the Id is for a given SObjectType
      * @param sObjectType The expected value to assert against.
@@ -151,9 +125,7 @@ public class FAIdAssert extends FAAssertBase {
     public FAIdAssert isSObjectType(Schema.SObjectType sObjectType) {
         notNull(actual, 'actual');
         notNull(sObjectType, 'sObjectType');
-        if(sObjectType != actual.getSobjectType()) {
-            throw new FluentAssert.AssertException(String.format('Was expecting actual to be Id of type {0} but was {1}', new List<Object> {actual.getSobjectType().getDescribe().getName(), sObjectType.getDescribe().getName()}));
-        }
+        assert(sObjectType == actual.getSobjectType(), 'Was expecting actual to be Id of type {0} but was {1}', new List<Object> {actual.getSobjectType().getDescribe().getName(), sObjectType.getDescribe().getName()});
         return this;
-    }
-}
+    }}
+

@@ -12,12 +12,6 @@
      */
     public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert containsOnlyNulls() {
         notEmpty(actual, 'actual');
-
-        for (Object o : actual) {
-            if(o != null) {
-                throw new FluentAssert.AssertException(String.format('Was expecting actual to contain only null, but found {0}', new List<Object>{o}));
-            }
-        }
-
+        assert(${classPrefix}IteratorUtil.containsOnlyNulls(actual.iterator()), 'Expecting actual to contain only null, but found values', new List<Object>());
         return this;
     }

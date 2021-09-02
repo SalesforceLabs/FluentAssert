@@ -26,7 +26,7 @@ public class FASetAssert extends FACollectionAssertBase {
         notNull(actual, 'actual');
         return new FAIntegerAssertSetNavigator(actual.size(), this);
     }
-
+    
     /**
      * @description Verifies that the actual contains the given values, in any order.
      * @param expected elements to be contained in actual
@@ -62,6 +62,24 @@ public class FASetAssert extends FACollectionAssertBase {
     protected override Boolean actualContains(Object expected) {
         return actual.contains(expected);
     }
+ 
+    /**
+     * @description Verifies that the actual contains at least one of the given values.
+     * @param expected elements to be checked against actual
+     * @return this to allow further assert in a fluent manner
+     * @throws NullPointerException if actual or expected is null
+     * @throws IllegalArgumentException if expected is empty
+     * @throws FluentAssert.AssertException if actual doesn't have any elements of expected
+     */
+    public FASetAssert containsAnyOf(List<Object> expected) {
+        notNull(actual, 'actual');
+        notEmpty(expected, 'expected');
+        isNotEmpty();
+
+        assertContainsAnyOf(expected.iterator());
+        return this;
+    }
+
 
     /**
      * @description Verifies that the actual contains at least one of the given values.
@@ -80,22 +98,7 @@ public class FASetAssert extends FACollectionAssertBase {
         return this;
     }
 
-    /**
-     * @description Verifies that the actual contains at least one of the given values.
-     * @param expected elements to be checked against actual
-     * @return this to allow further assert in a fluent manner
-     * @throws NullPointerException if actual or expected is null
-     * @throws IllegalArgumentException if expected is empty
-     * @throws FluentAssert.AssertException if actual doesn't have any elements of expected
-     */
-    public FASetAssert containsAnyOf(List<Object> expected) {
-        notNull(actual, 'actual');
-        notEmpty(expected, 'expected');
-
-        assertContainsAnyOf(expected.iterator());
-        return this;
-    }
-
+ 
     /**
      * @description Verifies that the actual contains exactly the given values and nothing else, in any order.
      * @param expected elements expected in the actual list
@@ -125,7 +128,7 @@ public class FASetAssert extends FACollectionAssertBase {
         contains(expected);
         return this;
     }
-
+ 
     /**
      * @description Verifies that `actual` contains only elements from `expected` and nothing else.
      * @return this to allow further assert in a fluent manner
@@ -152,13 +155,9 @@ public class FASetAssert extends FACollectionAssertBase {
             }
         }
 
-        if (!unexpectedValues.isEmpty() || !missingValues.isEmpty()) {
-            throw new FluentAssert.AssertException(String.format('Was expecting actual to contain only {0}, but found {1} while not finding {2}', new List<Object>{expected, unexpectedValues, missingValues}));
-        }
-
+        assert(unexpectedValues.isEmpty() && missingValues.isEmpty(), 'Was expecting actual to contain only {0}, but found {1} while not finding {2}', new List<Object>{expected, unexpectedValues, missingValues});
         return this;
-    }
-
+    } 
     /**
      * @description Verifies that actual contains only null elements and nothing else.
      * @return this to allow further assert in a fluent manner
@@ -167,16 +166,9 @@ public class FASetAssert extends FACollectionAssertBase {
      */
     public FASetAssert containsOnlyNulls() {
         notEmpty(actual, 'actual');
-
-        for (Object o : actual) {
-            if(o != null) {
-                throw new FluentAssert.AssertException(String.format('Was expecting actual to contain only null, but found {0}', new List<Object>{o}));
-            }
-        }
-
+        assert(FAIteratorUtil.containsOnlyNulls(actual.iterator()), 'Expecting actual to contain only null, but found values', new List<Object>());
         return this;
-    }
-
+    } 
     /**
      * @description Verifies that the actual does not contain the given values.
      * @param expected elements not to be contained in actual
@@ -208,7 +200,7 @@ public class FASetAssert extends FACollectionAssertBase {
         assertDoesNotContain(expected.iterator());
         return this;
     }
-
+ 
     /**
      * @description Verifies that the actual has same size as expected.
      * @param expected list to compare size against
@@ -235,7 +227,7 @@ public class FASetAssert extends FACollectionAssertBase {
 
         return hasSize(expected.size());
     }
-
+ 
     /**
      * @description Verifies that size of actual is equal to expected.
      * @param expected expected size of actual
@@ -246,13 +238,9 @@ public class FASetAssert extends FACollectionAssertBase {
     public FASetAssert hasSize(Integer expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-
-        if(actual.size() != expected) {
-            throw new FluentAssert.AssertException(String.format('Was expecting size of actual list to be {0}', new List<Object> {expected}));
-        }
+        assert(actual.size() == expected, 'Was expecting size of actual list to be {0}', new List<Object> {expected});
         return this;
-    }
-
+    } 
     /**
      * @description Verifies that the actual of values is empty.
      * @return this to allow further assert in a fluent manner
@@ -261,12 +249,9 @@ public class FASetAssert extends FACollectionAssertBase {
      */
     public FASetAssert isEmpty() {
         notNull(actual, 'actual');
-        if(!actual.isEmpty()) {
-            throw new FluentAssert.AssertException('Was expecting actual list not to be empty');
-        }
+        assert(actual.isEmpty(), 'Was expecting actual list not to be empty', new List<Object>());
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is equal to `expected`.
      * @param expected expected value to assert against
@@ -277,13 +262,9 @@ public class FASetAssert extends FACollectionAssertBase {
     public FASetAssert isEqualTo(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-
-        if(actual != expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} to be equal', new List<Object> {expected, actual}));
-        }
+        assert(actual == expected, 'Expecting {0} and {1} to be equal', new List<Object> {expected, actual});
         return this;
-    }
-
+    } 
     /**
      * @description Verifies that the actual of values is not empty.
      * @return this to allow further assert in a fluent manner
@@ -292,12 +273,9 @@ public class FASetAssert extends FACollectionAssertBase {
      */
     public FASetAssert isNotEmpty() {
         notNull(actual, 'actual');
-        if(actual.isEmpty()) {
-           throw new FluentAssert.AssertException('Was expecting actual list not to be empty');
-        }
+        assert(!actual.isEmpty(), 'Was expecting actual list not to be empty but found {0}', new List<Object>{actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is not equal to `expected`.
      * @param expected expected value to assert against
@@ -308,25 +286,18 @@ public class FASetAssert extends FACollectionAssertBase {
     public FASetAssert isNotEqualTo(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        
-        if(actual == expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} not to be equal', new List<Object> {expected, actual}));
-        }
+        assert(actual != expected, 'Expecting {0} and {1} not to be equal', new List<Object> {expected, actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is not null.
      * @return this to allow further assert in a fluent manner
      * @throws FluentAssert.AssertException if actual is null.
      */
     public FASetAssert isNotNull() {
-        if(actual == null) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} not to be null', new List<Object> {actual}));
-        }
+        assert(actual != null, 'Expecting {0} not to be null', new List<Object> {actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is not same (part of memory) as `expected`.
      * @param expected expected value to assert against
@@ -337,25 +308,18 @@ public class FASetAssert extends FACollectionAssertBase {
     public FASetAssert isNotSame(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        
-        if(actual === expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} not to be same', new List<Object> {expected, actual}));
-        }
+        assert(actual !== expected, 'Expecting {0} and {1} not to be same', new List<Object> {expected, actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is null.
      * @return this to allow further assert in a fluent manner
      * @throws FluentAssert.AssertException if actual is not null.
      */
     public FASetAssert isNull() {
-        if(actual != null) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} to be null', new List<Object> {actual}));
-        }
+        assert(actual == null, 'Expecting {0} to be null', new List<Object> {actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is same (part of memory) as `expected`.
      * @param expected expected value to assert against
@@ -366,10 +330,7 @@ public class FASetAssert extends FACollectionAssertBase {
     public FASetAssert isSame(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        
-        if(actual !== expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} to be same', new List<Object> {expected, actual}));
-        }
+        assert(actual === expected, 'Expecting {0} and {1} to be same', new List<Object> {expected, actual});
         return this;
-    }
-}
+    }}
+

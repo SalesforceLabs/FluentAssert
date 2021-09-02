@@ -26,7 +26,7 @@ public class FAStringAssert extends FAAssertBase {
         notNull(actual, 'actual');
         return new FAIntegerAssertStringNavigator(actual.length(), this);
     }
-
+    
    /**
      * @description Verifies that the lenght of the String matches.
      * @param expected expected length of actual
@@ -37,13 +37,9 @@ public class FAStringAssert extends FAAssertBase {
     public FAStringAssert hasLength(Integer expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-
-        if(actual.length() != expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting actual to have a length of {0}, but found {1}', new List<Object> {actual.length(), expected}));
-        }
+        assert(actual.length() == expected, 'Expecting actual to have a length of {0}, but found {1}', new List<Object> {actual.length(), expected});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is equal to `expected`.
      * @param expected expected value to assert against
@@ -54,10 +50,19 @@ public class FAStringAssert extends FAAssertBase {
     public FAStringAssert isEqualTo(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-
-        if(actual != expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} to be equal', new List<Object> {expected, actual}));
-        }
+        assert(actual == expected, 'Expecting {0} and {1} to be equal', new List<Object> {expected, actual});
+        return this;
+    } 
+    /**
+     * @description Verifies that the actual is contained in expectedIn.
+     * @param expectedIn collection that must contain actual
+     * @return this to allow further assert in a fluent manner
+     * @throws NullPointerException if actual or expectedIn is null
+     * @throws FluentAssert.AssertException if actual is not in expectedIn
+     */
+    public FAStringAssert isIn(List<Object> expectedIn) {
+        notNull(actual, 'actual');
+        assert(expectedIn.contains(actual), 'Was expecting {0} to be in {1}', new List<Object> {actual, expectedIn});
         return this;
     }
 
@@ -70,28 +75,10 @@ public class FAStringAssert extends FAAssertBase {
      */
     public FAStringAssert isIn(Set<Object> expectedIn) {
         notNull(actual, 'actual');
-
-        if(!expectedIn.contains(actual)) {
-            throw new FluentAssert.AssertException(String.format('Was expecting {0} to be in {1}', new List<Object> {actual, expectedIn}));
-        }
+        assert(expectedIn.contains(actual), 'Was expecting {0} to be in {1}', new List<Object> {actual, expectedIn});
         return this;
     }
-    /**
-     * @description Verifies that the actual is contained in expectedIn.
-     * @param expectedIn collection that must contain actual
-     * @return this to allow further assert in a fluent manner
-     * @throws NullPointerException if actual or expectedIn is null
-     * @throws FluentAssert.AssertException if actual is not in expectedIn
-     */
-    public FAStringAssert isIn(List<Object> expectedIn) {
-        notNull(actual, 'actual');
-
-        if(!expectedIn.contains(actual)) {
-            throw new FluentAssert.AssertException(String.format('Was expecting {0} to be in {1}', new List<Object> {actual, expectedIn}));
-        }
-        return this;
-    }
-
+ 
     /**
      * @description Asserts that `actual` is not equal to `expected`.
      * @param expected expected value to assert against
@@ -102,25 +89,18 @@ public class FAStringAssert extends FAAssertBase {
     public FAStringAssert isNotEqualTo(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        
-        if(actual == expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} not to be equal', new List<Object> {expected, actual}));
-        }
+        assert(actual != expected, 'Expecting {0} and {1} not to be equal', new List<Object> {expected, actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is not null.
      * @return this to allow further assert in a fluent manner
      * @throws FluentAssert.AssertException if actual is null.
      */
     public FAStringAssert isNotNull() {
-        if(actual == null) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} not to be null', new List<Object> {actual}));
-        }
+        assert(actual != null, 'Expecting {0} not to be null', new List<Object> {actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is not same (part of memory) as `expected`.
      * @param expected expected value to assert against
@@ -131,25 +111,18 @@ public class FAStringAssert extends FAAssertBase {
     public FAStringAssert isNotSame(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        
-        if(actual === expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} not to be same', new List<Object> {expected, actual}));
-        }
+        assert(actual !== expected, 'Expecting {0} and {1} not to be same', new List<Object> {expected, actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is null.
      * @return this to allow further assert in a fluent manner
      * @throws FluentAssert.AssertException if actual is not null.
      */
     public FAStringAssert isNull() {
-        if(actual != null) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} to be null', new List<Object> {actual}));
-        }
+        assert(actual == null, 'Expecting {0} to be null', new List<Object> {actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is same (part of memory) as `expected`.
      * @param expected expected value to assert against
@@ -160,13 +133,9 @@ public class FAStringAssert extends FAAssertBase {
     public FAStringAssert isSame(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        
-        if(actual !== expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} to be same', new List<Object> {expected, actual}));
-        }
+        assert(actual === expected, 'Expecting {0} and {1} to be same', new List<Object> {expected, actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that contains the specified sequence of characters in substring. Simply delegates to `String.contains()` and was mostly added here to support a fluent programming style.
      * @param substring specified sequence of characters
@@ -175,9 +144,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.contains
      */
     public FAStringAssert contains(String substring) {
-        if(!actual.contains(substring)) {
-            throw new FluentAssert.AssertException(String.format('Expecting contains the specified sequence of characters in substring, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.contains(substring), 'Expecting contains the specified sequence of characters in substring, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -189,9 +156,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.containsAny
      */
     public FAStringAssert containsAny(String expected) {
-        if(!actual.containsAny(expected)) {
-            throw new FluentAssert.AssertException(String.format('Expecting contains any of the characters in expected, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.containsAny(expected), 'Expecting contains any of the characters in expected, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -203,9 +168,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.containsIgnoreCase
      */
     public FAStringAssert containsIgnoreCase(String substring) {
-        if(!actual.containsIgnoreCase(substring)) {
-            throw new FluentAssert.AssertException(String.format('Expecting contains the specified sequence of characters without regard to case, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.containsIgnoreCase(substring), 'Expecting contains the specified sequence of characters without regard to case, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -217,9 +180,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.containsNone
      */
     public FAStringAssert containsNone(String notExpected) {
-        if(!actual.containsNone(notExpected)) {
-            throw new FluentAssert.AssertException(String.format('Expecting doesn’t contain any of the characters in notExpected, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.containsNone(notExpected), 'Expecting doesn’t contain any of the characters in notExpected, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -231,9 +192,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.containsOnly
      */
     public FAStringAssert containsOnly(String expected) {
-        if(!actual.containsOnly(expected)) {
-            throw new FluentAssert.AssertException(String.format('Expecting contains characters only from the specified sequence of characters and not any other characters, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.containsOnly(expected), 'Expecting contains characters only from the specified sequence of characters and not any other characters, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -244,9 +203,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.containsWhitespace
      */
     public FAStringAssert containsWhitespace() {
-        if(!actual.containsWhitespace()) {
-            throw new FluentAssert.AssertException(String.format('Expecting contains any white space characters, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.containsWhitespace(), 'Expecting contains any white space characters, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -258,9 +215,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.endsWith
      */
     public FAStringAssert endsWith(String suffix) {
-        if(!actual.endsWith(suffix)) {
-            throw new FluentAssert.AssertException(String.format('Expecting ends with the specified suffix, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.endsWith(suffix), 'Expecting ends with the specified suffix, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -272,9 +227,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.endsWithIgnoreCase
      */
     public FAStringAssert endsWithIgnoreCase(String suffix) {
-        if(!actual.endsWithIgnoreCase(suffix)) {
-            throw new FluentAssert.AssertException(String.format('Expecting ends with the specified suffix, case ignored, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.endsWithIgnoreCase(suffix), 'Expecting ends with the specified suffix, case ignored, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -286,9 +239,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.equalsIgnoreCase
      */
     public FAStringAssert equalsIgnoreCase(String expected) {
-        if(!actual.equalsIgnoreCase(expected)) {
-            throw new FluentAssert.AssertException(String.format('Expecting is not null and represents the same sequence of characters as actual, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.equalsIgnoreCase(expected), 'Expecting is not null and represents the same sequence of characters as actual, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -299,9 +250,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.isAllLowerCase
      */
     public FAStringAssert isAllLowerCase() {
-        if(!actual.isAllLowerCase()) {
-            throw new FluentAssert.AssertException(String.format('Expecting all characters are lowercase, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.isAllLowerCase(), 'Expecting all characters are lowercase, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -312,9 +261,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.isAllUpperCase
      */
     public FAStringAssert isAllUpperCase() {
-        if(!actual.isAllUpperCase()) {
-            throw new FluentAssert.AssertException(String.format('Expecting all characters are uppercase, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.isAllUpperCase(), 'Expecting all characters are uppercase, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -325,9 +272,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.isAlpha
      */
     public FAStringAssert isAlpha() {
-        if(!actual.isAlpha()) {
-            throw new FluentAssert.AssertException(String.format('Expecting all characters are Unicode letters only, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.isAlpha(), 'Expecting all characters are Unicode letters only, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -338,9 +283,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.isAlphanumeric
      */
     public FAStringAssert isAlphanumeric() {
-        if(!actual.isAlphanumeric()) {
-            throw new FluentAssert.AssertException(String.format('Expecting all characters are Unicode letters or numbers only, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.isAlphanumeric(), 'Expecting all characters are Unicode letters or numbers only, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -351,9 +294,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.isAlphanumericSpace
      */
     public FAStringAssert isAlphanumericSpace() {
-        if(!actual.isAlphanumericSpace()) {
-            throw new FluentAssert.AssertException(String.format('Expecting all characters are Unicode letters, numbers, or spaces only, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.isAlphanumericSpace(), 'Expecting all characters are Unicode letters, numbers, or spaces only, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -364,9 +305,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.isAlphaSpace
      */
     public FAStringAssert isAlphaSpace() {
-        if(!actual.isAlphaSpace()) {
-            throw new FluentAssert.AssertException(String.format('Expecting all characters are Unicode letters or spaces only, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.isAlphaSpace(), 'Expecting all characters are Unicode letters or spaces only, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -377,9 +316,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.isAsciiPrintable
      */
     public FAStringAssert isAsciiPrintable() {
-        if(!actual.isAsciiPrintable()) {
-            throw new FluentAssert.AssertException(String.format('Expecting contains only ASCII printable characters, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.isAsciiPrintable(), 'Expecting contains only ASCII printable characters, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -390,9 +327,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.isBlank
      */
     public FAStringAssert isBlank() {
-        if(!String.isBlank(actual)) {
-            throw new FluentAssert.AssertException(String.format('Expecting the specified String is white space, empty (\'\'), or null, but found {0}', new List<Object> {actual}));
-        }
+        assert(String.isBlank(actual), 'Expecting the specified String is white space, empty (\'\'), or null, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -403,9 +338,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.isEmpty
      */
     public FAStringAssert isEmpty() {
-        if(!String.isEmpty(actual)) {
-            throw new FluentAssert.AssertException(String.format('Expecting the specified String is empty (\'\') or null, but found {0}', new List<Object> {actual}));
-        }
+        assert(String.isEmpty(actual), 'Expecting the specified String is empty (\'\') or null, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -416,9 +349,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.isNotBlank
      */
     public FAStringAssert isNotBlank() {
-        if(!String.isNotBlank(actual)) {
-            throw new FluentAssert.AssertException(String.format('Expecting the specified String is not whitespace, not empty (\'\'), and not null, but found {0}', new List<Object> {actual}));
-        }
+        assert(String.isNotBlank(actual), 'Expecting the specified String is not whitespace, not empty (\'\'), and not null, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -429,9 +360,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.isNotEmpty
      */
     public FAStringAssert isNotEmpty() {
-        if(!String.isNotEmpty(actual)) {
-            throw new FluentAssert.AssertException(String.format('Expecting the specified String is not empty (\'\') and not null, but found {0}', new List<Object> {actual}));
-        }
+        assert(String.isNotEmpty(actual), 'Expecting the specified String is not empty (\'\') and not null, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -442,9 +371,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.isNumeric
      */
     public FAStringAssert isNumeric() {
-        if(!actual.isNumeric()) {
-            throw new FluentAssert.AssertException(String.format('Expecting contains only Unicode digits, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.isNumeric(), 'Expecting contains only Unicode digits, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -455,9 +382,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.isNumericSpace
      */
     public FAStringAssert isNumericSpace() {
-        if(!actual.isNumericSpace()) {
-            throw new FluentAssert.AssertException(String.format('Expecting only Unicode digits or spaces, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.isNumericSpace(), 'Expecting only Unicode digits or spaces, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -468,9 +393,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.isWhitespace
      */
     public FAStringAssert isWhitespace() {
-        if(!actual.isWhitespace()) {
-            throw new FluentAssert.AssertException(String.format('Expecting contains only white space characters or is empty, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.isWhitespace(), 'Expecting contains only white space characters or is empty, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -482,9 +405,7 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.startsWith
      */
     public FAStringAssert startsWith(String prefix) {
-        if(!actual.startsWith(prefix)) {
-            throw new FluentAssert.AssertException(String.format('Expecting begins with the specified prefix, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.startsWith(prefix), 'Expecting begins with the specified prefix, but found {0}', new List<Object> {actual});
         return this;
     }
     
@@ -496,10 +417,8 @@ public class FAStringAssert extends FAAssertBase {
      * @see String.startsWithIgnoreCase
      */
     public FAStringAssert startsWithIgnoreCase(String prefix) {
-        if(!actual.startsWithIgnoreCase(prefix)) {
-            throw new FluentAssert.AssertException(String.format('Expecting begins with the specified prefix, case ignored, but found {0}', new List<Object> {actual}));
-        }
+        assert(actual.startsWithIgnoreCase(prefix), 'Expecting begins with the specified prefix, case ignored, but found {0}', new List<Object> {actual});
         return this;
     }
-    
 }
+

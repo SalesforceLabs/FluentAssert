@@ -4,8 +4,6 @@
   - SPDX-License-Identifier: BSD-3-Clause
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
-<#import "../../common/apex-class.ftl" as com>
-
 <#assign dataTypes = [
     {"native":"Date",     "validValue":"Date.newInstance(2020, 5, 12)",     "deltaTemplate":".addDays(DELTA)"},
     {"native":"Datetime", "validValue":"Datetime.newInstance(2020, 5, 12)", "deltaTemplate":".addSeconds(DELTA)"},

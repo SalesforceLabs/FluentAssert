@@ -4,7 +4,6 @@
   - SPDX-License-Identifier: BSD-3-Clause
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
-<#import "common/apex-class.ftl" as com>
 <@pp.dropOutputFile />
 <#assign supportedAsserts = [
     {"type":"Boolean",     "asserts": ["IsTrue", "IsFalse"]},
@@ -88,8 +87,8 @@ public class ${classPrefix}${supportedAssert.type?keep_before('<')}Assert extend
     public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert(${supportedAssert.type} actual) {
         this.actual = actual;
     }
-    <#if supportedAssert.navigators?has_content><#list supportedAssert.navigators?sort_by("name") as n>
 
+    <#if supportedAssert.navigators?has_content><#list supportedAssert.navigators?sort_by("name") as n>
     /**
      * @description Constructs a navigator that allows asserts on ${n.name}(). Use `back()` to get back to asserts on `${supportedAssert.type?keep_before('<')}`.
      * @return a navigator on ${n.name}().
@@ -98,10 +97,15 @@ public class ${classPrefix}${supportedAssert.type?keep_before('<')}Assert extend
         notNull(actual, 'actual');
         return new ${classPrefix}${n.returnType}Assert${supportedAssert.type?keep_before('<')}Navigator(actual.${n.method}(), this);
     }
-    </#list></#if>
-    <#list asserts?sort as assert>
+    <#sep>
 
-    <#include "/common/assertions/${assert}.ftl">
+    </#list></#if>
+    
+    <#list asserts?sort as assert>
+        <#include "/common/assertions/${assert}.ftl">
+    <#sep>
+ 
     </#list>
 }
+
 </#list>

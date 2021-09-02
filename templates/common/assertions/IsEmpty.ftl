@@ -12,8 +12,6 @@
      */
     public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert isEmpty() {
         notNull(actual, 'actual');
-        if(!actual.isEmpty()) {
-            throw new FluentAssert.AssertException('Was expecting actual list not to be empty');
-        }
+        assert(actual.isEmpty(), 'Was expecting actual list not to be empty', new List<Object>());
         return this;
     }

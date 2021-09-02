@@ -15,25 +15,6 @@
     public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert containsSequence(List<Object> expected) {
         notNull(actual, 'actual');
         notEmpty(expected, 'expected');
-
-        for (Integer i = 0; i < actual.size(); i++) {
-            if(containsSequenceAtIndex(expected, i)) {
-                return this;
-            }
-        }
-
-        throw new FluentAssert.AssertException(String.format('Was expecting actual to contain the sequence {0}', new List<Object> {expected}));
-    }
-    
-    private Boolean containsSequenceAtIndex(List<Object> expected, Integer startingIndex) {
-        if(actual.size() - startingIndex < expected.size()) {
-            return false;
-        }
-
-        for (Integer i = 0; i < expected.size(); i++) {
-            if(!actual[startingIndex + i].equals(expected[i])) {
-                return false;
-            }
-        }
-        return true;
+        assert(${classPrefix}ListSequenceUtil.containsSequence(actual, expected), 'Was expecting actual to contain the sequence {0}', new List<Object> {expected});
+        return this;
     }
