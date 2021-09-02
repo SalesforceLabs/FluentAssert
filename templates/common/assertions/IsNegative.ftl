@@ -12,8 +12,6 @@
      */
     public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert isNegative() {
         notNull(actual, 'actual');
-        if(actual < 0) {
-            return this;
-        }
-        throw new FluentAssert.AssertException(String.format('Expecting {0} to be negative', new List<Object> {actual}));
+        assert(actual < 0, 'Expecting {0} to be negative', new List<Object> {actual});
+        return this;
     }

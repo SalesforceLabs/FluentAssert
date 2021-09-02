@@ -8,6 +8,7 @@
 public class FATimeUtilTest {
     @IsTest
     static void testToMillisecondsOfDay() {
-        System.assertEquals((5 * 60 * 60 * 1000) + (10 * 60 * 1000) + (15 * 1000) + 20,FATimeUtil.toMillisecondsOfDay(Time.newInstance(5, 10, 15, 20)));
+        FluentAssert.that(FATimeUtil.toMillisecondsOfDay(Time.newInstance(5, 10, 15, 20)))
+                    .isEqualTo((5 * 60 * 60 * 1000) + (10 * 60 * 1000) + (15 * 1000) + 20);
     }
 }

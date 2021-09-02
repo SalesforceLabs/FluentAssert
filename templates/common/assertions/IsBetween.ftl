@@ -16,9 +16,6 @@
         notNull(actual, 'actual');
         notNull(fromInclusive, 'fromInclusive');
         notNull(toInclusive, 'toInclusive');
-        if(<#if supportedAssert.comparableHelper?has_content>${supportedAssert.comparableHelper}(</#if>actual<#if supportedAssert.comparableHelper?has_content>)</#if> >= <#if supportedAssert.comparableHelper?has_content>${supportedAssert.comparableHelper}(</#if>fromInclusive<#if supportedAssert.comparableHelper?has_content>)</#if> && <#if supportedAssert.comparableHelper?has_content>${supportedAssert.comparableHelper}(</#if>actual<#if supportedAssert.comparableHelper?has_content>)</#if> <= <#if supportedAssert.comparableHelper?has_content>${supportedAssert.comparableHelper}(</#if>toInclusive<#if supportedAssert.comparableHelper?has_content>)</#if>) {
-            return this;
-        }
-
-        throw new FluentAssert.AssertException(String.format('Expecting {2} to be within range [{0}:{1}] both included', new List<Object> {fromInclusive, toInclusive, actual}));
+        assert((<#if supportedAssert.comparableHelper?has_content>${supportedAssert.comparableHelper}(</#if>actual<#if supportedAssert.comparableHelper?has_content>)</#if> >= <#if supportedAssert.comparableHelper?has_content>${supportedAssert.comparableHelper}(</#if>fromInclusive<#if supportedAssert.comparableHelper?has_content>)</#if> && <#if supportedAssert.comparableHelper?has_content>${supportedAssert.comparableHelper}(</#if>actual<#if supportedAssert.comparableHelper?has_content>)</#if> <= <#if supportedAssert.comparableHelper?has_content>${supportedAssert.comparableHelper}(</#if>toInclusive<#if supportedAssert.comparableHelper?has_content>)</#if>), 'Expecting {2} to be within range [{0}:{1}] both included', new List<Object> {fromInclusive, toInclusive, actual});
+        return this;
     }

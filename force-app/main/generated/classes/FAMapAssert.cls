@@ -44,7 +44,7 @@ public class FAMapAssert extends FAAssertBase {
         notNull(actual, 'actual');
         return new FAListAssertMapNavigator(actual.values(), this);
     }
-
+    
     /**
      * @description Verifies that the actual contains the given entry.
      * @param key key to be contained in actual
@@ -67,7 +67,7 @@ public class FAMapAssert extends FAAssertBase {
         }
         return this;
     }
-
+ 
     /**
      * @description Verifies that the actual does not contains the given entry.
      * @param key key not to be contained in actual
@@ -87,8 +87,7 @@ public class FAMapAssert extends FAAssertBase {
             }
         }
         return this;
-    }
-
+    } 
     /**
      * @description Verifies that the actual has same size as expected.
      * @param expected list to compare size against
@@ -102,7 +101,7 @@ public class FAMapAssert extends FAAssertBase {
 
         return hasSize(expected.size());
     }
-
+ 
     /**
      * @description Verifies that size of actual is equal to expected.
      * @param expected expected size of actual
@@ -113,13 +112,9 @@ public class FAMapAssert extends FAAssertBase {
     public FAMapAssert hasSize(Integer expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-
-        if(actual.size() != expected) {
-            throw new FluentAssert.AssertException(String.format('Was expecting size of actual list to be {0}', new List<Object> {expected}));
-        }
+        assert(actual.size() == expected, 'Was expecting size of actual list to be {0}', new List<Object> {expected});
         return this;
-    }
-
+    } 
     /**
      * @description Verifies that the actual of values is empty.
      * @return this to allow further assert in a fluent manner
@@ -128,12 +123,9 @@ public class FAMapAssert extends FAAssertBase {
      */
     public FAMapAssert isEmpty() {
         notNull(actual, 'actual');
-        if(!actual.isEmpty()) {
-            throw new FluentAssert.AssertException('Was expecting actual list not to be empty');
-        }
+        assert(actual.isEmpty(), 'Was expecting actual list not to be empty', new List<Object>());
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is equal to `expected`.
      * @param expected expected value to assert against
@@ -144,13 +136,9 @@ public class FAMapAssert extends FAAssertBase {
     public FAMapAssert isEqualTo(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-
-        if(actual != expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} to be equal', new List<Object> {expected, actual}));
-        }
+        assert(actual == expected, 'Expecting {0} and {1} to be equal', new List<Object> {expected, actual});
         return this;
-    }
-
+    } 
     /**
      * @description Verifies that the actual of values is not empty.
      * @return this to allow further assert in a fluent manner
@@ -159,12 +147,9 @@ public class FAMapAssert extends FAAssertBase {
      */
     public FAMapAssert isNotEmpty() {
         notNull(actual, 'actual');
-        if(actual.isEmpty()) {
-           throw new FluentAssert.AssertException('Was expecting actual list not to be empty');
-        }
+        assert(!actual.isEmpty(), 'Was expecting actual list not to be empty but found {0}', new List<Object>{actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is not equal to `expected`.
      * @param expected expected value to assert against
@@ -175,25 +160,18 @@ public class FAMapAssert extends FAAssertBase {
     public FAMapAssert isNotEqualTo(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        
-        if(actual == expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} not to be equal', new List<Object> {expected, actual}));
-        }
+        assert(actual != expected, 'Expecting {0} and {1} not to be equal', new List<Object> {expected, actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is not null.
      * @return this to allow further assert in a fluent manner
      * @throws FluentAssert.AssertException if actual is null.
      */
     public FAMapAssert isNotNull() {
-        if(actual == null) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} not to be null', new List<Object> {actual}));
-        }
+        assert(actual != null, 'Expecting {0} not to be null', new List<Object> {actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is not same (part of memory) as `expected`.
      * @param expected expected value to assert against
@@ -204,25 +182,18 @@ public class FAMapAssert extends FAAssertBase {
     public FAMapAssert isNotSame(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        
-        if(actual === expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} not to be same', new List<Object> {expected, actual}));
-        }
+        assert(actual !== expected, 'Expecting {0} and {1} not to be same', new List<Object> {expected, actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is null.
      * @return this to allow further assert in a fluent manner
      * @throws FluentAssert.AssertException if actual is not null.
      */
     public FAMapAssert isNull() {
-        if(actual != null) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} to be null', new List<Object> {actual}));
-        }
+        assert(actual == null, 'Expecting {0} to be null', new List<Object> {actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is same (part of memory) as `expected`.
      * @param expected expected value to assert against
@@ -233,10 +204,7 @@ public class FAMapAssert extends FAAssertBase {
     public FAMapAssert isSame(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        
-        if(actual !== expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} to be same', new List<Object> {expected, actual}));
-        }
+        assert(actual === expected, 'Expecting {0} and {1} to be same', new List<Object> {expected, actual});
         return this;
-    }
-}
+    }}
+

@@ -14,8 +14,6 @@
     public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert isAfterOrEqualTo(${supportedAssert.type} expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        if(<#if supportedAssert.comparableHelper?has_content>${supportedAssert.comparableHelper}(</#if>actual<#if supportedAssert.comparableHelper?has_content>)</#if> >= <#if supportedAssert.comparableHelper?has_content>${supportedAssert.comparableHelper}(</#if>expected<#if supportedAssert.comparableHelper?has_content>)</#if>) {
-            return this;
-        }
-        throw new FluentAssert.AssertException(String.format('Expecting {1} to be after or equal to {0}', new List<Object> {expected, actual}));
+        assert((<#if supportedAssert.comparableHelper?has_content>${supportedAssert.comparableHelper}(</#if>actual<#if supportedAssert.comparableHelper?has_content>)</#if> >= <#if supportedAssert.comparableHelper?has_content>${supportedAssert.comparableHelper}(</#if>expected<#if supportedAssert.comparableHelper?has_content>)</#if>), 'Expecting {1} to be after or equal to {0}', new List<Object> {expected, actual});
+        return this;
     }

@@ -14,9 +14,6 @@
     public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert hasLength(Integer expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-
-        if(actual.length() != expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting actual to have a length of {0}, but found {1}', new List<Object> {actual.length(), expected}));
-        }
+        assert(actual.length() == expected, 'Expecting actual to have a length of {0}, but found {1}', new List<Object> {actual.length(), expected});
         return this;
     }

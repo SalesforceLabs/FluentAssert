@@ -4,8 +4,6 @@
   - SPDX-License-Identifier: BSD-3-Clause
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
-<#import "../../common/apex-class.ftl" as com>
-
 <#assign numberDataTypes = [
     {"nativeDataType":"List", "castingValue":"List<Object>",        "emptyValue": "new List<Object>()",         "nonEmptyValue": "new List<Object>{'X'}"},
     {"nativeDataType":"Set",  "castingValue":"Set<Object>",         "emptyValue": "new Set<Object>()",          "nonEmptyValue": "new Set<Object>{'X'}"},

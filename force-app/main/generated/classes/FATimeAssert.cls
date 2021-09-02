@@ -18,6 +18,7 @@ public class FATimeAssert extends FAAssertBase {
         this.actual = actual;
     }
 
+    
     /**
      * @description Verifies that the actual value is after expected
      * @param expected value to assert against
@@ -28,12 +29,9 @@ public class FATimeAssert extends FAAssertBase {
     public FATimeAssert isAfter(Time expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        if(FATimeUtil.toMillisecondsOfDay(actual) > FATimeUtil.toMillisecondsOfDay(expected)) {
-            return this;
-        }
-        throw new FluentAssert.AssertException(String.format('Expecting {1} to be after {0}', new List<Object> {expected, actual}));
-    }
-
+        assert((FATimeUtil.toMillisecondsOfDay(actual) > FATimeUtil.toMillisecondsOfDay(expected)), 'Expecting {1} to be after {0}', new List<Object> {expected, actual});
+        return this;
+    } 
     /**
      * @description Verifies that the actual value is after or equal to expected
      * @param expected value to assert against
@@ -44,12 +42,9 @@ public class FATimeAssert extends FAAssertBase {
     public FATimeAssert isAfterOrEqualTo(Time expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        if(FATimeUtil.toMillisecondsOfDay(actual) >= FATimeUtil.toMillisecondsOfDay(expected)) {
-            return this;
-        }
-        throw new FluentAssert.AssertException(String.format('Expecting {1} to be after or equal to {0}', new List<Object> {expected, actual}));
-    }
-
+        assert((FATimeUtil.toMillisecondsOfDay(actual) >= FATimeUtil.toMillisecondsOfDay(expected)), 'Expecting {1} to be after or equal to {0}', new List<Object> {expected, actual});
+        return this;
+    } 
     /**
      * @description Verifies that the actual value is before expected
      * @param expected value to assert against
@@ -60,12 +55,9 @@ public class FATimeAssert extends FAAssertBase {
     public FATimeAssert isBefore(Time expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        if(FATimeUtil.toMillisecondsOfDay(actual) < FATimeUtil.toMillisecondsOfDay(expected)) {
-            return this;
-        }
-        throw new FluentAssert.AssertException(String.format('Expecting {1} to be before {0}', new List<Object> {expected, actual}));
-    }
-
+        assert((FATimeUtil.toMillisecondsOfDay(actual) < FATimeUtil.toMillisecondsOfDay(expected)), 'Expecting {1} to be before {0}', new List<Object> {expected, actual});
+        return this;
+    } 
     /**
      * @description Verifies that the actual value is before or equal to expected
      * @param expected value to assert against
@@ -76,12 +68,9 @@ public class FATimeAssert extends FAAssertBase {
     public FATimeAssert isBeforeOrEqualTo(Time expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        if(FATimeUtil.toMillisecondsOfDay(actual) <= FATimeUtil.toMillisecondsOfDay(expected)) {
-            return this;
-        }
-        throw new FluentAssert.AssertException(String.format('Expecting {1} to be before or equal to {0}', new List<Object> {expected, actual}));
-    }
-
+        assert((FATimeUtil.toMillisecondsOfDay(actual) <= FATimeUtil.toMillisecondsOfDay(expected)), 'Expecting {1} to be before or equal to {0}', new List<Object> {expected, actual});
+        return this;
+    } 
     /**
      * @description Verifies that the actual value is in [start, end] range (start included, end included).
      * @param fromInclusive start (included) of range to assert against
@@ -94,13 +83,9 @@ public class FATimeAssert extends FAAssertBase {
         notNull(actual, 'actual');
         notNull(fromInclusive, 'fromInclusive');
         notNull(toInclusive, 'toInclusive');
-        if(FATimeUtil.toMillisecondsOfDay(actual) >= FATimeUtil.toMillisecondsOfDay(fromInclusive) && FATimeUtil.toMillisecondsOfDay(actual) <= FATimeUtil.toMillisecondsOfDay(toInclusive)) {
-            return this;
-        }
-
-        throw new FluentAssert.AssertException(String.format('Expecting {2} to be within range [{0}:{1}] both included', new List<Object> {fromInclusive, toInclusive, actual}));
-    }
-
+        assert((FATimeUtil.toMillisecondsOfDay(actual) >= FATimeUtil.toMillisecondsOfDay(fromInclusive) && FATimeUtil.toMillisecondsOfDay(actual) <= FATimeUtil.toMillisecondsOfDay(toInclusive)), 'Expecting {2} to be within range [{0}:{1}] both included', new List<Object> {fromInclusive, toInclusive, actual});
+        return this;
+    } 
     /**
      * @description Asserts that `actual` is equal to `expected`.
      * @param expected expected value to assert against
@@ -111,10 +96,19 @@ public class FATimeAssert extends FAAssertBase {
     public FATimeAssert isEqualTo(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-
-        if(actual != expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} to be equal', new List<Object> {expected, actual}));
-        }
+        assert(actual == expected, 'Expecting {0} and {1} to be equal', new List<Object> {expected, actual});
+        return this;
+    } 
+    /**
+     * @description Verifies that the actual is contained in expectedIn.
+     * @param expectedIn collection that must contain actual
+     * @return this to allow further assert in a fluent manner
+     * @throws NullPointerException if actual or expectedIn is null
+     * @throws FluentAssert.AssertException if actual is not in expectedIn
+     */
+    public FATimeAssert isIn(List<Object> expectedIn) {
+        notNull(actual, 'actual');
+        assert(expectedIn.contains(actual), 'Was expecting {0} to be in {1}', new List<Object> {actual, expectedIn});
         return this;
     }
 
@@ -127,28 +121,10 @@ public class FATimeAssert extends FAAssertBase {
      */
     public FATimeAssert isIn(Set<Object> expectedIn) {
         notNull(actual, 'actual');
-
-        if(!expectedIn.contains(actual)) {
-            throw new FluentAssert.AssertException(String.format('Was expecting {0} to be in {1}', new List<Object> {actual, expectedIn}));
-        }
+        assert(expectedIn.contains(actual), 'Was expecting {0} to be in {1}', new List<Object> {actual, expectedIn});
         return this;
     }
-    /**
-     * @description Verifies that the actual is contained in expectedIn.
-     * @param expectedIn collection that must contain actual
-     * @return this to allow further assert in a fluent manner
-     * @throws NullPointerException if actual or expectedIn is null
-     * @throws FluentAssert.AssertException if actual is not in expectedIn
-     */
-    public FATimeAssert isIn(List<Object> expectedIn) {
-        notNull(actual, 'actual');
-
-        if(!expectedIn.contains(actual)) {
-            throw new FluentAssert.AssertException(String.format('Was expecting {0} to be in {1}', new List<Object> {actual, expectedIn}));
-        }
-        return this;
-    }
-
+ 
     /**
      * @description Asserts that `actual` is not equal to `expected`.
      * @param expected expected value to assert against
@@ -159,25 +135,18 @@ public class FATimeAssert extends FAAssertBase {
     public FATimeAssert isNotEqualTo(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        
-        if(actual == expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} not to be equal', new List<Object> {expected, actual}));
-        }
+        assert(actual != expected, 'Expecting {0} and {1} not to be equal', new List<Object> {expected, actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is not null.
      * @return this to allow further assert in a fluent manner
      * @throws FluentAssert.AssertException if actual is null.
      */
     public FATimeAssert isNotNull() {
-        if(actual == null) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} not to be null', new List<Object> {actual}));
-        }
+        assert(actual != null, 'Expecting {0} not to be null', new List<Object> {actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is not same (part of memory) as `expected`.
      * @param expected expected value to assert against
@@ -188,25 +157,18 @@ public class FATimeAssert extends FAAssertBase {
     public FATimeAssert isNotSame(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        
-        if(actual === expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} not to be same', new List<Object> {expected, actual}));
-        }
+        assert(actual !== expected, 'Expecting {0} and {1} not to be same', new List<Object> {expected, actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is null.
      * @return this to allow further assert in a fluent manner
      * @throws FluentAssert.AssertException if actual is not null.
      */
     public FATimeAssert isNull() {
-        if(actual != null) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} to be null', new List<Object> {actual}));
-        }
+        assert(actual == null, 'Expecting {0} to be null', new List<Object> {actual});
         return this;
-    }
-
+    } 
     /**
      * @description Asserts that `actual` is same (part of memory) as `expected`.
      * @param expected expected value to assert against
@@ -217,13 +179,9 @@ public class FATimeAssert extends FAAssertBase {
     public FATimeAssert isSame(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-        
-        if(actual !== expected) {
-            throw new FluentAssert.AssertException(String.format('Expecting {0} and {1} to be same', new List<Object> {expected, actual}));
-        }
+        assert(actual === expected, 'Expecting {0} and {1} to be same', new List<Object> {expected, actual});
         return this;
-    }
-
+    } 
     /**
      * @description Verifies that the actual value is in ]start, end[ range (start excluded, end excluded).
      * @param fromExclusive start (excluded) of range to assert against
@@ -236,9 +194,7 @@ public class FATimeAssert extends FAAssertBase {
         notNull(actual, 'actual');
         notNull(fromExclusive, 'fromExclusive');
         notNull(toExclusive, 'toExclusive');
-        if(FATimeUtil.toMillisecondsOfDay(actual) > FATimeUtil.toMillisecondsOfDay(fromExclusive) && FATimeUtil.toMillisecondsOfDay(actual) < FATimeUtil.toMillisecondsOfDay(toExclusive)) {
-            return this;
-        }
-        throw new FluentAssert.AssertException(String.format('Expecting {2} to be within range ]{0}:{1}[ both excluded', new List<Object> {fromExclusive, toExclusive, actual}));
-    }
-}
+        assert((FATimeUtil.toMillisecondsOfDay(actual) > FATimeUtil.toMillisecondsOfDay(fromExclusive) && FATimeUtil.toMillisecondsOfDay(actual) < FATimeUtil.toMillisecondsOfDay(toExclusive)), 'Expecting {2} to be within range ]{0}:{1}[ both excluded', new List<Object> {fromExclusive, toExclusive, actual});
+        return this;
+    }}
+

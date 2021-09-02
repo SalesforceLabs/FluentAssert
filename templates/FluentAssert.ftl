@@ -4,7 +4,6 @@
   - SPDX-License-Identifier: BSD-3-Clause
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
-<#import "common/apex-class.ftl" as com>
 <#assign supportedAsserts = [
     "Integer",
     "Boolean",
@@ -37,8 +36,10 @@ public inherited sharing class FluentAssert {
     public static ${classPrefix}${type?keep_before('<')}Assert that(${type} actual) {
         return new ${classPrefix}${type?keep_before('<')}Assert(actual);
     }
+<#sep>
 
 </#list>
+
     /**
      * @description Custom exception that will be thrown if any asserts fail.
      */

@@ -14,9 +14,6 @@
     public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert hasSize(Integer expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
-
-        if(actual.size() != expected) {
-            throw new FluentAssert.AssertException(String.format('Was expecting size of actual list to be {0}', new List<Object> {expected}));
-        }
+        assert(actual.size() == expected, 'Was expecting size of actual list to be {0}', new List<Object> {expected});
         return this;
     }

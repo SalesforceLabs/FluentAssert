@@ -14,8 +14,6 @@
     public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert isSObjectType(Schema.SObjectType sObjectType) {
         notNull(actual, 'actual');
         notNull(sObjectType, 'sObjectType');
-        if(sObjectType != actual.getSobjectType()) {
-            throw new FluentAssert.AssertException(String.format('Was expecting actual to be Id of type {0} but was {1}', new List<Object> {actual.getSobjectType().getDescribe().getName(), sObjectType.getDescribe().getName()}));
-        }
+        assert(sObjectType == actual.getSobjectType(), 'Was expecting actual to be Id of type {0} but was {1}', new List<Object> {actual.getSobjectType().getDescribe().getName(), sObjectType.getDescribe().getName()});
         return this;
     }

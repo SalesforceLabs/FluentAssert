@@ -11,18 +11,14 @@ public abstract inherited sharing class FACollectionAssertBase extends FAAssertB
     protected void assertContains(Iterator<Object> expected) {
         while(expected.hasNext()) {
             Object e = expected.next();
-            if(!actualContains(e)) {
-                throw new FluentAssert.AssertException(String.format('Was expecting actual list to contain {0}', new List<Object> {e}));
-            }
+            assert(actualContains(e), 'Was expecting actual list to contain {0}', new List<Object> {e});
         }
     }
 
     protected void assertDoesNotContain(Iterator<Object> expected) {
         while(expected.hasNext()) {
             Object e = expected.next();
-            if(actualContains(e)) {
-                throw new FluentAssert.AssertException(String.format('Was expecting actual list not to contain {0}', new List<Object> {e}));
-            }
+            assert(!actualContains(e), 'Was expecting actual list not to contain {0}', new List<Object> {e});
         }
     }
 

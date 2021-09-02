@@ -43,10 +43,9 @@
      * @see String.${stringDelegate.method}
      */
     public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert ${stringDelegate.method}(<#if (stringDelegate.interface??)><#list stringDelegate.interface as sdi>${sdi.type} ${sdi.name}<#sep>, </#list></#if>) {
-        if(!<#if (stringDelegate.staticOnString)>String<#else>actual</#if>.${stringDelegate.method}(<#if (stringDelegate.staticOnString)>actual</#if><#if (stringDelegate.interface??)><#list stringDelegate.interface as sdi>${sdi.name}<#sep>, </#list></#if>)) {
-            throw new FluentAssert.AssertException(String.format('Expecting ${stringDelegate.assertDescription?replace("'", "\\'")}, but found {0}', new List<Object> {actual}));
-        }
+        assert(<#if (stringDelegate.staticOnString)>String<#else>actual</#if>.${stringDelegate.method}(<#if (stringDelegate.staticOnString)>actual</#if><#if (stringDelegate.interface??)><#list stringDelegate.interface as sdi>${sdi.name}<#sep>, </#list></#if>), 'Expecting ${stringDelegate.assertDescription?replace("'", "\\'")}, but found {0}', new List<Object> {actual});
         return this;
     }
+<#sep>
     
 </#list>

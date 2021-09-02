@@ -14,4 +14,3 @@
         isEqualTo(false);
         return this;
     }
-    
