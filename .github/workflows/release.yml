@@ -1,0 +1,33 @@
+name: Package & Release
+
+on:
+  release:
+    types: [published]
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get release
+        id: get_release
+        uses: bruceadams/get-release@v1.2.3
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Setup SFDX
+        uses: sfdx-actions/setup-sfdx@v1
+        with:
+          sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
+      - name: Create Package Version
+        run: |
+          sfdx force:package:version:create -p FluentAssert -w 30 -c -x -a ${{ steps.get_release.outputs.tag_name }} -n ${{ steps.get_release.outputs.tag_name }}.$GITHUB_RUN_NUMBER -e '${{ steps.get_release.outputs.body }}'
+      - name: Verify package
+        run: |
+          sfdx force:org:create --setdefaultusername --definitionfile config/project-scratch-def.json --wait 10 --durationdays 1
+          sfdx force:package:install --package FluentAssert@${{ steps.get_release.outputs.tag_name }}-$GITHUB_RUN_NUMBER -w 10
+          sfdx force:apex:execute -f .github/workflows/verify.apex
+      - name: Promote package
+        if: ${{ steps.get_release.outputs.prerelease == 'false' && steps.get_release.outputs.draft == 'false' }}
+        run: |
+          # sfdx force:package:version:promote -p FluentAssert@${{ steps.get_release.outputs.tag_name }}-$GITHUB_RUN_NUMBER --noprompt

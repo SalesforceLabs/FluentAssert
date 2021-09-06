@@ -1,4 +1,4 @@
-name: FluentAssert Workflow
+name: Quality, Build & Test
 
 on: [push]
 jobs:
