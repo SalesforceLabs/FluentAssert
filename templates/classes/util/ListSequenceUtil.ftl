@@ -5,14 +5,14 @@
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
 <@pp.dropOutputFile />
-<@com.apexClass className="${classPrefix}ListSequenceUtil" path="/classes/util/"/>
+<@com.apexClass className="ListSequenceUtil" path="/classes/util/"/>
 /**
  * @description Utilities for `List` sequences.
  */
-public class ${classPrefix}ListSequenceUtil {
-    public static Boolean containsSequence(List<Object> actual, List<Object> expected) {
+public class ListSequenceUtil {
+    public static Boolean containsSequence(List<Object> expected, List<Object> actual) {
         for (Integer i = 0; i < actual.size(); i++) {
-            if(containsSequenceAtIndex(actual, expected, i)) {
+            if(containsSequenceAtIndex(expected, actual, i)) {
                 return true;
             }
         }
@@ -20,7 +20,7 @@ public class ${classPrefix}ListSequenceUtil {
         return false;
     } 
 
-    private static Boolean containsSequenceAtIndex(List<Object> actual, List<Object> expected, Integer startingIndex) {
+    private static Boolean containsSequenceAtIndex(List<Object> expected, List<Object> actual, Integer startingIndex) {
         if(actual.size() - startingIndex < expected.size()) {
             return false;
         }

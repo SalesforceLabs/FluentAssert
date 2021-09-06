@@ -332,36 +332,36 @@
     }
 ]>
 <#list navigators as n>
-<@com.apexClass className="${classPrefix}${n.delegatingType?keep_before('<')}Assert${n.originatingType}Navigator" path="/classes/"/>
+<@com.apexClass className="${n.delegatingType?keep_before('<')}Assert${n.originatingType}Navigator" path="/classes/"/>
 /**
  * @description Navigator between `${n.originatingType}` and `${n.delegatingType}`
  */
-public class ${classPrefix}${n.delegatingType?keep_before("<")}Assert${n.originatingType}Navigator {
-    private ${classPrefix}${n.delegatingType?keep_before("<")}Assert assertDelegate;
-    private ${classPrefix}${n.originatingType}Assert originAssert;
+global class ${n.delegatingType?keep_before("<")}Assert${n.originatingType}Navigator {
+    private ${n.delegatingType?keep_before("<")}Assert assertDelegate;
+    private ${n.originatingType}Assert originAssert;
 
     /**
      * @description Constructs an instance with an actual `${n.delegatingType}` value. Use `back()` to go back to `${n.originatingType}`.
      * @param actual The actual value to assert against.
      * @param originAssert The asserting type to go back to.
      */
-    public ${classPrefix}${n.delegatingType?keep_before("<")}Assert${n.originatingType}Navigator(${n.delegatingType} actual, ${classPrefix}${n.originatingType}Assert originAssert) {
-        assertDelegate = new ${classPrefix}${n.delegatingType?keep_before("<")}Assert(actual);
+    global ${n.delegatingType?keep_before("<")}Assert${n.originatingType}Navigator(${n.delegatingType} actual, ${n.originatingType}Assert originAssert) {
+        assertDelegate = new ${n.delegatingType?keep_before("<")}Assert(actual);
         this.originAssert = originAssert;
     }
 
     /**
      * @description Go back to `${n.originatingType}`.
      */
-    public ${classPrefix}${n.originatingType}Assert back() {
+    global ${n.originatingType}Assert back() {
         return originAssert;
     }
 
 <#list n.delegations as nd>
     /**
-     * @see ${classPrefix}${n.delegatingType?keep_before("<")}Assert.${nd.method}(<#if (nd.interface??)><#list nd.interface as ndi>${ndi.type?keep_before("<")}<#sep>, </#list></#if>)
+     * @see ${n.delegatingType?keep_before("<")}Assert.${nd.method}(<#if (nd.interface??)><#list nd.interface as ndi>${ndi.type?keep_before("<")}<#sep>, </#list></#if>)
      */
-    public ${classPrefix}${n.delegatingType?keep_before("<")}Assert${n.originatingType}Navigator ${nd.method}(<#if (nd.interface??)><#list nd.interface as ndi>${ndi.type} ${ndi.name}<#sep>, </#list></#if>) {
+    global ${n.delegatingType?keep_before("<")}Assert${n.originatingType}Navigator ${nd.method}(<#if (nd.interface??)><#list nd.interface as ndi>${ndi.type} ${ndi.name}<#sep>, </#list></#if>) {
         assertDelegate.${nd.method}(<#if (nd.interface??)><#list nd.interface as ndi>${ndi.name}<#sep>, </#list></#if>);
         return this;
     }

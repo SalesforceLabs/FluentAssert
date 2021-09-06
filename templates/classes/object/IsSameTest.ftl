@@ -23,23 +23,23 @@
 ]>
 <@pp.dropOutputFile />
 <#list dataTypes as dt>
-<@com.apexClass className="${classPrefix}${dt.type?keep_before('<')}IsSameTest" path="/classes/${dt.type?lower_case?keep_before('<')}/"/>
+<@com.apexClass className="${dt.type?keep_before('<')}IsSameTest" path="/classes/${dt.type?lower_case?keep_before('<')}/"/>
 @IsTest
-public class ${classPrefix}${dt.type?keep_before('<')}IsSameTest {
+public class ${dt.type?keep_before('<')}IsSameTest {
     private static final ${dt.type} SELF = ${dt.self};
     private static final Object OTHER = ${dt.other};
 
     @IsTest
     static void testPositiveScenarios() {
-        FluentAssert.that((${dt.type}) SELF).isSame(SELF);
+        Assert.that((${dt.type}) SELF).isSame(SELF);
     }
 
     @IsTest
     static void testFailureScenarios() {
         try {
-            FluentAssert.that((${dt.type}) SELF).isSame(OTHER);
+            Assert.that((${dt.type}) SELF).isSame(OTHER);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -57,7 +57,7 @@ public class ${classPrefix}${dt.type?keep_before('<')}IsSameTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${dt.type} actual, Object expected) {
         try {
-            FluentAssert.that(actual).isSame(expected);
+            Assert.that(actual).isSame(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

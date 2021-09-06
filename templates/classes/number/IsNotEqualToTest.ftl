@@ -12,14 +12,14 @@
 ]>
 <@pp.dropOutputFile />
 <#list numberDataTypes as numberDataType>
-  <@com.apexClass className="${classPrefix}${numberDataType.nativeDataType}IsNotEqualToTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
+  <@com.apexClass className="${numberDataType.nativeDataType}IsNotEqualToTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
 @IsTest
-public class ${classPrefix}${numberDataType.nativeDataType}IsNotEqualToTest {
+public class ${numberDataType.nativeDataType}IsNotEqualToTest {
     @IsTest
     static void testPassingScenarios() {
-        FluentAssert.that(-1000).isNotEqualTo(0);
-        FluentAssert.that(    0).isNotEqualTo(1000);
-        FluentAssert.that(-1000).isNotEqualTo(1000);
+        Assert.that(-1000).isNotEqualTo(0);
+        Assert.that(    0).isNotEqualTo(1000);
+        Assert.that(-1000).isNotEqualTo(1000);
     }
 
     @IsTest
@@ -30,9 +30,9 @@ public class ${classPrefix}${numberDataType.nativeDataType}IsNotEqualToTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${numberDataType.nativeDataType} actual, ${numberDataType.nativeDataType} expected) {
         try {
-            FluentAssert.that(actual).isNotEqualTo(expected);
+            Assert.that(actual).isNotEqualTo(expected);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -50,7 +50,7 @@ public class ${classPrefix}${numberDataType.nativeDataType}IsNotEqualToTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${numberDataType.nativeDataType} actual, ${numberDataType.nativeDataType} expected) {
         try {
-            FluentAssert.that(actual).isNotEqualTo(expected);
+            Assert.that(actual).isNotEqualTo(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

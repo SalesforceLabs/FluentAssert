@@ -8,8 +8,8 @@
      * @description Verifies that the actual value is equal to zero.
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual is null
-     * @throws FluentAssert.AssertException if actual is not zero
+     * @throws AssertException if actual is not zero
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert isZero() {
+    global ${supportedAssert.type?keep_before('<')}Assert isZero() {
         return isEqualTo(0);
     }

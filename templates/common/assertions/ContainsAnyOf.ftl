@@ -11,14 +11,13 @@
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual or expected is null
      * @throws IllegalArgumentException if expected is empty
-     * @throws FluentAssert.AssertException if actual doesn't have any elements of expected
+     * @throws AssertException if actual doesn't have any elements of expected
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert containsAnyOf(${colType}<Object> expected) {
+    global ${supportedAssert.type?keep_before('<')}Assert containsAnyOf(${colType}<Object> expected) {
         notNull(actual, 'actual');
         notEmpty(expected, 'expected');
         isNotEmpty();
-
-        assertContainsAnyOf(expected.iterator());
+        assert(${supportedAssert.type?keep_before('<')}ContainsUtil.containsAnyOf(expected.iterator(), actual), 'Was expecting actual list at least one of {0}', new List<Object> {expected});
         return this;
     }
 

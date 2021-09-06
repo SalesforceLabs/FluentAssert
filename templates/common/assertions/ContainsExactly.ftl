@@ -10,9 +10,9 @@
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual or expected is null
      * @throws IllegalArgumentException if expected is empty
-     * @throws FluentAssert.AssertException if actual doesn't contain exactly all elements from expected
+     * @throws AssertException if actual doesn't contain exactly all elements from expected
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert containsExactly(List<Object> expected) {
+    global ${supportedAssert.type?keep_before('<')}Assert containsExactly(List<Object> expected) {
         notEmpty(expected, 'expected');
         hasSameSizeAs(expected);
 

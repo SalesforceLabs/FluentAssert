@@ -5,20 +5,20 @@
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
 <@pp.dropOutputFile />
-<@com.apexClass className="${classPrefix}BooleanIsFalseTest" path="/classes/boolean/"/>
+<@com.apexClass className="BooleanIsFalseTest" path="/classes/boolean/"/>
 @IsTest
-public class ${classPrefix}BooleanIsFalseTest {
+public class BooleanIsFalseTest {
     @IsTest
     static void testPositiveScenarios() {
-        FluentAssert.that(false).isFalse();
+        Assert.that(false).isFalse();
     }
 
     @IsTest
     static void testFailureScenarios() {
         try {
-            FluentAssert.that(true).isFalse();
+            Assert.that(true).isFalse();
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -30,7 +30,7 @@ public class ${classPrefix}BooleanIsFalseTest {
     @IsTest
     static void testValidations() {
         try {
-            FluentAssert.that((Boolean) null).isFalse();
+            Assert.that((Boolean) null).isFalse();
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

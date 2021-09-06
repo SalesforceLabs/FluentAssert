@@ -10,9 +10,9 @@
 ]>
 <@pp.dropOutputFile />
 <#list numberDataTypes as numberDataType>
-  <@com.apexClass className="${classPrefix}${numberDataType.nativeDataType}ContainsOnlyNullsTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
+  <@com.apexClass className="${numberDataType.nativeDataType}ContainsOnlyNullsTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
 @IsTest
-public class ${classPrefix}${numberDataType.nativeDataType}ContainsOnlyNullsTest {
+public class ${numberDataType.nativeDataType}ContainsOnlyNullsTest {
     private static final ${numberDataType.castingValue} EMPTY = new ${numberDataType.castingValue}();
     private static final ${numberDataType.castingValue} PART_OF_ALPHABET = new ${numberDataType.castingValue} {
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'
@@ -20,15 +20,15 @@ public class ${classPrefix}${numberDataType.nativeDataType}ContainsOnlyNullsTest
 
     @IsTest
     static void testPositiveScenarios() {
-        FluentAssert.that(new ${numberDataType.castingValue}{null, null}).containsOnlyNulls();
+        Assert.that(new ${numberDataType.castingValue}{null, null}).containsOnlyNulls();
     }
 
     @IsTest
     static void testNegativeScenarios() {
         try {
-            FluentAssert.that(PART_OF_ALPHABET).containsOnlyNulls();
+            Assert.that(PART_OF_ALPHABET).containsOnlyNulls();
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -41,7 +41,7 @@ public class ${classPrefix}${numberDataType.nativeDataType}ContainsOnlyNullsTest
     static void testValidations() {
         // Empty inputs throws IllegalArgumentException
         try {
-            FluentAssert.that(EMPTY).containsOnlyNulls();
+            Assert.that(EMPTY).containsOnlyNulls();
             System.assert(false, 'No assert exception thrown');
         } catch(IllegalArgumentException iae) {
             // Success! Correct exception being thrown
@@ -53,7 +53,7 @@ public class ${classPrefix}${numberDataType.nativeDataType}ContainsOnlyNullsTest
 
         // Null throws NPE
         try {
-            FluentAssert.that((${numberDataType.castingValue}) null).containsOnlyNulls();
+            Assert.that((${numberDataType.castingValue}) null).containsOnlyNulls();
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

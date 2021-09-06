@@ -5,11 +5,11 @@
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
 <@pp.dropOutputFile />
-<@com.apexClass className="${classPrefix}IteratorUtil" path="/classes/util/"/>
+<@com.apexClass className="IteratorUtil" path="/classes/util/"/>
 /**
  * @description Utilities for `Iterator`s.
  */
-public class ${classPrefix}IteratorUtil {
+public class IteratorUtil {
     public static Boolean containsOnlyNulls(Iterator<Object> iter) {
         while(iter.hasNext()) {
             if(iter.next() != null) {

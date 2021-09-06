@@ -5,9 +5,9 @@
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
 <@pp.dropOutputFile />
-<@com.apexClass className="${classPrefix}MapDoesNotContainEntryTest" path="/classes/map/"/>
+<@com.apexClass className="MapDoesNotContainEntryTest" path="/classes/map/"/>
 @IsTest
-public class ${classPrefix}MapDoesNotContainEntryTest {
+public class MapDoesNotContainEntryTest {
     private static final Map<Object, Object> EMPTY = new Map<Object, Object>();
     private static final Map<Object, Object> ABC = new Map<Object, Object>{
         'A' => 'a',
@@ -17,18 +17,18 @@ public class ${classPrefix}MapDoesNotContainEntryTest {
 
     @IsTest
     static void testPositiveScenarios() {
-        FluentAssert.that(EMPTY).doesNotContainEntry('A', 'a');
+        Assert.that(EMPTY).doesNotContainEntry('A', 'a');
         
-        FluentAssert.that(ABC).doesNotContainEntry('A', 'b')
+        Assert.that(ABC).doesNotContainEntry('A', 'b')
                               .doesNotContainEntry('B', 'a');
     }
 
     @IsTest
     static void testNegativeScenarios() {
         try {
-            FluentAssert.that(ABC).doesNotContainEntry('A', 'a');
+            Assert.that(ABC).doesNotContainEntry('A', 'a');
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -46,7 +46,7 @@ public class ${classPrefix}MapDoesNotContainEntryTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Map<Object, Object> actual, Object expectedKey, Object expectedValue) {
         try {
-            FluentAssert.that(actual).doesNotContainEntry(expectedKey, expectedValue);
+            Assert.that(actual).doesNotContainEntry(expectedKey, expectedValue);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

@@ -5,12 +5,12 @@
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
 <@pp.dropOutputFile />
-<@com.apexClass className="${classPrefix}IdIsNotEqualToTest" path="/classes/id/"/>
+<@com.apexClass className="IdIsNotEqualToTest" path="/classes/id/"/>
 @IsTest
-public class ${classPrefix}IdIsNotEqualToTest {
+public class IdIsNotEqualToTest {
     @IsTest
     static void testPassingScenarios() {
-        FluentAssert.that((Id) UserInfo.getUserId()).isNotEqualTo(UserInfo.getProfileId());
+        Assert.that((Id) UserInfo.getUserId()).isNotEqualTo(UserInfo.getProfileId());
     }
 
     @IsTest
@@ -21,9 +21,9 @@ public class ${classPrefix}IdIsNotEqualToTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Id actual, Id expected) {
         try {
-            FluentAssert.that(actual).isNotEqualTo(expected);
+            Assert.that(actual).isNotEqualTo(expected);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -41,7 +41,7 @@ public class ${classPrefix}IdIsNotEqualToTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Id actual, Id expected) {
         try {
-            FluentAssert.that(actual).isNotEqualTo(expected);
+            Assert.that(actual).isNotEqualTo(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

@@ -6,9 +6,9 @@
 -->
 
 <@pp.dropOutputFile />
-<@com.apexClass className="${classPrefix}ListContainsExactlyTest" path="/classes/list/"/>
+<@com.apexClass className="ListContainsExactlyTest" path="/classes/list/"/>
 @IsTest
-public class ${classPrefix}ListContainsExactlyTest {
+public class ListContainsExactlyTest {
     private static final List<String> EMPTY_LIST = new List<String>();
     private static final List<String> PART_OF_ALPHABET = new List<String>{
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'
@@ -16,7 +16,7 @@ public class ${classPrefix}ListContainsExactlyTest {
 
     @IsTest
     static void testPositiveScenarios() {
-        FluentAssert.that(PART_OF_ALPHABET).containsExactly(new List<String>{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'});
+        Assert.that(PART_OF_ALPHABET).containsExactly(new List<String>{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'});
     }
 
     @IsTest
@@ -28,9 +28,9 @@ public class ${classPrefix}ListContainsExactlyTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(List<Object> actual, List<Object> expected) {
         try {
-            FluentAssert.that(actual).containsExactly(expected);
+            Assert.that(actual).containsExactly(expected);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -46,7 +46,7 @@ public class ${classPrefix}ListContainsExactlyTest {
 
         // Empty inputs throws IllegalArgumentException
         try {
-            FluentAssert.that(PART_OF_ALPHABET).containsExactly(new List<Object>());
+            Assert.that(PART_OF_ALPHABET).containsExactly(new List<Object>());
             System.assert(false, 'No assert exception thrown');
         } catch(IllegalArgumentException iae) {
             // Success! Correct exception being thrown
@@ -60,7 +60,7 @@ public class ${classPrefix}ListContainsExactlyTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(List<Object> actual, List<Object> expected) {
         try {
-            FluentAssert.that(actual).containsExactly(expected);
+            Assert.that(actual).containsExactly(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

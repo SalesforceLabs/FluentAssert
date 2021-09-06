@@ -17,9 +17,9 @@
      * @param expected list to compare size against
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual or expected is null
-     * @throws FluentAssert.AssertException if actual doesn't have the same size as expected
+     * @throws AssertException if actual doesn't have the same size as expected
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert hasSameSizeAs(${cdt} expected) {
+    global ${supportedAssert.type?keep_before('<')}Assert hasSameSizeAs(${cdt} expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
 

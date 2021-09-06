@@ -22,26 +22,21 @@
     "Blob"
 ]>
 <@pp.dropOutputFile />
-<@com.apexClass className="FluentAssert" path="/classes/"/>
+<@com.apexClass className="Assert" path="/classes/"/>
 /**
  * @description Better fluent asserts that takes (some...) of the pain away from unit testing in Apex.
  */
-public inherited sharing class FluentAssert {
+global inherited sharing class Assert {
 <#list supportedAsserts?sort as type>
     /**
      * @description Fluent assert on `${type?keep_before('<')}`s
      * @param actual The actual value to assert against.
      * @return Fluent assert object for `${type?keep_before('<')}`
      */
-    public static ${classPrefix}${type?keep_before('<')}Assert that(${type} actual) {
-        return new ${classPrefix}${type?keep_before('<')}Assert(actual);
+    global static ${type?keep_before('<')}Assert that(${type} actual) {
+        return new ${type?keep_before('<')}Assert(actual);
     }
 <#sep>
 
 </#list>
-
-    /**
-     * @description Custom exception that will be thrown if any asserts fail.
-     */
-    public class AssertException extends Exception {}
 }

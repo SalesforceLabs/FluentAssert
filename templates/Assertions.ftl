@@ -27,7 +27,7 @@
         }]},
     {"type":"Date",         "isDatetime": true, "asserts": ["IsToday"]},
     {"type":"Datetime",     "isDatetime": true},
-    {"type":"Time",         "isDatetime": true, "comparableHelper":"FATimeUtil.toMillisecondsOfDay"},
+    {"type":"Time",         "isDatetime": true, "comparableHelper":"TimeUtil.toMillisecondsOfDay"},
     {"type":"String",       "asserts": ["StringDelegates", "HasLength"],
         "navigators": [{
             "name": "length",
@@ -73,18 +73,18 @@
     <#if !supportedAssert.isCollection!false>
         <#assign asserts = asserts + ["IsIn"] />
     </#if>
-<@com.apexClass className="${classPrefix}${supportedAssert.type?keep_before('<')}Assert" path="/classes/"/>
+<@com.apexClass className="${supportedAssert.type?keep_before('<')}Assert" path="/classes/"/>
 /**
  * @description Holds asserts for `${supportedAssert.type?keep_before('<')}`s
  */
-public class ${classPrefix}${supportedAssert.type?keep_before('<')}Assert extends ${classPrefix}<#if supportedAssert.isCollection!false><#if !(supportedAssert.isMap!false)>Collection</#if></#if>AssertBase {
+global class ${supportedAssert.type?keep_before('<')}Assert extends AssertBase {
     private ${supportedAssert.type} actual;
 
     /**
      * @description Constructs an instance with an actual `${supportedAssert.type?keep_before('<')}` value.
      * @param actual The actual value to assert against.
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert(${supportedAssert.type} actual) {
+    global ${supportedAssert.type?keep_before('<')}Assert(${supportedAssert.type} actual) {
         this.actual = actual;
     }
 
@@ -93,9 +93,9 @@ public class ${classPrefix}${supportedAssert.type?keep_before('<')}Assert extend
      * @description Constructs a navigator that allows asserts on ${n.name}(). Use `back()` to get back to asserts on `${supportedAssert.type?keep_before('<')}`.
      * @return a navigator on ${n.name}().
      */
-    public ${classPrefix}${n.returnType}Assert${supportedAssert.type?keep_before('<')}Navigator ${n.name}() {
+    global ${n.returnType}Assert${supportedAssert.type?keep_before('<')}Navigator ${n.name}() {
         notNull(actual, 'actual');
-        return new ${classPrefix}${n.returnType}Assert${supportedAssert.type?keep_before('<')}Navigator(actual.${n.method}(), this);
+        return new ${n.returnType}Assert${supportedAssert.type?keep_before('<')}Navigator(actual.${n.method}(), this);
     }
     <#sep>
 

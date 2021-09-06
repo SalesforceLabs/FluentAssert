@@ -9,9 +9,9 @@
      * Be aware that sorting is done acording to Apex Developer guide (https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_collections_lists_sorting.htm).
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual is null
-     * @throws FluentAssert.AssertException if actual is not sorted
+     * @throws AssertException if actual is not sorted
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert isSorted() {
+    global ${supportedAssert.type?keep_before('<')}Assert isSorted() {
         notNull(actual, 'actual');
 
         List<Object> expected = new List<Object>(actual);

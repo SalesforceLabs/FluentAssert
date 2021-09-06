@@ -10,9 +10,9 @@
      * @param toExclusive end (excluded) of range to assert against
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual, fromExclusive and/or toExclusive is null
-     * @throws FluentAssert.AssertException if actual is not between [start, end]
+     * @throws AssertException if actual is not between [start, end]
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert isStrictlyBetween(${supportedAssert.type} fromExclusive, ${supportedAssert.type} toExclusive) {
+    global ${supportedAssert.type?keep_before('<')}Assert isStrictlyBetween(${supportedAssert.type} fromExclusive, ${supportedAssert.type} toExclusive) {
         notNull(actual, 'actual');
         notNull(fromExclusive, 'fromExclusive');
         notNull(toExclusive, 'toExclusive');

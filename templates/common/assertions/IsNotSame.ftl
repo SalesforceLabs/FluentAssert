@@ -9,9 +9,9 @@
      * @param expected expected value to assert against
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual or expected is null.
-     * @throws FluentAssert.AssertException if actual is not same (part of memory) as `expected`.
+     * @throws AssertException if actual is not same (part of memory) as `expected`.
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert isNotSame(Object expected) {
+    global ${supportedAssert.type?keep_before('<')}Assert isNotSame(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
         assert(actual !== expected, 'Expecting {0} and {1} not to be same', new List<Object> {expected, actual});

@@ -5,11 +5,11 @@
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
 <@pp.dropOutputFile />
-<@com.apexClass className="${classPrefix}ListContainsUtil" path="/classes/util/"/>
+<@com.apexClass className="ListContainsUtil" path="/classes/util/"/>
 /**
  * @description Utilities for `List`.contains.
  */
-public class ${classPrefix}ListContainsUtil {
+public class ListContainsUtil {
     public static Boolean containsOnlyOnce(List<Object> expected, List<Object> actual) {
         List<Object> notFound    = new List<Object>();
         List<Object> notOnlyOnce = new List<Object>();
@@ -33,5 +33,27 @@ public class ${classPrefix}ListContainsUtil {
         }
 
         return notFound.isEmpty() && notOnlyOnce.isEmpty();
+    }
+
+    public static Boolean contains(Iterator<Object> expected, List<Object> actual) {
+        while(expected.hasNext()) {
+            Object e = expected.next();
+            if(!actual.contains(e)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static Boolean containsAnyOf(Iterator<Object> expected, List<Object> actual) {
+        while(expected.hasNext()) {
+            Object e = expected.next();
+            if(actual.contains(e)) {
+                // This is contains any, so just return early
+                return true;
+            }
+        }
+        return false;
     }
 }

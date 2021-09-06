@@ -12,21 +12,21 @@
 ]>
 <@pp.dropOutputFile />
 <#list numberDataTypes as numberDataType>
-  <@com.apexClass className="${classPrefix}${numberDataType.nativeDataType}IsNotNegativeTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
+  <@com.apexClass className="${numberDataType.nativeDataType}IsNotNegativeTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
 @IsTest
-public class ${classPrefix}${numberDataType.nativeDataType}IsNotNegativeTest {
+public class ${numberDataType.nativeDataType}IsNotNegativeTest {
     @IsTest
     static void testPositiveScenarios() {
-        FluentAssert.that((${numberDataType.nativeDataType}) 0).isNotNegative();
-        FluentAssert.that((${numberDataType.nativeDataType}) 1).isNotNegative();
+        Assert.that((${numberDataType.nativeDataType}) 0).isNotNegative();
+        Assert.that((${numberDataType.nativeDataType}) 1).isNotNegative();
     }
 
     @IsTest
     static void testFailureScenarios() {
         try {
-            FluentAssert.that((${numberDataType.nativeDataType}) -1).isNotNegative();
+            Assert.that((${numberDataType.nativeDataType}) -1).isNotNegative();
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -38,7 +38,7 @@ public class ${classPrefix}${numberDataType.nativeDataType}IsNotNegativeTest {
     @IsTest
     static void testValidations() {
         try {
-            FluentAssert.that((${numberDataType.nativeDataType}) null).isNotNegative();
+            Assert.that((${numberDataType.nativeDataType}) null).isNotNegative();
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

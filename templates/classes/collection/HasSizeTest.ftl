@@ -12,23 +12,23 @@
 ]>
 <@pp.dropOutputFile />
 <#list numberDataTypes as numberDataType>
-  <@com.apexClass className="${classPrefix}${numberDataType.type?keep_before('<')}HasSizeTest" path="/classes/${numberDataType.type?lower_case?keep_before('<')}/"/>
+  <@com.apexClass className="${numberDataType.type?keep_before('<')}HasSizeTest" path="/classes/${numberDataType.type?lower_case?keep_before('<')}/"/>
 @IsTest
-public class ${classPrefix}${numberDataType.type?keep_before('<')}HasSizeTest {
+public class ${numberDataType.type?keep_before('<')}HasSizeTest {
     @IsTest
     static void testPositiveScenarios() {
-        FluentAssert.that((${numberDataType.type}) ${numberDataType.emptyValue}).hasSize(0);
-        FluentAssert.that((${numberDataType.type}) ${numberDataType.emptyValue}).size().isEqualTo(0);
-        FluentAssert.that((${numberDataType.type}) ${numberDataType.nonEmptyValue}).hasSize(1);
-        FluentAssert.that((${numberDataType.type}) ${numberDataType.nonEmptyValue}).size().isEqualTo(1);
+        Assert.that((${numberDataType.type}) ${numberDataType.emptyValue}).hasSize(0);
+        Assert.that((${numberDataType.type}) ${numberDataType.emptyValue}).size().isEqualTo(0);
+        Assert.that((${numberDataType.type}) ${numberDataType.nonEmptyValue}).hasSize(1);
+        Assert.that((${numberDataType.type}) ${numberDataType.nonEmptyValue}).size().isEqualTo(1);
     }
 
     @IsTest
     static void testNegativeScenarios() {
         try {
-            FluentAssert.that((${numberDataType.type}) ${numberDataType.nonEmptyValue}).hasSize(10);
+            Assert.that((${numberDataType.type}) ${numberDataType.nonEmptyValue}).hasSize(10);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -46,7 +46,7 @@ public class ${classPrefix}${numberDataType.type?keep_before('<')}HasSizeTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${numberDataType.type} actual, Integer expected) {
         try {
-            FluentAssert.that(actual).hasSize(expected);
+            Assert.that(actual).hasSize(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

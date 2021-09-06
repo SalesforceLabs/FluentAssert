@@ -5,12 +5,12 @@
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
 <@pp.dropOutputFile />
-<@com.apexClass className="${classPrefix}ListSubsequenceUtil" path="/classes/util/"/>
+<@com.apexClass className="ListSubsequenceUtil" path="/classes/util/"/>
 /**
  * @description Utilities for `List` subsequences.
  */
-public class ${classPrefix}ListSubsequenceUtil {
-    public static Boolean containsSubsequence(List<Object> actual, List<Object> expected) {
+public class ListSubsequenceUtil {
+    public static Boolean containsSubsequence(List<Object> expected, List<Object> actual) {
         Iterator<Object> actualIterator = actual.iterator();
         Integer subsequenceIndex = 0;
         while (actualIterator.hasNext() && subsequenceIndex < expected.size()) {

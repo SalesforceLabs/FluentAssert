@@ -10,11 +10,11 @@
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual or expected is null
      * @throws IllegalArgumentException if expected is empty
-     * @throws FluentAssert.AssertException if actual doesn't contain the sequence from expected
+     * @throws AssertException if actual doesn't contain the sequence from expected
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert containsSequence(List<Object> expected) {
+    global ${supportedAssert.type?keep_before('<')}Assert containsSequence(List<Object> expected) {
         notNull(actual, 'actual');
         notEmpty(expected, 'expected');
-        assert(${classPrefix}ListSequenceUtil.containsSequence(actual, expected), 'Was expecting actual to contain the sequence {0}', new List<Object> {expected});
+        assert(ListSequenceUtil.containsSequence(expected, actual), 'Was expecting actual to contain the sequence {0}', new List<Object> {expected});
         return this;
     }

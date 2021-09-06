@@ -8,9 +8,9 @@
      * @description Verifies that `actual` contains only elements from `expected` and nothing else.
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual or expected is null
-     * @throws FluentAssert.AssertException if actual is empty or contains non-null values
+     * @throws AssertException if actual is empty or contains non-null values
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert containsOnly(List<Object> expected) {
+    global ${supportedAssert.type?keep_before('<')}Assert containsOnly(List<Object> expected) {
         notNull(actual,   'actual');
         notEmpty(expected, 'expected');
 
@@ -25,7 +25,7 @@
         // Likewise narrow missing values, also reversed
         List<Object> missingValues = new List<Object>(expected);
         for (Integer i = (missingValues.size()-1) ; i>= 0 ; i--) {
-            if(actualContains(missingValues[i])){
+            if(actual.contains(missingValues[i])){
                 missingValues.remove(i);
             }
         }

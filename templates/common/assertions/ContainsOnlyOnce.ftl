@@ -8,11 +8,11 @@
      * @description Verifies that `actual` contains only elements from `expected` in any given order. Dublicates are NOT ignored.
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual or expected is null
-     * @throws FluentAssert.AssertException if actual is has unexpected or missing values.
+     * @throws AssertException if actual is has unexpected or missing values.
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert containsOnlyOnce(List<Object> expected) {
+    global ${supportedAssert.type?keep_before('<')}Assert containsOnlyOnce(List<Object> expected) {
         notNull(actual,    'actual');
         notEmpty(expected, 'expected');
-        assert(${classPrefix}ListContainsUtil.containsOnlyOnce(expected, actual), 'Was expecting actual to contain {0} only once, but found {1} had dublicates', new List<Object>{expected, actual});
+        assert(ListContainsUtil.containsOnlyOnce(expected, actual), 'Was expecting actual to contain {0} only once, but found {1} had dublicates', new List<Object>{expected, actual});
         return this;
     }

@@ -23,20 +23,20 @@
 ]>
 <@pp.dropOutputFile />
 <#list numberDataTypes as numberDataType>
-  <@com.apexClass className="${classPrefix}${numberDataType.nativeDataType}IsNullTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
+  <@com.apexClass className="${numberDataType.nativeDataType}IsNullTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
 @IsTest
-public class ${classPrefix}${numberDataType.nativeDataType}IsNullTest {
+public class ${numberDataType.nativeDataType}IsNullTest {
     @IsTest
     static void testPassingScenarios() {
-        FluentAssert.that((${numberDataType.castingValue}) null).isNull();
+        Assert.that((${numberDataType.castingValue}) null).isNull();
     }
 
     @IsTest
     static void testFailureScenarios() {
         try {
-            FluentAssert.that((${numberDataType.castingValue}) ${numberDataType.instance}).isNull();
+            Assert.that((${numberDataType.castingValue}) ${numberDataType.instance}).isNull();
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {

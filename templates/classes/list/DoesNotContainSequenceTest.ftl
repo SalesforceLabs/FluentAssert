@@ -5,9 +5,9 @@
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
 <@pp.dropOutputFile />
-<@com.apexClass className="${classPrefix}ListDoesNotContainSequenceTest" path="/classes/list/"/>
+<@com.apexClass className="ListDoesNotContainSequenceTest" path="/classes/list/"/>
 @IsTest
-public class ${classPrefix}ListDoesNotContainSequenceTest {
+public class ListDoesNotContainSequenceTest {
     private static final List<String> EMPTY_LIST = new List<String>();
     private static final List<String> PART_OF_ALPHABET = new List<String>{
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'
@@ -15,15 +15,15 @@ public class ${classPrefix}ListDoesNotContainSequenceTest {
 
     @IsTest
     static void testPositiveScenarios() {
-        FluentAssert.that(PART_OF_ALPHABET).doesNotContainSequence(new List<String>{'C', 'B', 'A'});
+        Assert.that(PART_OF_ALPHABET).doesNotContainSequence(new List<String>{'C', 'B', 'A'});
     }
 
     @IsTest
     static void testNegativeScenarios() {
         try {
-            FluentAssert.that(PART_OF_ALPHABET).doesNotContainSequence(new List<String>{'A', 'B', 'C'});
+            Assert.that(PART_OF_ALPHABET).doesNotContainSequence(new List<String>{'A', 'B', 'C'});
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -38,7 +38,7 @@ public class ${classPrefix}ListDoesNotContainSequenceTest {
 
         // Empty inputs throws IllegalArgumentException
         try {
-            FluentAssert.that(PART_OF_ALPHABET).doesNotContainSequence(new List<Object>());
+            Assert.that(PART_OF_ALPHABET).doesNotContainSequence(new List<Object>());
             System.assert(false, 'No assert exception thrown');
         } catch(IllegalArgumentException iae) {
             // Success! Correct exception being thrown
@@ -52,7 +52,7 @@ public class ${classPrefix}ListDoesNotContainSequenceTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(List<Object> actual, List<Object> expected) {
         try {
-            FluentAssert.that(actual).doesNotContainSequence(expected);
+            Assert.that(actual).doesNotContainSequence(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

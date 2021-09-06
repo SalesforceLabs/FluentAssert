@@ -5,9 +5,9 @@
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
 <@pp.dropOutputFile />
-<@com.apexClass className="${classPrefix}MapContainsTest" path="/classes/map/"/>
+<@com.apexClass className="MapContainsTest" path="/classes/map/"/>
 @IsTest
-public class ${classPrefix}MapContainsTest {
+public class MapContainsTest {
     private static final Map<Object, Object> EMPTY = new Map<Object, Object>();
     private static final Map<Object, Object> ABC = new Map<Object, Object>{
         'A' => 'a',
@@ -17,7 +17,7 @@ public class ${classPrefix}MapContainsTest {
 
     @IsTest
     static void testPositiveScenarios() {
-        FluentAssert.that(ABC)
+        Assert.that(ABC)
                     .containsEntry('A', 'a')
                     .values()
                         .contains(new List<Object>{'b'})
@@ -36,9 +36,9 @@ public class ${classPrefix}MapContainsTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Map<Object, Object> actual, Object expectedKey, Object expectedValue) {
         try {
-            FluentAssert.that(actual).containsEntry(expectedKey, expectedValue);
+            Assert.that(actual).containsEntry(expectedKey, expectedValue);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -56,7 +56,7 @@ public class ${classPrefix}MapContainsTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Map<Object, Object> actual, Object expectedKey, Object expectedValue) {
         try {
-            FluentAssert.that(actual).containsEntry(expectedKey, expectedValue);
+            Assert.that(actual).containsEntry(expectedKey, expectedValue);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

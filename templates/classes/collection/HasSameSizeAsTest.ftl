@@ -69,13 +69,13 @@
 ]>
 <@pp.dropOutputFile />
 <#list numberDataTypes as numberDataType>
-  <@com.apexClass className="${classPrefix}${numberDataType.type?keep_before('<')}HasSameSizeAsTest" path="/classes/${numberDataType.type?lower_case?keep_before('<')}/"/>
+  <@com.apexClass className="${numberDataType.type?keep_before('<')}HasSameSizeAsTest" path="/classes/${numberDataType.type?lower_case?keep_before('<')}/"/>
 @IsTest
-public class ${classPrefix}${numberDataType.type?keep_before('<')}HasSameSizeAsTest {
+public class ${numberDataType.type?keep_before('<')}HasSameSizeAsTest {
     @IsTest
     static void testPositiveScenarios() {
 <#list numberDataType.positiveScenarios as ps>
-        FluentAssert.that(${ps.actual}).hasSameSizeAs(${ps.expected});
+        Assert.that(${ps.actual}).hasSameSizeAs(${ps.expected});
 </#list>
     }
 
@@ -83,9 +83,9 @@ public class ${classPrefix}${numberDataType.type?keep_before('<')}HasSameSizeAsT
     static void testNegativeScenarios() {
 <#list numberDataType.negativeScenarios as ns>
         try {
-            FluentAssert.that((${numberDataType.type}) ${ns.actual}).hasSameSizeAs(${ns.expected});
+            Assert.that((${numberDataType.type}) ${ns.actual}).hasSameSizeAs(${ns.expected});
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -108,7 +108,7 @@ public class ${classPrefix}${numberDataType.type?keep_before('<')}HasSameSizeAsT
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${numberDataType.type} actual, ${i} expected) {
         try {
-            FluentAssert.that(actual).hasSameSizeAs(expected);
+            Assert.that(actual).hasSameSizeAs(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

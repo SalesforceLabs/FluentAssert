@@ -9,9 +9,9 @@
      * @param sObjectType The expected value to assert against.
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual or sObjectType is null
-     * @throws FluentAssert.AssertException if actual is not the right SObjectType
+     * @throws AssertException if actual is not the right SObjectType
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert isSObjectType(Schema.SObjectType sObjectType) {
+    global ${supportedAssert.type?keep_before('<')}Assert isSObjectType(Schema.SObjectType sObjectType) {
         notNull(actual, 'actual');
         notNull(sObjectType, 'sObjectType');
         assert(sObjectType == actual.getSobjectType(), 'Was expecting actual to be Id of type {0} but was {1}', new List<Object> {actual.getSobjectType().getDescribe().getName(), sObjectType.getDescribe().getName()});

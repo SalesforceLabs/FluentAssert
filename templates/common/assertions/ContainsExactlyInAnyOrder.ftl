@@ -11,9 +11,9 @@
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual expected is null
      * @throws IllegalArgumentException if expected is empty
-     * @throws FluentAssert.AssertException if actual doesn't contain exactly the elements from expected
+     * @throws AssertException if actual doesn't contain exactly the elements from expected
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert containsExactlyInAnyOrder(${colType}<Object> expected) {
+    global ${supportedAssert.type?keep_before('<')}Assert containsExactlyInAnyOrder(${colType}<Object> expected) {
         notEmpty(expected, 'expected');
         hasSameSizeAs(expected);
         contains(expected);

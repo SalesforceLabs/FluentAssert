@@ -8,9 +8,9 @@
      * @description Verifies that the actual value is positive.
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual is null
-     * @throws FluentAssert.AssertException if actual is not positive
+     * @throws AssertException if actual is not positive
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert isPositive() {
+    global ${supportedAssert.type?keep_before('<')}Assert isPositive() {
         notNull(actual, 'actual');
         assert(actual > 0, 'Expecting {0} to be positive', new List<Object> {actual});
         return this;
