@@ -9,13 +9,13 @@
 ]>
 <@pp.dropOutputFile />
 <#list dataTypes as dataType>
-  <@com.apexClass className="${classPrefix}${dataType.native}IsTodayTest" path="/classes/${dataType.native?lower_case}/"/>
+  <@com.apexClass className="${dataType.native}IsTodayTest" path="/classes/${dataType.native?lower_case}/"/>
 @IsTest
-public class ${classPrefix}${dataType.native}IsTodayTest {
+public class ${dataType.native}IsTodayTest {
     @IsTest
     static void testPositiveScenarios() {
         ${dataType.native} actual = ${dataType.validValue};
-        FluentAssert.that((${dataType.native}) actual).isToday();
+        Assert.that((${dataType.native}) actual).isToday();
     }
 
     @IsTest
@@ -28,9 +28,9 @@ public class ${classPrefix}${dataType.native}IsTodayTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${dataType.native} actual) {
         try {
-            FluentAssert.that(actual).isToday();
+            Assert.that(actual).isToday();
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -42,7 +42,7 @@ public class ${classPrefix}${dataType.native}IsTodayTest {
     @IsTest
     static void testValidations() {
         try {
-            FluentAssert.that((${dataType.native}) null).isToday();
+            Assert.that((${dataType.native}) null).isToday();
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

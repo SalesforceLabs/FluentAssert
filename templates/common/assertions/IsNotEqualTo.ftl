@@ -9,9 +9,9 @@
      * @param expected expected value to assert against
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual or expected is null.
-     * @throws FluentAssert.AssertException if actual is equal to `expected`.
+     * @throws AssertException if actual is equal to `expected`.
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert isNotEqualTo(Object expected) {
+    global ${supportedAssert.type?keep_before('<')}Assert isNotEqualTo(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
         assert(actual != expected, 'Expecting {0} and {1} not to be equal', new List<Object> {expected, actual});

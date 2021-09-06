@@ -8,10 +8,10 @@
      * @description Verifies that actual contains only null elements and nothing else.
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual is null
-     * @throws FluentAssert.AssertException if actual is empty or contains non-null values
+     * @throws AssertException if actual is empty or contains non-null values
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert containsOnlyNulls() {
+    global ${supportedAssert.type?keep_before('<')}Assert containsOnlyNulls() {
         notEmpty(actual, 'actual');
-        assert(${classPrefix}IteratorUtil.containsOnlyNulls(actual.iterator()), 'Expecting actual to contain only null, but found values', new List<Object>());
+        assert(IteratorUtil.containsOnlyNulls(actual.iterator()), 'Expecting actual to contain only null, but found values', new List<Object>());
         return this;
     }

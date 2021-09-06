@@ -14,12 +14,12 @@
 ]>
 <@pp.dropOutputFile />
 <#list dataTypes as dataType>
-<@com.apexClass className="${classPrefix}${dataType.native}IsEqualToTest" path="/classes/${dataType.native?lower_case}/"/>
+<@com.apexClass className="${dataType.native}IsEqualToTest" path="/classes/${dataType.native?lower_case}/"/>
 @IsTest
-public class ${classPrefix}${dataType.native}IsEqualToTest {
+public class ${dataType.native}IsEqualToTest {
     @IsTest
     static void testPassingScenarios() {
-        FluentAssert.that((${dataType.native}) ${dataType.concreteValue}).isEqualTo(${dataType.concreteValue});
+        Assert.that((${dataType.native}) ${dataType.concreteValue}).isEqualTo(${dataType.concreteValue});
     }
 
     @IsTest
@@ -30,9 +30,9 @@ public class ${classPrefix}${dataType.native}IsEqualToTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${dataType.native} actual, ${dataType.native} expected) {
         try {
-            FluentAssert.that(actual).isEqualTo(expected);
+            Assert.that(actual).isEqualTo(expected);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -50,7 +50,7 @@ public class ${classPrefix}${dataType.native}IsEqualToTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Object actual, Object expected) {
         try {
-            FluentAssert.that(actual).IsEqualTo(expected);
+            Assert.that(actual).IsEqualTo(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

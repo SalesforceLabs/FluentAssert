@@ -5,20 +5,20 @@
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
 <@pp.dropOutputFile />
-<@com.apexClass className="${classPrefix}IdIsSObjectTypeTest" path="/classes/id/"/>
+<@com.apexClass className="IdIsSObjectTypeTest" path="/classes/id/"/>
 @IsTest
-public class ${classPrefix}IdIsSObjectTypeTest {
+public class IdIsSObjectTypeTest {
     @IsTest
     static void testPassingScenarios() {
-        FluentAssert.that((Id) UserInfo.getUserId()).isSObjectType(User.SObjectType);
+        Assert.that((Id) UserInfo.getUserId()).isSObjectType(User.SObjectType);
     }
 
     @IsTest
     static void testFailureScenarios() {
         try {
-            FluentAssert.that((Id) UserInfo.getUserId()).isSObjectType(Account.SObjectType);
+            Assert.that((Id) UserInfo.getUserId()).isSObjectType(Account.SObjectType);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -35,7 +35,7 @@ public class ${classPrefix}IdIsSObjectTypeTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Id actual, Schema.SObjectType expected) {
         try {
-            FluentAssert.that(actual).isSObjectType(expected);
+            Assert.that(actual).isSObjectType(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

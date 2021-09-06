@@ -8,8 +8,8 @@
      * @description Verifies that the actual value is equal to one.
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual is null
-     * @throws FluentAssert.AssertException if actual is not one
+     * @throws AssertException if actual is not one
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert isOne() {
+    global ${supportedAssert.type?keep_before('<')}Assert isOne() {
         return isEqualTo(1);
     }

@@ -15,17 +15,17 @@
 ]>
 <@pp.dropOutputFile />
 <#list dataTypes as dataType>
-  <@com.apexClass className="${classPrefix}${dataType.native}IsBetweenTest" path="/classes/${dataType.native?lower_case}/"/>
+  <@com.apexClass className="${dataType.native}IsBetweenTest" path="/classes/${dataType.native?lower_case}/"/>
 @IsTest
-public class ${classPrefix}${dataType.native}IsBetweenTest {
+public class ${dataType.native}IsBetweenTest {
     @IsTest
     static void testPositiveScenarios() {
         // start included, end included
         ${dataType.native} actual = ${dataType.validValue};
-        FluentAssert.that((${dataType.native}) actual).isBetween(actual, actual);
-        FluentAssert.that((${dataType.native}) actual).isBetween(actual${dataType.deltaTemplate?replace("DELTA", "-2")}, actual);
-        FluentAssert.that((${dataType.native}) actual).isBetween(actual, actual${dataType.deltaTemplate?replace("DELTA", "2")});
-        FluentAssert.that((${dataType.native}) actual).isBetween(actual${dataType.deltaTemplate?replace("DELTA", "-2")}, actual${dataType.deltaTemplate?replace("DELTA", "2")});
+        Assert.that((${dataType.native}) actual).isBetween(actual, actual);
+        Assert.that((${dataType.native}) actual).isBetween(actual${dataType.deltaTemplate?replace("DELTA", "-2")}, actual);
+        Assert.that((${dataType.native}) actual).isBetween(actual, actual${dataType.deltaTemplate?replace("DELTA", "2")});
+        Assert.that((${dataType.native}) actual).isBetween(actual${dataType.deltaTemplate?replace("DELTA", "-2")}, actual${dataType.deltaTemplate?replace("DELTA", "2")});
     }
 
     @IsTest
@@ -38,9 +38,9 @@ public class ${classPrefix}${dataType.native}IsBetweenTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${dataType.native} actual, ${dataType.native} fromInclusive, ${dataType.native} toInclusive) {
         try {
-            FluentAssert.that(actual).isBetween(fromInclusive, toInclusive);
+            Assert.that(actual).isBetween(fromInclusive, toInclusive);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -61,7 +61,7 @@ public class ${classPrefix}${dataType.native}IsBetweenTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${dataType.native} actual, ${dataType.native} fromInclusive, ${dataType.native} toInclusive) {
         try {
-            FluentAssert.that(actual).isBetween(fromInclusive, toInclusive);
+            Assert.that(actual).isBetween(fromInclusive, toInclusive);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

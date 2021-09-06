@@ -9,9 +9,9 @@
 ]>
 <@pp.dropOutputFile />
 <#list numberDataTypes as numberDataType>
-  <@com.apexClass className="${classPrefix}${numberDataType.nativeDataType}ContainsOnlyOnceTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
+  <@com.apexClass className="${numberDataType.nativeDataType}ContainsOnlyOnceTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
 @IsTest
-public class ${classPrefix}${numberDataType.nativeDataType}ContainsOnlyOnceTest {
+public class ${numberDataType.nativeDataType}ContainsOnlyOnceTest {
     private static final ${numberDataType.castingValue} EMPTY = new ${numberDataType.castingValue}();
     private static final ${numberDataType.castingValue} ABC = new ${numberDataType.castingValue} {
         'A', 'B', 'C'
@@ -19,7 +19,7 @@ public class ${classPrefix}${numberDataType.nativeDataType}ContainsOnlyOnceTest 
 
     @IsTest
     static void testPositiveScenarios() {
-        FluentAssert.that(ABC)
+        Assert.that(ABC)
                     .containsOnlyOnce(new List<String>{'A', 'B'})
                     .containsOnlyOnce(new List<String>{'C', 'B'});
     }
@@ -33,9 +33,9 @@ public class ${classPrefix}${numberDataType.nativeDataType}ContainsOnlyOnceTest 
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${numberDataType.castingValue} actual, List<String> expected) {
         try {
-            FluentAssert.that(actual).containsOnlyOnce(expected);
+            Assert.that(actual).containsOnlyOnce(expected);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -51,7 +51,7 @@ public class ${classPrefix}${numberDataType.nativeDataType}ContainsOnlyOnceTest 
 
         // Empty inputs throws IllegalArgumentException
         try {
-            FluentAssert.that(ABC).containsOnlyOnce(new List<Object>());
+            Assert.that(ABC).containsOnlyOnce(new List<Object>());
             System.assert(false, 'No assert exception thrown');
         } catch(IllegalArgumentException iae) {
             // Success! Correct exception being thrown
@@ -65,7 +65,7 @@ public class ${classPrefix}${numberDataType.nativeDataType}ContainsOnlyOnceTest 
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${numberDataType.castingValue} actual, List<Object> expected) {
         try {
-            FluentAssert.that(actual).containsOnlyOnce(expected);
+            Assert.that(actual).containsOnlyOnce(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

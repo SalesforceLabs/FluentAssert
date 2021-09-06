@@ -5,11 +5,11 @@
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
 <@pp.dropOutputFile />
-<@com.apexClass className="${classPrefix}AssertBase" path="/classes/"/>
+<@com.apexClass className="AssertBase" path="/classes/"/>
 /**
  * @description Abstract class with shared functionality.
  */
-public virtual inherited sharing class ${classPrefix}AssertBase {
+public virtual inherited sharing class AssertBase {
     protected void notNull(Object value, String name) {
         if(value == null) {
             NullPointerException npe = new NullPointerException();
@@ -38,7 +38,7 @@ public virtual inherited sharing class ${classPrefix}AssertBase {
 
     protected void assert(Boolean condition, String messageToFormat, List<Object> formattingArguments) {
         if(!condition) {
-            throw new FluentAssert.AssertException(String.format(messageToFormat, formattingArguments));
+            throw new AssertException(String.format(messageToFormat, formattingArguments));
         }
     }
 }

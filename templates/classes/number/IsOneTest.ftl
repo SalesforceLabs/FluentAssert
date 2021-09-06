@@ -12,12 +12,12 @@
 ]>
 <@pp.dropOutputFile />
 <#list numberDataTypes as numberDataType>
-  <@com.apexClass className="${classPrefix}${numberDataType.nativeDataType}IsOneTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
+  <@com.apexClass className="${numberDataType.nativeDataType}IsOneTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
 @IsTest
-public class ${classPrefix}${numberDataType.nativeDataType}IsOneTest {
+public class ${numberDataType.nativeDataType}IsOneTest {
     @IsTest
     static void testPositiveScenarios() {
-        FluentAssert.that((${numberDataType.nativeDataType}) 1).isOne();
+        Assert.that((${numberDataType.nativeDataType}) 1).isOne();
     }
 
     @IsTest
@@ -29,9 +29,9 @@ public class ${classPrefix}${numberDataType.nativeDataType}IsOneTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${numberDataType.nativeDataType} actual) {
         try {
-            FluentAssert.that(actual).isOne();
+            Assert.that(actual).isOne();
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -43,7 +43,7 @@ public class ${classPrefix}${numberDataType.nativeDataType}IsOneTest {
     @IsTest
     static void testValidations() {
         try {
-            FluentAssert.that((${numberDataType.nativeDataType}) null).isOne();
+            Assert.that((${numberDataType.nativeDataType}) null).isOne();
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

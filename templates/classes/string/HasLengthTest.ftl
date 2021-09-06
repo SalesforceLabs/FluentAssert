@@ -5,15 +5,15 @@
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
 <@pp.dropOutputFile />
-<@com.apexClass className="${classPrefix}StringHasLengthTest" path="/classes/string/"/>
+<@com.apexClass className="StringHasLengthTest" path="/classes/string/"/>
 @IsTest
-public class ${classPrefix}StringHasLengthTest {
+public class StringHasLengthTest {
     @IsTest
     static void testPositiveScenarios() {
-        FluentAssert.that('').hasLength(0);
-        FluentAssert.that('ABC').hasLength(3);
+        Assert.that('').hasLength(0);
+        Assert.that('ABC').hasLength(3);
 
-        FluentAssert.that('ABC')
+        Assert.that('ABC')
                     .length()
                     .isEqualTo(3);
     }
@@ -21,9 +21,9 @@ public class ${classPrefix}StringHasLengthTest {
     @IsTest
     static void testNegativeScenarios() {
         try {
-            FluentAssert.that('ABC').hasLength(4);
+            Assert.that('ABC').hasLength(4);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -35,7 +35,7 @@ public class ${classPrefix}StringHasLengthTest {
     @IsTest
     static void testValidations() {
         try {
-            FluentAssert.that((String) null).hasLength(3);
+            Assert.that((String) null).hasLength(3);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

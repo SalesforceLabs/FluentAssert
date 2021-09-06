@@ -10,9 +10,9 @@
 ]>
 <@pp.dropOutputFile />
 <#list numberDataTypes as numberDataType>
-  <@com.apexClass className="${classPrefix}${numberDataType.nativeDataType}ContainsTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
+  <@com.apexClass className="${numberDataType.nativeDataType}ContainsTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
 @IsTest
-public class ${classPrefix}${numberDataType.nativeDataType}ContainsTest {
+public class ${numberDataType.nativeDataType}ContainsTest {
     private static final ${numberDataType.castingValue} EMPTY = new ${numberDataType.castingValue}();
     private static final ${numberDataType.castingValue} PART_OF_ALPHABET = new ${numberDataType.castingValue}{
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'
@@ -20,8 +20,8 @@ public class ${classPrefix}${numberDataType.nativeDataType}ContainsTest {
 
     @IsTest
     static void testPositiveScenarios() {
-        FluentAssert.that(PART_OF_ALPHABET).contains(new List<Object>{'A', 'B', 'C'});
-        FluentAssert.that(PART_OF_ALPHABET).contains(new Set<Object>{'A', 'B', 'C'});
+        Assert.that(PART_OF_ALPHABET).contains(new List<Object>{'A', 'B', 'C'});
+        Assert.that(PART_OF_ALPHABET).contains(new Set<Object>{'A', 'B', 'C'});
     }
 
     @IsTest
@@ -35,9 +35,9 @@ public class ${classPrefix}${numberDataType.nativeDataType}ContainsTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${numberDataType.castingValue} actual, List<Object> expected) {
         try {
-            FluentAssert.that(actual).contains(expected);
+            Assert.that(actual).contains(expected);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -49,9 +49,9 @@ public class ${classPrefix}${numberDataType.nativeDataType}ContainsTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${numberDataType.castingValue} actual, Set<Object> expected) {
         try {
-            FluentAssert.that(actual).contains(expected);
+            Assert.that(actual).contains(expected);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -69,7 +69,7 @@ public class ${classPrefix}${numberDataType.nativeDataType}ContainsTest {
 
         // Empty inputs throws IllegalArgumentException
         try {
-            FluentAssert.that(PART_OF_ALPHABET).contains(new List<Object>());
+            Assert.that(PART_OF_ALPHABET).contains(new List<Object>());
             System.assert(false, 'No assert exception thrown');
         } catch(IllegalArgumentException iae) {
             // Success! Correct exception being thrown
@@ -80,7 +80,7 @@ public class ${classPrefix}${numberDataType.nativeDataType}ContainsTest {
         }
 
         try {
-            FluentAssert.that(PART_OF_ALPHABET).contains(new Set<Object>());
+            Assert.that(PART_OF_ALPHABET).contains(new Set<Object>());
             System.assert(false, 'No assert exception thrown');
         } catch(IllegalArgumentException iae) {
             // Success! Correct exception being thrown
@@ -94,7 +94,7 @@ public class ${classPrefix}${numberDataType.nativeDataType}ContainsTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${numberDataType.castingValue} actual, List<Object> expected) {
         try {
-            FluentAssert.that(actual).contains(expected);
+            Assert.that(actual).contains(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown
@@ -108,7 +108,7 @@ public class ${classPrefix}${numberDataType.nativeDataType}ContainsTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${numberDataType.castingValue} actual, Set<Object> expected) {
         try {
-            FluentAssert.that(actual).contains(expected);
+            Assert.that(actual).contains(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

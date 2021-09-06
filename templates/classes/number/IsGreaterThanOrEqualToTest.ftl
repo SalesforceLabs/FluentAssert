@@ -12,14 +12,14 @@
 ]>
 <@pp.dropOutputFile />
 <#list dataTypes as dataType>
-  <@com.apexClass className="${classPrefix}${dataType.native}IsGreaterThanOrEqualToTest" path="/classes/${dataType.native?lower_case}/"/>
+  <@com.apexClass className="${dataType.native}IsGreaterThanOrEqualToTest" path="/classes/${dataType.native?lower_case}/"/>
 @IsTest
-public class ${classPrefix}${dataType.native}IsGreaterThanOrEqualToTest {
+public class ${dataType.native}IsGreaterThanOrEqualToTest {
     @IsTest
     static void testPositiveScenarios() {
         ${dataType.native} actual = ${dataType.validValue};
-        FluentAssert.that(actual).isGreaterThanOrEqualTo(actual);
-        FluentAssert.that(actual).isGreaterThanOrEqualTo((${dataType.native})actual + (${dataType.native}) -${dataType.minimumDelta});
+        Assert.that(actual).isGreaterThanOrEqualTo(actual);
+        Assert.that(actual).isGreaterThanOrEqualTo((${dataType.native})actual + (${dataType.native}) -${dataType.minimumDelta});
     }
 
     @IsTest
@@ -31,9 +31,9 @@ public class ${classPrefix}${dataType.native}IsGreaterThanOrEqualToTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${dataType.native} actual, ${dataType.native} expected) {
         try {
-            FluentAssert.that(actual).isGreaterThanOrEqualTo(expected);
+            Assert.that(actual).isGreaterThanOrEqualTo(expected);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -52,7 +52,7 @@ public class ${classPrefix}${dataType.native}IsGreaterThanOrEqualToTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${dataType.native} actual, ${dataType.native} expected) {
         try {
-            FluentAssert.that(actual).isGreaterThanOrEqualTo(expected);
+            Assert.that(actual).isGreaterThanOrEqualTo(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

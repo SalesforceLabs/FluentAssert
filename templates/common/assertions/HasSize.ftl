@@ -9,9 +9,9 @@
      * @param expected expected size of actual
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual or expected is null
-     * @throws FluentAssert.AssertException if size of actual is not equal
+     * @throws AssertException if size of actual is not equal
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert hasSize(Integer expected) {
+    global ${supportedAssert.type?keep_before('<')}Assert hasSize(Integer expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
         assert(actual.size() == expected, 'Was expecting size of actual list to be {0}', new List<Object> {expected});

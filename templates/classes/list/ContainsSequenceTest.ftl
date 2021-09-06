@@ -5,9 +5,9 @@
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
 <@pp.dropOutputFile />
-<@com.apexClass className="${classPrefix}ListContainsSequenceTest" path="/classes/list/"/>
+<@com.apexClass className="ListContainsSequenceTest" path="/classes/list/"/>
 @IsTest
-public class ${classPrefix}ListContainsSequenceTest {
+public class ListContainsSequenceTest {
     private static final List<String> EMPTY_LIST = new List<String>();
     private static final List<String> PART_OF_ALPHABET = new List<String>{
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'
@@ -15,17 +15,17 @@ public class ${classPrefix}ListContainsSequenceTest {
 
     @IsTest
     static void testPositiveScenarios() {
-        FluentAssert.that(PART_OF_ALPHABET).containsSequence(new List<String>{'A', 'B', 'C'});
-        FluentAssert.that(PART_OF_ALPHABET).containsSequence(new List<String>{'D', 'E', 'F'});
-        FluentAssert.that(PART_OF_ALPHABET).containsSequence(new List<String>{'H', 'I', 'J'});
+        Assert.that(PART_OF_ALPHABET).containsSequence(new List<String>{'A', 'B', 'C'});
+        Assert.that(PART_OF_ALPHABET).containsSequence(new List<String>{'D', 'E', 'F'});
+        Assert.that(PART_OF_ALPHABET).containsSequence(new List<String>{'H', 'I', 'J'});
     }
 
     @IsTest
     static void testNegativeScenarios() {
         try {
-            FluentAssert.that(PART_OF_ALPHABET).containsSequence(new List<String>{'A', 'C'});
+            Assert.that(PART_OF_ALPHABET).containsSequence(new List<String>{'A', 'C'});
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -41,7 +41,7 @@ public class ${classPrefix}ListContainsSequenceTest {
 
         // Empty inputs throws IllegalArgumentException
         try {
-            FluentAssert.that(PART_OF_ALPHABET).containsSequence(new List<Object>());
+            Assert.that(PART_OF_ALPHABET).containsSequence(new List<Object>());
             System.assert(false, 'No assert exception thrown');
         } catch(IllegalArgumentException iae) {
             // Success! Correct exception being thrown
@@ -55,7 +55,7 @@ public class ${classPrefix}ListContainsSequenceTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(List<Object> actual, List<Object> expected) {
         try {
-            FluentAssert.that(actual).containsSequence(expected);
+            Assert.that(actual).containsSequence(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

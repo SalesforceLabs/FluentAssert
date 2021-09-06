@@ -10,9 +10,9 @@
      * @param toInclusive end (included) of range to assert against
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual, fromInclusive and/or toInclusive is null
-     * @throws FluentAssert.AssertException if actual is not between [start, end]
+     * @throws AssertException if actual is not between [start, end]
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert isBetween(${supportedAssert.type} fromInclusive, ${supportedAssert.type} toInclusive) {
+    global ${supportedAssert.type?keep_before('<')}Assert isBetween(${supportedAssert.type} fromInclusive, ${supportedAssert.type} toInclusive) {
         notNull(actual, 'actual');
         notNull(fromInclusive, 'fromInclusive');
         notNull(toInclusive, 'toInclusive');

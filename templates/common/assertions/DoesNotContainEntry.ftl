@@ -10,16 +10,16 @@
      * @param vaulue not value to be contained in actual
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual or key is null
-     * @throws FluentAssert.AssertException if expected entry was found in map
+     * @throws AssertException if expected entry was found in map
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert doesNotContainEntry(Object key, Object value) {
+    global ${supportedAssert.type?keep_before('<')}Assert doesNotContainEntry(Object key, Object value) {
         notNull(actual, 'actual');
         notNull(key, 'key');
 
         if(actual.containsKey(key)) {
             Object actualValue = actual.get(key);
             if(actualValue.equals(value)) {
-                throw new FluentAssert.AssertException(String.format('Found an an unexpected value for key, {0}, found {2}', new List<Object>{key, value, actualValue}));
+                throw new AssertException(String.format('Found an an unexpected value for key, {0}, found {2}', new List<Object>{key, value, actualValue}));
             }
         }
         return this;

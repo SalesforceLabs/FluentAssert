@@ -10,11 +10,11 @@
      * @param expectedIn collection that must contain actual
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual or expectedIn is null
-     * @throws FluentAssert.AssertException if actual is not in expectedIn
+     * @throws AssertException if actual is not in expectedIn
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert isIn(${colType}<Object> expectedIn) {
+    global ${supportedAssert.type?keep_before('<')}Assert isIn(${colType}<Object> expectedIn) {
         notNull(actual, 'actual');
-        assert(expectedIn.contains(actual), 'Was expecting {0} to be in {1}', new List<Object> {actual, expectedIn});
+        assert(expectedIn.contains(actual), 'Was expecting {1} to be in {0}', new List<Object> {expectedIn, actual});
         return this;
     }
 <#sep>

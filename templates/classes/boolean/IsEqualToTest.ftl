@@ -5,13 +5,13 @@
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
 <@pp.dropOutputFile />
-<@com.apexClass className="${classPrefix}BooleanIsEqualToTest" path="/classes/boolean/"/>
+<@com.apexClass className="BooleanIsEqualToTest" path="/classes/boolean/"/>
 @IsTest
-public class ${classPrefix}BooleanIsEqualToTest {
+public class BooleanIsEqualToTest {
     @IsTest
     static void testPassingScenarios() {
-        FluentAssert.that(true).isEqualTo(true);
-        FluentAssert.that(false).isEqualTo(false);
+        Assert.that(true).isEqualTo(true);
+        Assert.that(false).isEqualTo(false);
     }
 
     @IsTest
@@ -23,9 +23,9 @@ public class ${classPrefix}BooleanIsEqualToTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Boolean actual, Boolean expected) {
         try {
-            FluentAssert.that(actual).isEqualTo(expected);
+            Assert.that(actual).isEqualTo(expected);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -45,7 +45,7 @@ public class ${classPrefix}BooleanIsEqualToTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Boolean actual, Boolean expected) {
         try {
-            FluentAssert.that(actual).IsEqualTo(expected);
+            Assert.that(actual).IsEqualTo(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

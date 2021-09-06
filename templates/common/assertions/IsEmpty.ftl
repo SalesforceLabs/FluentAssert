@@ -8,9 +8,9 @@
      * @description Verifies that the actual of values is empty.
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual is null
-     * @throws FluentAssert.AssertException if actual is not empty
+     * @throws AssertException if actual is not empty
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert isEmpty() {
+    global ${supportedAssert.type?keep_before('<')}Assert isEmpty() {
         notNull(actual, 'actual');
         assert(actual.isEmpty(), 'Was expecting actual list not to be empty', new List<Object>());
         return this;

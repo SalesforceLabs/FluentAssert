@@ -7,9 +7,9 @@
     /**
      * @description Asserts that `actual` is today.
      * @return this to allow further assert in a fluent manner
-     * @throws FluentAssert.AssertException if actual is not today.
+     * @throws AssertException if actual is not today.
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert isToday() {
+    global ${supportedAssert.type?keep_before('<')}Assert isToday() {
         notNull(actual, 'actual');
         return isEqualTo(Date.today());
     }

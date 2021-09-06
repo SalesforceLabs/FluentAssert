@@ -15,14 +15,14 @@
 ]>
 <@pp.dropOutputFile />
 <#list dataTypes as dataType>
-  <@com.apexClass className="${classPrefix}${dataType.native}IsStrictlyBetweenTest" path="/classes/${dataType.native?lower_case}/"/>
+  <@com.apexClass className="${dataType.native}IsStrictlyBetweenTest" path="/classes/${dataType.native?lower_case}/"/>
 @IsTest
-public class ${classPrefix}${dataType.native}IsStrictlyBetweenTest {
+public class ${dataType.native}IsStrictlyBetweenTest {
     @IsTest
     static void testPositiveScenarios() {
         // start included, end included
         ${dataType.native} actual = ${dataType.validValue};
-        FluentAssert.that((${dataType.native}) actual).isStrictlyBetween((${dataType.native}) (actual${dataType.deltaTemplate?replace("DELTA", "-" + dataType.minimumDelta)}), (${dataType.native}) (actual${dataType.deltaTemplate?replace("DELTA", dataType.minimumDelta)}));
+        Assert.that((${dataType.native}) actual).isStrictlyBetween((${dataType.native}) (actual${dataType.deltaTemplate?replace("DELTA", "-" + dataType.minimumDelta)}), (${dataType.native}) (actual${dataType.deltaTemplate?replace("DELTA", dataType.minimumDelta)}));
     }
 
     @IsTest
@@ -36,9 +36,9 @@ public class ${classPrefix}${dataType.native}IsStrictlyBetweenTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${dataType.native} actual, ${dataType.native} fromInclusive, ${dataType.native} toInclusive) {
         try {
-            FluentAssert.that(actual).isStrictlyBetween(fromInclusive, toInclusive);
+            Assert.that(actual).isStrictlyBetween(fromInclusive, toInclusive);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -59,7 +59,7 @@ public class ${classPrefix}${dataType.native}IsStrictlyBetweenTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${dataType.native} actual, ${dataType.native} fromInclusive, ${dataType.native} toInclusive) {
         try {
-            FluentAssert.that(actual).isStrictlyBetween(fromInclusive, toInclusive);
+            Assert.that(actual).isStrictlyBetween(fromInclusive, toInclusive);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

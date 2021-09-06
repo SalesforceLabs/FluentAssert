@@ -237,9 +237,9 @@
 ]>
 <@pp.dropOutputFile />
 <#list stringDelegates as sd>
-<@com.apexClass className="${classPrefix}String${sd.method?cap_first}Test" path="/classes/string/"/>
+<@com.apexClass className="String${sd.method?cap_first}Test" path="/classes/string/"/>
 @IsTest
-public class ${classPrefix}String${sd.method?cap_first}Test {
+public class String${sd.method?cap_first}Test {
     @IsTest
     static void testPositiveScenarios() {
         String actual;
@@ -249,7 +249,7 @@ public class ${classPrefix}String${sd.method?cap_first}Test {
         <#list sd.positiveScenarios as ps><#list ps?keys as nk>
         ${nk} = ${ps[nk]};
         </#list>
-        FluentAssert.that(actual).${sd.method}(<#if (sd.interface??)><#list sd.interface as sdi>${sdi.name}<#sep>, </#list></#if>);
+        Assert.that(actual).${sd.method}(<#if (sd.interface??)><#list sd.interface as sdi>${sdi.name}<#sep>, </#list></#if>);
         </#list>
     }
 
@@ -269,9 +269,9 @@ public class ${classPrefix}String${sd.method?cap_first}Test {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(String actual<#if (sd.interface??)>, <#list sd.interface as sdi>${sdi.type} ${sdi.name}<#sep>, </#list></#if>) {
         try {
-            FluentAssert.that(actual).${sd.method}(<#if (sd.interface??)><#list sd.interface as sdi>${sdi.name}<#sep>, </#list></#if>);
+            Assert.that(actual).${sd.method}(<#if (sd.interface??)><#list sd.interface as sdi>${sdi.name}<#sep>, </#list></#if>);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {

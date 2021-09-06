@@ -10,11 +10,11 @@
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual or expected is null
      * @throws IllegalArgumentException if expected is empty
-     * @throws FluentAssert.AssertException if actual contains the subsequence
+     * @throws AssertException if actual contains the subsequence
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert doesNotContainSubsequence(List<Object> expected) {
+    global ${supportedAssert.type?keep_before('<')}Assert doesNotContainSubsequence(List<Object> expected) {
         notNull(actual, 'actual');
         notEmpty(expected, 'expected');
-        assert(!${classPrefix}ListSubsequenceUtil.containsSubsequence(actual, expected), 'Was expecting actual not to contain the subsequence {0}', new List<Object> {expected});
+        assert(!ListSubsequenceUtil.containsSubsequence(expected, actual), 'Was expecting actual not to contain the subsequence {0}', new List<Object> {expected});
         return this;
     }

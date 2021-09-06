@@ -11,13 +11,13 @@
 ]>
 <@pp.dropOutputFile />
 <#list dataTypes as dataType>
-  <@com.apexClass className="${classPrefix}${dataType.native}IsAfterTest" path="/classes/${dataType.native?lower_case}/"/>
+  <@com.apexClass className="${dataType.native}IsAfterTest" path="/classes/${dataType.native?lower_case}/"/>
 @IsTest
-public class ${classPrefix}${dataType.native}IsAfterTest {
+public class ${dataType.native}IsAfterTest {
     @IsTest
     static void testPositiveScenarios() {
         ${dataType.native} actual = ${dataType.validValue};
-        FluentAssert.that(actual).isAfter(actual${dataType.deltaTemplate?replace("DELTA", "-1")});
+        Assert.that(actual).isAfter(actual${dataType.deltaTemplate?replace("DELTA", "-1")});
     }
 
     @IsTest
@@ -30,9 +30,9 @@ public class ${classPrefix}${dataType.native}IsAfterTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${dataType.native} actual, ${dataType.native} expected) {
         try {
-            FluentAssert.that(actual).isAfter(expected);
+            Assert.that(actual).isAfter(expected);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -51,7 +51,7 @@ public class ${classPrefix}${dataType.native}IsAfterTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${dataType.native} actual, ${dataType.native} expected) {
         try {
-            FluentAssert.that(actual).isAfter(expected);
+            Assert.that(actual).isAfter(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

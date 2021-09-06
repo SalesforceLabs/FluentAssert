@@ -12,13 +12,13 @@
 ]>
 <@pp.dropOutputFile />
 <#list dataTypes as dataType>
-  <@com.apexClass className="${classPrefix}${dataType.native}IsGreaterThanToTest" path="/classes/${dataType.native?lower_case}/"/>
+  <@com.apexClass className="${dataType.native}IsGreaterThanToTest" path="/classes/${dataType.native?lower_case}/"/>
 @IsTest
-public class ${classPrefix}${dataType.native}IsGreaterThanToTest {
+public class ${dataType.native}IsGreaterThanToTest {
     @IsTest
     static void testPositiveScenarios() {
         ${dataType.native} actual = ${dataType.validValue};
-        FluentAssert.that(actual).isGreaterThan((${dataType.native}) actual + (${dataType.native}) -${dataType.minimumDelta});
+        Assert.that(actual).isGreaterThan((${dataType.native}) actual + (${dataType.native}) -${dataType.minimumDelta});
     }
 
     @IsTest
@@ -31,9 +31,9 @@ public class ${classPrefix}${dataType.native}IsGreaterThanToTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${dataType.native} actual, ${dataType.native} expected) {
         try {
-            FluentAssert.that(actual).isGreaterThan(expected);
+            Assert.that(actual).isGreaterThan(expected);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -52,7 +52,7 @@ public class ${classPrefix}${dataType.native}IsGreaterThanToTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${dataType.native} actual, ${dataType.native} expected) {
         try {
-            FluentAssert.that(actual).isGreaterThan(expected);
+            Assert.that(actual).isGreaterThan(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

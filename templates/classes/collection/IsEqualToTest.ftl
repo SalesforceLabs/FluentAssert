@@ -11,13 +11,13 @@
 ]>
 <@pp.dropOutputFile />
 <#list numberDataTypes as numberDataType>
-  <@com.apexClass className="${classPrefix}${numberDataType.nativeDataType}IsEqualToTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
+  <@com.apexClass className="${numberDataType.nativeDataType}IsEqualToTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
 @IsTest
-public class ${classPrefix}${numberDataType.nativeDataType}IsEqualToTest {
+public class ${numberDataType.nativeDataType}IsEqualToTest {
     @IsTest
     static void testPassingScenarios() {
         ${numberDataType.castingValue} aCollection = new ${numberDataType.castingValue}();
-        FluentAssert.that(aCollection).isEqualTo(aCollection);
+        Assert.that(aCollection).isEqualTo(aCollection);
     }
 
     @IsTest
@@ -28,9 +28,9 @@ public class ${classPrefix}${numberDataType.nativeDataType}IsEqualToTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${numberDataType.castingValue} actual, ${numberDataType.castingValue} expected) {
         try {
-            FluentAssert.that(actual).isEqualTo(expected);
+            Assert.that(actual).isEqualTo(expected);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -48,7 +48,7 @@ public class ${classPrefix}${numberDataType.nativeDataType}IsEqualToTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${numberDataType.castingValue} actual, ${numberDataType.castingValue} expected) {
         try {
-            FluentAssert.that(actual).IsEqualTo(expected);
+            Assert.that(actual).IsEqualTo(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

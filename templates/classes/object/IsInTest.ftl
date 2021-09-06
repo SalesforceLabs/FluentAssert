@@ -21,12 +21,12 @@
 <@pp.dropOutputFile />
 <#list ["Set", "List"] as colType>
 <#list dataTypes as dataType>
-<@com.apexClass className="${classPrefix}${dataType.type}IsIn${colType}Test" path="/classes/${dataType.type?lower_case}/"/>
+<@com.apexClass className="${dataType.type}IsIn${colType}Test" path="/classes/${dataType.type?lower_case}/"/>
 @IsTest
-public class ${classPrefix}${dataType.type}IsIn${colType}Test {
+public class ${dataType.type}IsIn${colType}Test {
     @IsTest
     static void testPassingScenarios() {
-        FluentAssert.that((${dataType.concreteType}) ${dataType.value}).isIn((${colType}<Object>) new ${colType}<Object>{(${dataType.concreteType}) ${dataType.value}});
+        Assert.that((${dataType.concreteType}) ${dataType.value}).isIn((${colType}<Object>) new ${colType}<Object>{(${dataType.concreteType}) ${dataType.value}});
     }
 
     @IsTest
@@ -37,9 +37,9 @@ public class ${classPrefix}${dataType.type}IsIn${colType}Test {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${dataType.type} actual, ${colType}<Object> expected) {
         try {
-            FluentAssert.that(actual).isIn(expected);
+            Assert.that(actual).isIn(expected);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -57,7 +57,7 @@ public class ${classPrefix}${dataType.type}IsIn${colType}Test {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${dataType.concreteType} actual, ${colType}<Object> expected) {
         try {
-            FluentAssert.that(actual).isIn(expected);
+            Assert.that(actual).isIn(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

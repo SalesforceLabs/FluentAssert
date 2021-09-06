@@ -11,14 +11,14 @@
 ]>
 <@pp.dropOutputFile />
 <#list dataTypes as dataType>
-  <@com.apexClass className="${classPrefix}${dataType.native}IsAfterOrEqualToTest" path="/classes/${dataType.native?lower_case}/"/>
+  <@com.apexClass className="${dataType.native}IsAfterOrEqualToTest" path="/classes/${dataType.native?lower_case}/"/>
 @IsTest
-public class ${classPrefix}${dataType.native}IsAfterOrEqualToTest {
+public class ${dataType.native}IsAfterOrEqualToTest {
     @IsTest
     static void testPositiveScenarios() {
         ${dataType.native} actual = ${dataType.validValue};
-        FluentAssert.that(actual).isAfterOrEqualTo(actual);
-        FluentAssert.that(actual).isAfterOrEqualTo(actual${dataType.deltaTemplate?replace("DELTA", "-1")});
+        Assert.that(actual).isAfterOrEqualTo(actual);
+        Assert.that(actual).isAfterOrEqualTo(actual${dataType.deltaTemplate?replace("DELTA", "-1")});
     }
 
     @IsTest
@@ -30,9 +30,9 @@ public class ${classPrefix}${dataType.native}IsAfterOrEqualToTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${dataType.native} actual, ${dataType.native} expected) {
         try {
-            FluentAssert.that(actual).isAfterOrEqualTo(expected);
+            Assert.that(actual).isAfterOrEqualTo(expected);
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -51,7 +51,7 @@ public class ${classPrefix}${dataType.native}IsAfterOrEqualToTest {
     @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${dataType.native} actual, ${dataType.native} expected) {
         try {
-            FluentAssert.that(actual).isAfterOrEqualTo(expected);
+            Assert.that(actual).isAfterOrEqualTo(expected);
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown

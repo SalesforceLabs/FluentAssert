@@ -11,19 +11,14 @@
      * @return this to allow further assert in a fluent manner
      * @throws NullPointerException if actual or expected is null
      * @throws IllegalArgumentException if expected is empty
-     * @throws FluentAssert.AssertException if expected values are not in actual list
+     * @throws AssertException if expected values are not in actual list
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert contains(${colType}<Object> expected) {
+    global ${supportedAssert.type?keep_before('<')}Assert contains(${colType}<Object> expected) {
         notNull(actual, 'actual');
         notEmpty(expected, 'expected');
-
-        assertContains(expected.iterator());
+        assert(${supportedAssert.type?keep_before('<')}ContainsUtil.contains(expected.iterator(), actual), 'Was expecting actual list to contain {0}', new List<Object> {expected});
         return this;
     }
 <#sep>
 
 </#list>
-
-    protected override Boolean actualContains(Object expected) {
-        return actual.contains(expected);
-    }

@@ -2,24 +2,24 @@
 This project aims provide better asserts for tests in Apex. Inspired by [AssertJ](https://assertj.github.io/doc/) and other fluent libraries. Currently supports Boolean, Decimal, Double, Integer, Long, List, Set, Map, Id, Blob, String, Date, Time, Datetime and generic Object.
 
 ## Usage
-Untill proper documentation is done, this will have to work for now.
+FluentAssert is available as a managed package in App Exchange (URL pending) under namespace `Fluent`.
 
 The asserts below can all be chanied like the example below.
 
 ```
-FluentAssert.that('Hello World!')
-            .length()
-                .isLessThan(100)
-            .back()
-            .startsWith('Hello')
-            .contains('World');
+Fluent__Assert.that('Hello World!')
+              .length()
+                  .isLessThan(100)
+              .back()
+              .startsWith('Hello')
+              .contains('World');
 
-FluentAssert.that(aList)
-            .size()
-                .isGreaterThan(10)
-            .back()
-            .contains(someOtherList)
-            .isSorted();
+Fluent__Assert.that(aList)
+              .size()
+                  .isGreaterThan(10)
+              .back()
+              .contains(someOtherList)
+              .isSorted();
 ```
 
 ### Navigators
@@ -37,60 +37,60 @@ While one could do the same asserts in other ways, using a navigator allows a mu
 
 Method     | `FluentAssert` equivalent
 -----------|-------------------------------
-`size()`   | `FluentAssert.that(someCollection.size())`
-`values()` | `FluentAssert.that(someMap.values())`
-`keys()`   | `FluentAssert.that(someMap.keySet())`
-`length()` | `FluentAssert.that(someString.length())`
-`size()`   | `FluentAssert.that(someBlob.size())`
+`size()`   | `Fluent__Assert.that(someCollection.size())`
+`values()` | `Fluent__Assert.that(someMap.values())`
+`keys()`   | `Fluent__Assert.that(someMap.keySet())`
+`length()` | `Fluent__Assert.that(someString.length())`
+`size()`   | `Fluent__Assert.that(someBlob.size())`
 
 ### Object
 ```
 // Object equality
-FluentAssert.that(something).isEqualTo(somethingElse);
-FluentAssert.that(something).isNotEqualTo(somethingElse);
+Fluent__Assert.that(something).isEqualTo(somethingElse);
+Fluent__Assert.that(something).isNotEqualTo(somethingElse);
 
-FluentAssert.that(something).isNull();
-FluentAssert.that(something).isNotNull();
+Fluent__Assert.that(something).isNull();
+Fluent__Assert.that(something).isNotNull();
 
 // Same memory
-FluentAssert.that(something).isSame(somethingElse);
-FluentAssert.that(something).isNotSame(somethingElse);
+Fluent__Assert.that(something).isSame(somethingElse);
+Fluent__Assert.that(something).isNotSame(somethingElse);
 
 // In some collection
-FluentAssert.that(something).isIn(someList));
-FluentAssert.that(something).isIn(someSet);
+Fluent__Assert.that(something).isIn(someList));
+Fluent__Assert.that(something).isIn(someSet);
 ```
 
 ### Boolean
 Also supports `isEqualTo`, `isNotEqualTo`, `isNull`, `isNotNull`, `isSame`, `isNotSame`, and `IsIn`.
 ```
-FluentAssert.that(something).isTrue();
-FluentAssert.that(something).isFalse();
+Fluent__Assert.that(something).isTrue();
+Fluent__Assert.that(something).isFalse();
 ```
 
 ### Numbers
 Snippet below works for `Integer`, `Long`, `Double`, and `Decimal`. Also supports `isEqualTo`, `isNotEqualTo`, `isNull`, `isNotNull`, `isSame`, `isNotSame`, and `IsIn`.
 ```
 // start included, end included
-FluentAssert.that(something).isBetween​(start, end);
+Fluent__Assert.that(something).isBetween​(start, end);
 // start excluded, end excluded
-FluentAssert.that(something).isStrictlyBetween​(start, end);
+Fluent__Assert.that(something).isStrictlyBetween​(start, end);
 
-FluentAssert.that(something).isNegative();
-FluentAssert.that(something).isNotNegative();
+Fluent__Assert.that(something).isNegative();
+Fluent__Assert.that(something).isNotNegative();
 
-FluentAssert.that(something).isPositive();
-FluentAssert.that(something).isNotPositive();
+Fluent__Assert.that(something).isPositive();
+Fluent__Assert.that(something).isNotPositive();
 
-FluentAssert.that(something).isZero();
-FluentAssert.that(something).isNotZero();
+Fluent__Assert.that(something).isZero();
+Fluent__Assert.that(something).isNotZero();
 
-FluentAssert.that(something).isOne();
+Fluent__Assert.that(something).isOne();
 
-FluentAssert.that(something).isLessThan(somethingElse);
-FluentAssert.that(something).isLessThanOrEqualTo(somethingElse);
-FluentAssert.that(something).isGreaterThan(somethingElse);
-FluentAssert.that(something).isGreaterThanOrEqualTo(somethingElse);
+Fluent__Assert.that(something).isLessThan(somethingElse);
+Fluent__Assert.that(something).isLessThanOrEqualTo(somethingElse);
+Fluent__Assert.that(something).isGreaterThan(somethingElse);
+Fluent__Assert.that(something).isGreaterThanOrEqualTo(somethingElse);
 ```
 
 ### List / Set
@@ -114,97 +114,97 @@ private static final List<Object> LATIN_ALPHABET = new List<Object>{
 #### isEmpty / isNotEmpty
 ```
 // Pass
-FluentAssert.that(EMPTY_LIST).isEmpty();
-FluentAssert.that(LATIN_ALPHABET).isNotEmpty();
+Fluent__Assert.that(EMPTY_LIST).isEmpty();
+Fluent__Assert.that(LATIN_ALPHABET).isNotEmpty();
 
 // Failure
-FluentAssert.that(LATIN_ALPHABET).isEmpty();
-FluentAssert.that(EMPTY_LIST).isNotEmpty();
+Fluent__Assert.that(LATIN_ALPHABET).isEmpty();
+Fluent__Assert.that(EMPTY_LIST).isNotEmpty();
 ```
 
 #### hasSize / hasSameSizeAs
 ```
 // Pass
-FluentAssert.that(LATIN_ALPHABET).hasSize(25);
+Fluent__Assert.that(LATIN_ALPHABET).hasSize(25);
 
 // Failure
-FluentAssert.that(LATIN_ALPHABET).hasSameSizeAs(new List<String>{'A', 'B', 'C'});
-FluentAssert.that(LATIN_ALPHABET).hasSameSizeAs(new Set<String>{'A', 'B', 'C'});
+Fluent__Assert.that(LATIN_ALPHABET).hasSameSizeAs(new List<String>{'A', 'B', 'C'});
+Fluent__Assert.that(LATIN_ALPHABET).hasSameSizeAs(new Set<String>{'A', 'B', 'C'});
 ```
 
 #### contains / doesNotContain
 These methods will simply look at the presence of elements. Supports both single input as well as `List`s.
 ```
 // Pass
-FluentAssert.that(LATIN_ALPHABET).contains(new List<String>{'A', 'B', 'C'});
-FluentAssert.that(LATIN_ALPHABET).contains(new Set<String>{'A', 'B', 'C'});
+Fluent__Assert.that(LATIN_ALPHABET).contains(new List<String>{'A', 'B', 'C'});
+Fluent__Assert.that(LATIN_ALPHABET).contains(new Set<String>{'A', 'B', 'C'});
 
-FluentAssert.that(LATIN_ALPHABET).doesNotContain(new List<String>{'@', '#', '!'});
-FluentAssert.that(LATIN_ALPHABET).doesNotContain(new Set<String>{'@', '#', '!'});
+Fluent__Assert.that(LATIN_ALPHABET).doesNotContain(new List<String>{'@', '#', '!'});
+Fluent__Assert.that(LATIN_ALPHABET).doesNotContain(new Set<String>{'@', '#', '!'});
 
 // Failure
-FluentAssert.that(LATIN_ALPHABET).doesNotContain(new List<String>{'A', 'B', 'C'});
-FluentAssert.that(LATIN_ALPHABET).doesNotContain(new Set<String>{'A', 'B', 'C'});
+Fluent__Assert.that(LATIN_ALPHABET).doesNotContain(new List<String>{'A', 'B', 'C'});
+Fluent__Assert.that(LATIN_ALPHABET).doesNotContain(new Set<String>{'A', 'B', 'C'});
 
-FluentAssert.that(LATIN_ALPHABET).contains(new List<String>{'@', '#', '!'});
-FluentAssert.that(LATIN_ALPHABET).contains(new Set<String>{'@', '#', '!'});
+Fluent__Assert.that(LATIN_ALPHABET).contains(new List<String>{'@', '#', '!'});
+Fluent__Assert.that(LATIN_ALPHABET).contains(new Set<String>{'@', '#', '!'});
 ```
 
 #### containsAnyOf
 This method will pass if any of the expected elements are in the list.
 ```
 // Pass
-FluentAssert.that(LATIN_ALPHABET).containsAnyOf(new List<String>{'A', '@'});
-FluentAssert.that(LATIN_ALPHABET).containsAnyOf(new Set<String>{'A', '@'});
+Fluent__Assert.that(LATIN_ALPHABET).containsAnyOf(new List<String>{'A', '@'});
+Fluent__Assert.that(LATIN_ALPHABET).containsAnyOf(new Set<String>{'A', '@'});
 
 // Failure
-FluentAssert.that(LATIN_ALPHABET).containsAnyOf(new List<String>{'@', '#', '!'});
-FluentAssert.that(LATIN_ALPHABET).containsAnyOf(new Set<String>{'@', '#', '!'});
+Fluent__Assert.that(LATIN_ALPHABET).containsAnyOf(new List<String>{'@', '#', '!'});
+Fluent__Assert.that(LATIN_ALPHABET).containsAnyOf(new Set<String>{'@', '#', '!'});
 ```
 
 #### containsExactly (`List` only)
 This method will pass if all elements are in the same position in the list and no other elements are present.
 ```
 // Pass
-FluentAssert.that(LATIN_ALPHABET).containsExactly(new List<String>{'A', ... 'Z'});
+Fluent__Assert.that(LATIN_ALPHABET).containsExactly(new List<String>{'A', ... 'Z'});
 
 // Failure
-FluentAssert.that(LATIN_ALPHABET).containsExactly(new List<String>{'A', 'B', 'C'});
+Fluent__Assert.that(LATIN_ALPHABET).containsExactly(new List<String>{'A', 'B', 'C'});
 ```
 
 #### containsExactlyInAnyOrder
 This method will pass if all elements the list regardless of their position and no other elements are present.
 ```
 // Pass
-FluentAssert.that(LATIN_ALPHABET).containsExactlyInAnyOrder(new List<String>{'Z', ... 'A'});
-FluentAssert.that(LATIN_ALPHABET).containsExactlyInAnyOrder(new Set<String>{'Z', ... 'A'});
+Fluent__Assert.that(LATIN_ALPHABET).containsExactlyInAnyOrder(new List<String>{'Z', ... 'A'});
+Fluent__Assert.that(LATIN_ALPHABET).containsExactlyInAnyOrder(new Set<String>{'Z', ... 'A'});
 
 // Failure
-FluentAssert.that(LATIN_ALPHABET).containsExactlyInAnyOrder(new List<String>{'A', 'B', 'C'});
-FluentAssert.that(LATIN_ALPHABET).containsExactlyInAnyOrder(new Set<String>{'A', 'B', 'C'});
+Fluent__Assert.that(LATIN_ALPHABET).containsExactlyInAnyOrder(new List<String>{'A', 'B', 'C'});
+Fluent__Assert.that(LATIN_ALPHABET).containsExactlyInAnyOrder(new Set<String>{'A', 'B', 'C'});
 ```
 
 #### containsSequence / doesNotContainSequence (`List` only)
 This methods will pass (or not) if a given sequence is in the list of elements. In order to pass the sequence must be in the same order and without gaps/other elements in between.
 ```
 // Pass
-FluentAssert.that(LATIN_ALPHABET).containsSequence(new List<String>{'X', 'Y', 'Z'});
-FluentAssert.that(LATIN_ALPHABET).doesNotContainSequence(new List<String>{'Z', 'A'});
+Fluent__Assert.that(LATIN_ALPHABET).containsSequence(new List<String>{'X', 'Y', 'Z'});
+Fluent__Assert.that(LATIN_ALPHABET).doesNotContainSequence(new List<String>{'Z', 'A'});
 
 // Failure
-FluentAssert.that(LATIN_ALPHABET).doesNotContainSequence(new List<String>{'Z', 'A'});
+Fluent__Assert.that(LATIN_ALPHABET).doesNotContainSequence(new List<String>{'Z', 'A'});
 ```
 
 #### containsSubsequence / doesNotContainSubsequence
 This methods will pass (or not) if a given subsequence is in the list of elements. In order to pass the subsequence must be in the same order but it can have gaps/other elements in between.
 ```
 // Pass
-FluentAssert.that(LATIN_ALPHABET).containsSubsequence(new List<String>{'A', 'E', 'I', 'O', 'U', 'Y'});
-FluentAssert.that(LATIN_ALPHABET).doesNotContainSubsequence(new List<String>{'Y', 'U', 'O', 'I', 'E', 'A'});
+Fluent__Assert.that(LATIN_ALPHABET).containsSubsequence(new List<String>{'A', 'E', 'I', 'O', 'U', 'Y'});
+Fluent__Assert.that(LATIN_ALPHABET).doesNotContainSubsequence(new List<String>{'Y', 'U', 'O', 'I', 'E', 'A'});
 
 // Failure
-FluentAssert.that(LATIN_ALPHABET).containsSubsequence(new List<String>{'Y', 'U', 'O', 'I', 'E', 'A'});
-FluentAssert.that(LATIN_ALPHABET).doesNotContainSubsequence(new List<String>{'A', 'E', 'I', 'O', 'U', 'Y'});
+Fluent__Assert.that(LATIN_ALPHABET).containsSubsequence(new List<String>{'Y', 'U', 'O', 'I', 'E', 'A'});
+Fluent__Assert.that(LATIN_ALPHABET).doesNotContainSubsequence(new List<String>{'A', 'E', 'I', 'O', 'U', 'Y'});
 ```
 
 #### isSorted (`List` only)
@@ -212,44 +212,44 @@ This method will pass if the list is sorted. Implementation will create a new li
 Be aware that sorting is done acording to [Apex Developer guide](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_collections_lists_sorting.htm).
 ```
 // Pass
-FluentAssert.that(LATIN_ALPHABET).isSorted();
+Fluent__Assert.that(LATIN_ALPHABET).isSorted();
 
 // Failure
-FluentAssert.that(new List<String>{'Z', 'A'}).isSorted();
+Fluent__Assert.that(new List<String>{'Z', 'A'}).isSorted();
 ```
 
 #### containsOnly
 This method will pass if the collection contains only the given elements. Ordering is not taken into account and elements can be in both collections more than once.
 ```
 // Pass
-FluentAssert.that(ABC).containsOnly(new List<String>{'A', 'B', 'C'})
-                      .containsOnly(new List<String>{'A', 'A', 'B', 'C'})
-                      .containsOnly(new List<String>{'C', 'B', 'A', 'C'});
+Fluent__Assert.that(ABC).containsOnly(new List<String>{'A', 'B', 'C'})
+                        .containsOnly(new List<String>{'A', 'A', 'B', 'C'})
+                        .containsOnly(new List<String>{'C', 'B', 'A', 'C'});
 
 // Failure
-FluentAssert.that(LATIN_ALPHABET).containsOnly(new List<String>{'A', 'B'});
+Fluent__Assert.that(LATIN_ALPHABET).containsOnly(new List<String>{'A', 'B'});
 ```
 
 #### containsOnlyOnce (`List` only)
 This method will pass if the collection contains only the given elements only once in any given order.
 ```
 // Pass
-FluentAssert.that(ABC).containsOnly(new List<String>{'A', 'B'})
-                      .containsOnly(new List<String>{'C', 'B'});
+Fluent__Assert.that(ABC).containsOnly(new List<String>{'A', 'B'})
+                        .containsOnly(new List<String>{'C', 'B'});
 
 // Failure
-FluentAssert.that(ABC).containsOnly(new List<String>{'D'});
-FluentAssert.that(new List<Object>{'C', 'C'}).containsOnly(new List<String>{'C'});
+Fluent__Assert.that(ABC).containsOnly(new List<String>{'D'});
+Fluent__Assert.that(new List<Object>{'C', 'C'}).containsOnly(new List<String>{'C'});
 ```
 #### containsOnlyNulls
 This method will pass if actual has values that are `null` only.
 ```
 // Pass
-FluentAssert.that(new List<String>{null, null}).containsOnlyNulls();
+Fluent__Assert.that(new List<String>{null, null}).containsOnlyNulls();
 
 // Failure
-FluentAssert.that(EMPTY_LIST).containsOnlyNulls();
-FluentAssert.that(LATIN_ALPHABET).containsOnlyNulls();
+Fluent__Assert.that(EMPTY_LIST).containsOnlyNulls();
+Fluent__Assert.that(LATIN_ALPHABET).containsOnlyNulls();
 ```
 
 ### Date / Datetime / Time
@@ -259,50 +259,50 @@ Snippet below works for `Date`, `Datetime`, and `Time`. Also supports `isEqualTo
 This methods will pass (or not) if actual is between (start/end included) or stricly between (start/end excluded) a range.
 ```
 // Pass
-FluentAssert.that(Date.newInstance(2020, 5, 12)).isBetween​(Date.newInstance(2020, 5, 1), Date.newInstance(2020, 5, 12));
-FluentAssert.that(Date.newInstance(2020, 5, 12)).isStrictlyBetween​(Date.newInstance(2020, 5, 1), Date.newInstance(2020, 5, 13));
+Fluent__Assert.that(Date.newInstance(2020, 5, 12)).isBetween​(Date.newInstance(2020, 5, 1), Date.newInstance(2020, 5, 12));
+Fluent__Assert.that(Date.newInstance(2020, 5, 12)).isStrictlyBetween​(Date.newInstance(2020, 5, 1), Date.newInstance(2020, 5, 13));
 
 // Failure
-FluentAssert.that(Date.newInstance(2020, 5, 12)).isBetween​(Date.newInstance(2020, 5, 1), Date.newInstance(2020, 5, 10));
-FluentAssert.that(Date.newInstance(2020, 5, 12)).isStrictlyBetween​(Date.newInstance(2020, 5, 1), Date.newInstance(2020, 5, 12));
+Fluent__Assert.that(Date.newInstance(2020, 5, 12)).isBetween​(Date.newInstance(2020, 5, 1), Date.newInstance(2020, 5, 10));
+Fluent__Assert.that(Date.newInstance(2020, 5, 12)).isStrictlyBetween​(Date.newInstance(2020, 5, 1), Date.newInstance(2020, 5, 12));
 ```
 
 #### isAfter / isAfterOrEqualTo
 This methods will pass (or not) if actual is after (or equal to) an expected Date.
 ```
 // Pass
-FluentAssert.that(Date.newInstance(2020, 5, 12)).isAfter(Date.newInstance(2020, 5, 11));
+Fluent__Assert.that(Date.newInstance(2020, 5, 12)).isAfter(Date.newInstance(2020, 5, 11));
 
-FluentAssert.that(Date.newInstance(2020, 5, 12)).isAfterOrEqualTo(Date.newInstance(2020, 5, 12));
+Fluent__Assert.that(Date.newInstance(2020, 5, 12)).isAfterOrEqualTo(Date.newInstance(2020, 5, 12));
 
 // Failure
-FluentAssert.that(Date.newInstance(2020, 5, 12)).isAfter(Date.newInstance(2020, 5, 10));
+Fluent__Assert.that(Date.newInstance(2020, 5, 12)).isAfter(Date.newInstance(2020, 5, 10));
 
-FluentAssert.that(Date.newInstance(2020, 5, 12)).isAfterOrEqualTo(Date.newInstance(2020, 5, 11));
+Fluent__Assert.that(Date.newInstance(2020, 5, 12)).isAfterOrEqualTo(Date.newInstance(2020, 5, 11));
 ```
 
 #### isBefore / isBeforeOrEqualTo
 This methods will pass (or not) if actual is before (or equal to) an expected Date.
 ```
 // Pass
-FluentAssert.that(Date.newInstance(2020, 5, 12)).isBefore(Date.newInstance(2020, 5, 13));
+Fluent__Assert.that(Date.newInstance(2020, 5, 12)).isBefore(Date.newInstance(2020, 5, 13));
 
-FluentAssert.that(Date.newInstance(2020, 5, 12)).isBeforeOrEqualTo(Date.newInstance(2020, 5, 12));
+Fluent__Assert.that(Date.newInstance(2020, 5, 12)).isBeforeOrEqualTo(Date.newInstance(2020, 5, 12));
 
 // Failure
-FluentAssert.that(Date.newInstance(2020, 5, 12)).isBefore(Date.newInstance(2020, 5, 12));
+Fluent__Assert.that(Date.newInstance(2020, 5, 12)).isBefore(Date.newInstance(2020, 5, 12));
 
-FluentAssert.that(Date.newInstance(2020, 5, 12)).isBeforeOrEqualTo(Date.newInstance(2020, 5, 13));
+Fluent__Assert.that(Date.newInstance(2020, 5, 12)).isBeforeOrEqualTo(Date.newInstance(2020, 5, 13));
 ```
 
 #### isToday
 This methods will pass (or not) if actual is today.
 ```
 // Pass
-FluentAssert.that(Date.today()).isToday();
+Fluent__Assert.that(Date.today()).isToday();
 
 // Failure
-FluentAssert.that(Date.today().addDays(-1)).isToday();
+Fluent__Assert.that(Date.today().addDays(-1)).isToday();
 ```
 
 ### String
@@ -340,11 +340,11 @@ Method                                                                          
 This method will pass if the String has a length as expected.
 ```
 // Pass
-FluentAssert.that('').hasLength(0);
-FluentAssert.that('ABC').hasLength(3);
+Fluent__Assert.that('').hasLength(0);
+Fluent__Assert.that('ABC').hasLength(3);
 
 // Failure
-FluentAssert.that('ABC').hasLength(4);
+Fluent__Assert.that('ABC').hasLength(4);
 ```
 
 ### Map
@@ -363,35 +363,35 @@ Also supports `isEqualTo`, `isNotEqualTo`, `isNull`, `isNotNull`, `isSame`, and 
 #### isEmpty / isNotEmpty
 ```
 // Pass
-FluentAssert.that(EMPTY).isEmpty();
-FluentAssert.that(ABC).isNotEmpty();
+Fluent__Assert.that(EMPTY).isEmpty();
+Fluent__Assert.that(ABC).isNotEmpty();
 
 // Failure
-FluentAssert.that(ABC).isEmpty();
-FluentAssert.that(EMPTY).isNotEmpty();
+Fluent__Assert.that(ABC).isEmpty();
+Fluent__Assert.that(EMPTY).isNotEmpty();
 ```
 #### containsEntry
 This method will pass if the Map contains the entry.
 ```
 // Pass
-FluentAssert.that(ABC).containsEntry('A', 'a');
+Fluent__Assert.that(ABC).containsEntry('A', 'a');
 
 // Failure
-FluentAssert.that(EMPTY).containsEntry('A', 'a');
-FluentAssert.that(ABC).containsEntry('A', 'b');
-FluentAssert.that(ABC).containsEntry('B', 'a');
+Fluent__Assert.that(EMPTY).containsEntry('A', 'a');
+Fluent__Assert.that(ABC).containsEntry('A', 'b');
+Fluent__Assert.that(ABC).containsEntry('B', 'a');
 ```
 
 #### doesNotContainEntry
 This method will pass if the Map contains the entry.
 ```
 // Pass
-FluentAssert.that(EMPTY).doesNotContainEntry('A', 'a');
-FluentAssert.that(ABC).doesNotContainEntry('A', 'b')
-                      .doesNotContainEntry('B', 'a');
+Fluent__Assert.that(EMPTY).doesNotContainEntry('A', 'a');
+Fluent__Assert.that(ABC).doesNotContainEntry('A', 'b')
+                        .doesNotContainEntry('B', 'a');
 
 // Failure
-FluentAssert.that(ABC).doesNotContainEntry('A', 'a');
+Fluent__Assert.that(ABC).doesNotContainEntry('A', 'a');
 ```
 
 ### Id
@@ -400,10 +400,10 @@ For now support for `Id` is pretty straitforward. Also supports `isEqualTo`, `is
 #### isSObjectType
 ```
 // Pass
-FluentAssert.that(UserInfo.getUserId()).isSObjectType(User.SObjectType);
+Fluent__Assert.that(UserInfo.getUserId()).isSObjectType(User.SObjectType);
 
 // Failure
-FluentAssert.that(UserInfo.getUserId()).isSObjectType(Account.SObjectType);
+Fluent__Assert.that(UserInfo.getUserId()).isSObjectType(Account.SObjectType);
 ```
 
 ### Blob
@@ -412,8 +412,8 @@ Support for `Blob`. Also supports `isEqualTo`, `isNotEqualTo`, `isNull`, `isNotN
 #### hasSize / hasSameSizeAs
 ```
 // Pass
-FluentAssert.that(someBlob).hasSize(25);
-FluentAssert.that(someBlob).hasSameSizeAs(someOtherBlob);
+Fluent__Assert.that(someBlob).hasSize(25);
+Fluent__Assert.that(someBlob).hasSameSizeAs(someOtherBlob);
 ```
 
 ## Generating and building

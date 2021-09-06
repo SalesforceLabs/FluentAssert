@@ -7,9 +7,9 @@
     /**
      * @description Asserts that `actual` is null.
      * @return this to allow further assert in a fluent manner
-     * @throws FluentAssert.AssertException if actual is not null.
+     * @throws AssertException if actual is not null.
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert isNull() {
+    global ${supportedAssert.type?keep_before('<')}Assert isNull() {
         assert(actual == null, 'Expecting {0} to be null', new List<Object> {actual});
         return this;
     }

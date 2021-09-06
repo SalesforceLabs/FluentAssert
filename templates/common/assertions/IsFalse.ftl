@@ -7,9 +7,9 @@
     /**
      * @description Asserts that `actual` is `false`.
      * @return this to allow further assert in a fluent manner
-     * @throws FluentAssert.AssertException if actual is not `false`.
+     * @throws AssertException if actual is not `false`.
      */
-    public ${classPrefix}${supportedAssert.type?keep_before('<')}Assert isFalse() {
+    global ${supportedAssert.type?keep_before('<')}Assert isFalse() {
         notNull(actual, 'actual');
         isEqualTo(false);
         return this;

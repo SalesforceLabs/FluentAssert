@@ -11,20 +11,20 @@
 ]>
 <@pp.dropOutputFile />
 <#list numberDataTypes as numberDataType>
-  <@com.apexClass className="${classPrefix}${numberDataType.nativeDataType}IsEmptyTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
+  <@com.apexClass className="${numberDataType.nativeDataType}IsEmptyTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
 @IsTest
-public class ${classPrefix}${numberDataType.nativeDataType}IsEmptyTest {
+public class ${numberDataType.nativeDataType}IsEmptyTest {
     @IsTest
     static void testPositiveScenarios() {
-        FluentAssert.that((${numberDataType.castingValue})${numberDataType.emptyValue}).isEmpty();
+        Assert.that((${numberDataType.castingValue})${numberDataType.emptyValue}).isEmpty();
     }
 
     @IsTest
     static void testNegativeScenarios() {
         try {
-            FluentAssert.that((${numberDataType.castingValue})${numberDataType.nonEmptyValue}).isEmpty();
+            Assert.that((${numberDataType.castingValue})${numberDataType.nonEmptyValue}).isEmpty();
             System.assert(false, 'No assert exception thrown');
-        } catch(FluentAssert.AssertException ae) {
+        } catch(AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -36,7 +36,7 @@ public class ${classPrefix}${numberDataType.nativeDataType}IsEmptyTest {
     @IsTest
     static void testValidations() {
         try {
-            FluentAssert.that((${numberDataType.castingValue}) null).isEmpty();
+            Assert.that((${numberDataType.castingValue}) null).isEmpty();
             System.assert(false, 'No assert exception thrown');
         } catch(NullPointerException npe) {
             // Success! Correct exception being thrown
