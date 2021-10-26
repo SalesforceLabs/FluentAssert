@@ -30,4 +30,4 @@ jobs:
       - name: Promote package
         if: ${{ steps.get_release.outputs.prerelease == 'false' && steps.get_release.outputs.draft == 'false' }}
         run: |
-          # sfdx force:package:version:promote -p FluentAssert@${{ steps.get_release.outputs.tag_name }}-$GITHUB_RUN_NUMBER --noprompt
+          sfdx force:package:version:promote -p FluentAssert@${{ steps.get_release.outputs.tag_name }}-$GITHUB_RUN_NUMBER --noprompt
