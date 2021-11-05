@@ -25,7 +25,6 @@ public class ${dataType.native}IsTodayTest {
         failureScenario((${dataType.native}) actual + 1);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${dataType.native} actual) {
         try {
             Assert.that(actual).isToday();

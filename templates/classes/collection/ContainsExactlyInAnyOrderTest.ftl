@@ -79,7 +79,6 @@ public class ${numberDataType.nativeDataType}ContainsExactlyInAnyOrderTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${numberDataType.castingValue} actual, ${numberDataType.castingValue} expected) {
         try {
             Assert.that(actual).containsExactlyInAnyOrder(expected);

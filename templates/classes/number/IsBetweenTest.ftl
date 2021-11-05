@@ -35,7 +35,6 @@ public class ${dataType.native}IsBetweenTest {
         failureScenario((${dataType.native}) (actual${dataType.deltaTemplate?replace("DELTA", "2")}${dataType.deltaTemplate?replace("DELTA", dataType.minimumDelta)}), actual${dataType.deltaTemplate?replace("DELTA", "-2")}, actual${dataType.deltaTemplate?replace("DELTA", "2")});
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${dataType.native} actual, ${dataType.native} fromInclusive, ${dataType.native} toInclusive) {
         try {
             Assert.that(actual).isBetween(fromInclusive, toInclusive);
@@ -58,7 +57,6 @@ public class ${dataType.native}IsBetweenTest {
         validationScenario(null, null, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${dataType.native} actual, ${dataType.native} fromInclusive, ${dataType.native} toInclusive) {
         try {
             Assert.that(actual).isBetween(fromInclusive, toInclusive);

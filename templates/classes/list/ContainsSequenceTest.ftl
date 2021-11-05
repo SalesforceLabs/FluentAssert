@@ -52,7 +52,6 @@ public class ListContainsSequenceTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(List<Object> actual, List<Object> expected) {
         try {
             Assert.that(actual).containsSequence(expected);

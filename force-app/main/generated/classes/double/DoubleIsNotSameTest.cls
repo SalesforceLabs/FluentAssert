@@ -34,7 +34,6 @@ public class DoubleIsNotSameTest {
         validationScenario(null, (Double) SELF);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Double actual, Object expected) {
         try {
             Assert.that(actual).isNotSame(expected);

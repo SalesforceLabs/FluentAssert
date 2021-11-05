@@ -21,7 +21,6 @@ public class IntegerIsStrictlyBetweenTest {
         failureScenario((Integer) actual, actual, (Integer) (actual + 1));
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Integer actual, Integer fromInclusive, Integer toInclusive) {
         try {
             Assert.that(actual).isStrictlyBetween(fromInclusive, toInclusive);
@@ -44,7 +43,6 @@ public class IntegerIsStrictlyBetweenTest {
         validationScenario(null, null, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Integer actual, Integer fromInclusive, Integer toInclusive) {
         try {
             Assert.that(actual).isStrictlyBetween(fromInclusive, toInclusive);

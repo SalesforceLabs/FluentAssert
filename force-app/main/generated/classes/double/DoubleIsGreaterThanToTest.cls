@@ -19,7 +19,6 @@ public class DoubleIsGreaterThanToTest {
         failureScenario((Double) actual, actual + (Double) 0.1);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Double actual, Double expected) {
         try {
             Assert.that(actual).isGreaterThan(expected);
@@ -40,7 +39,6 @@ public class DoubleIsGreaterThanToTest {
         validationScenario(null, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Double actual, Double expected) {
         try {
             Assert.that(actual).isGreaterThan(expected);

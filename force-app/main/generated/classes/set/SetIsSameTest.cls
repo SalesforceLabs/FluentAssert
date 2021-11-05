@@ -34,7 +34,6 @@ public class SetIsSameTest {
         validationScenario(null, (Set<Object>) SELF);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Set<Object> actual, Object expected) {
         try {
             Assert.that(actual).isSame(expected);

@@ -16,7 +16,6 @@ public class LongIsInSetTest {
         failureScenario((Long) 10, new Set<Object>());
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Long actual, Set<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);
@@ -36,7 +35,6 @@ public class LongIsInSetTest {
         validationScenario((Long) 10, (Set<Object>) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Long actual, Set<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);

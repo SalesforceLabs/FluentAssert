@@ -16,7 +16,6 @@ public class IdIsInListTest {
         failureScenario((Id) UserInfo.getOrganizationId(), new List<Object>());
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Id actual, List<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);
@@ -36,7 +35,6 @@ public class IdIsInListTest {
         validationScenario((Id) UserInfo.getOrganizationId(), (List<Object>) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Id actual, List<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);

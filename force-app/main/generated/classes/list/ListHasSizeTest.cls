@@ -34,7 +34,6 @@ public class ListHasSizeTest {
         validationScenario(new List<Object>(), null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(List<Object> actual, Integer expected) {
         try {
             Assert.that(actual).hasSize(expected);

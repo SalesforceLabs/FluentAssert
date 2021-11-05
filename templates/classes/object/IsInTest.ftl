@@ -16,7 +16,8 @@
     {"type":"Time",    "concreteType":"Time",                "value":"Time.newInstance(1, 2, 3, 4)"},
     {"type":"String",  "concreteType":"String",              "value":"'X'"},
     {"type":"Object",  "concreteType":"Object",              "value":"'X'"},
-    {"type":"Blob",    "concreteType":"Blob",                "value":"Blob.valueOf('X')"}
+    {"type":"Blob",    "concreteType":"Blob",                "value":"Blob.valueOf('X')"},
+    {"type":"SObject", "concreteType":"SObject",             "value":"new Account(Name = 'X')"}
 ]>
 <@pp.dropOutputFile />
 <#list ["Set", "List"] as colType>
@@ -34,7 +35,6 @@ public class ${dataType.type}IsIn${colType}Test {
         failureScenario((${dataType.concreteType}) ${dataType.value}, new ${colType}<Object>());
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${dataType.type} actual, ${colType}<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);
@@ -54,7 +54,6 @@ public class ${dataType.type}IsIn${colType}Test {
         validationScenario((${dataType.concreteType}) ${dataType.value}, (${colType}<Object>) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${dataType.concreteType} actual, ${colType}<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);

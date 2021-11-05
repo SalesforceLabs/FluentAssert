@@ -25,7 +25,6 @@ public class SetContainsTest {
         failureScenario(PART_OF_ALPHABET, new Set<Object>{'K'});
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Set<Object> actual, List<Object> expected) {
         try {
             Assert.that(actual).contains(expected);
@@ -39,7 +38,6 @@ public class SetContainsTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Set<Object> actual, Set<Object> expected) {
         try {
             Assert.that(actual).contains(expected);
@@ -84,7 +82,6 @@ public class SetContainsTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Set<Object> actual, List<Object> expected) {
         try {
             Assert.that(actual).contains(expected);
@@ -98,7 +95,6 @@ public class SetContainsTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Set<Object> actual, Set<Object> expected) {
         try {
             Assert.that(actual).contains(expected);

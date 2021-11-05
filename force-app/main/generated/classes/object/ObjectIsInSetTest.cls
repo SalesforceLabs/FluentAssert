@@ -16,7 +16,6 @@ public class ObjectIsInSetTest {
         failureScenario((Object) 'X', new Set<Object>());
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Object actual, Set<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);
@@ -36,7 +35,6 @@ public class ObjectIsInSetTest {
         validationScenario((Object) 'X', (Set<Object>) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Object actual, Set<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);

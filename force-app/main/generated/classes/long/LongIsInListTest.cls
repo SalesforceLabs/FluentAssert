@@ -16,7 +16,6 @@ public class LongIsInListTest {
         failureScenario((Long) 10, new List<Object>());
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Long actual, List<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);
@@ -36,7 +35,6 @@ public class LongIsInListTest {
         validationScenario((Long) 10, (List<Object>) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Long actual, List<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);

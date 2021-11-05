@@ -19,7 +19,6 @@ public class IntegerIsLessThanTest {
         failureScenario((Integer) actual, actual + (Integer) -1);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Integer actual, Integer expected) {
         try {
             Assert.that(actual).isLessThan(expected);
@@ -40,7 +39,6 @@ public class IntegerIsLessThanTest {
         validationScenario(null, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Integer actual, Integer expected) {
         try {
             Assert.that(actual).isLessThan(expected);

@@ -33,7 +33,6 @@ public class MapContainsTest {
         failureScenario(ABC,   'B', 'a');
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Map<Object, Object> actual, Object expectedKey, Object expectedValue) {
         try {
             Assert.that(actual).containsEntry(expectedKey, expectedValue);
@@ -53,8 +52,7 @@ public class MapContainsTest {
         validationScenario(ABC, null, 'a');
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
-    private static void validationScenario(Map<Object, Object> actual, Object expectedKey, Object expectedValue) {
+        private static void validationScenario(Map<Object, Object> actual, Object expectedKey, Object expectedValue) {
         try {
             Assert.that(actual).containsEntry(expectedKey, expectedValue);
             System.assert(false, 'No assert exception thrown');

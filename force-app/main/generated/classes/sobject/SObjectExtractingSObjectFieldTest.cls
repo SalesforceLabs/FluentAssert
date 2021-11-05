@@ -1,0 +1,66 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+@IsTest
+public class SObjectExtractingSObjectFieldTest {
+    @IsTest
+    static void testPassingScenarios() {
+        // Given
+        Account a = new Account(
+            Name          = 'X',
+            AccountNumber = 'Y'
+        );
+        List<Object> expectedValues = new List<Object>{
+            a.Name,
+            a.AccountNumber,
+            null
+        };
+
+        // When / Then
+        Assert.that((SObject) a)
+              .extracting(new List<Schema.SObjectField>{Schema.Account.Name,Schema.Account.AccountNumber,Schema.Account.AccountSource})
+                .containsExactly(expectedValues)
+                .back()
+              .isSame(a);
+    }
+
+    @IsTest
+    static void testValidations() {
+        Account a = new Account(Name = 'X');
+        
+        validationScenarioNPE(null, new List<Schema.SObjectField>{Schema.Account.Name,Schema.Account.AccountNumber,Schema.Account.AccountSource});
+        validationScenarioNPE(a, null);
+
+        validationScenarioIAE(a, new List<Schema.SObjectField>());
+        validationScenarioIAE(a, new List<Schema.SObjectField>{Schema.Account.Name,null,Schema.Account.AccountNumber});
+    }
+
+    private static void validationScenarioNPE(SObject actual, List<Schema.SObjectField> fields) {
+        try {
+            Assert.that(actual).extracting(fields);
+            System.assert(false, 'No assert exception thrown');
+        } catch(NullPointerException npe) {
+            // Success! Correct exception being thrown
+            System.debug(LoggingLevel.INTERNAL, npe);
+        } catch(Exception e) {
+            System.assert(false, 'Wrong exception thrown, got: ' + e.getTypeName() + ', message: \\n' + e.getMessage());
+            System.debug(LoggingLevel.ERROR, e);
+        }
+    }
+
+    private static void validationScenarioIAE(SObject actual, List<Schema.SObjectField> fields) {
+        try {
+            Assert.that(actual).extracting(fields);
+            System.assert(false, 'No assert exception thrown');
+        } catch(IllegalArgumentException iae) {
+            // Success! Correct exception being thrown
+            System.debug(LoggingLevel.INTERNAL, iae);
+        } catch(Exception e) {
+            System.assert(false, 'Wrong exception thrown, got: ' + e.getTypeName() + ', message: \\n' + e.getMessage());
+            System.debug(LoggingLevel.ERROR, e);
+        }
+    }
+}

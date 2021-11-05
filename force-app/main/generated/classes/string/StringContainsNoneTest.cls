@@ -24,7 +24,6 @@ public class StringContainsNoneTest {
         failureScenario(actual, expected);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(String actual, String expected) {
         try {
             Assert.that(actual).containsNone(expected);

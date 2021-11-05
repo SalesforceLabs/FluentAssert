@@ -72,7 +72,6 @@ public class SetContainsExactlyInAnyOrderTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Set<Object> actual, Set<Object> expected) {
         try {
             Assert.that(actual).containsExactlyInAnyOrder(expected);

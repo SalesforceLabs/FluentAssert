@@ -19,7 +19,6 @@ public class TimeIsAfterTest {
         failureScenario((Time) actual, actual.addMilliseconds(1));
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Time actual, Time expected) {
         try {
             Assert.that(actual).isAfter(expected);
@@ -40,7 +39,6 @@ public class TimeIsAfterTest {
         validationScenario(null, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Time actual, Time expected) {
         try {
             Assert.that(actual).isAfter(expected);

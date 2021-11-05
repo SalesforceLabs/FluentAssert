@@ -21,7 +21,6 @@ public class DecimalIsStrictlyBetweenTest {
         failureScenario((Decimal) actual, actual, (Decimal) (actual + 0.1));
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Decimal actual, Decimal fromInclusive, Decimal toInclusive) {
         try {
             Assert.that(actual).isStrictlyBetween(fromInclusive, toInclusive);
@@ -44,7 +43,6 @@ public class DecimalIsStrictlyBetweenTest {
         validationScenario(null, null, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Decimal actual, Decimal fromInclusive, Decimal toInclusive) {
         try {
             Assert.that(actual).isStrictlyBetween(fromInclusive, toInclusive);

@@ -34,7 +34,6 @@ public class BlobHasSizeTest {
         validationScenario(Blob.valueOf(''), null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Blob actual, Integer expected) {
         try {
             Assert.that(actual).hasSize(expected);

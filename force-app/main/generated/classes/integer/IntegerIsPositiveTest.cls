@@ -17,7 +17,6 @@ public class IntegerIsPositiveTest {
         failureScenario(-1);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Integer actual) {
         try {
             Assert.that(actual).isPositive();

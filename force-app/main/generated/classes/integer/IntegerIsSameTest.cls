@@ -34,7 +34,6 @@ public class IntegerIsSameTest {
         validationScenario(null, (Integer) SELF);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Integer actual, Object expected) {
         try {
             Assert.that(actual).isSame(expected);

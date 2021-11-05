@@ -18,7 +18,6 @@ public class DecimalIsNotEqualToTest {
         failureScenario(0, 0);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Decimal actual, Decimal expected) {
         try {
             Assert.that(actual).isNotEqualTo(expected);
@@ -38,7 +37,6 @@ public class DecimalIsNotEqualToTest {
         validationScenario(0, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Decimal actual, Decimal expected) {
         try {
             Assert.that(actual).isNotEqualTo(expected);

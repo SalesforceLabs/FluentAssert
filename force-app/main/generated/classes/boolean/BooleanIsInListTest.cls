@@ -16,7 +16,6 @@ public class BooleanIsInListTest {
         failureScenario((Boolean) true, new List<Object>());
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Boolean actual, List<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);
@@ -36,7 +35,6 @@ public class BooleanIsInListTest {
         validationScenario((Boolean) true, (List<Object>) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Boolean actual, List<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);

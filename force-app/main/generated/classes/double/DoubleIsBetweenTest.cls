@@ -23,7 +23,6 @@ public class DoubleIsBetweenTest {
         failureScenario((Double) (actual + 2 + 0.1), actual + -2, actual + 2);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Double actual, Double fromInclusive, Double toInclusive) {
         try {
             Assert.that(actual).isBetween(fromInclusive, toInclusive);
@@ -46,7 +45,6 @@ public class DoubleIsBetweenTest {
         validationScenario(null, null, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Double actual, Double fromInclusive, Double toInclusive) {
         try {
             Assert.that(actual).isBetween(fromInclusive, toInclusive);

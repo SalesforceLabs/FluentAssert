@@ -22,7 +22,6 @@ public class ListContainsExactlyTest {
         failureScenario(PART_OF_ALPHABET, new List<String>{'A', 'B', 'C'});
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(List<Object> actual, List<Object> expected) {
         try {
             Assert.that(actual).containsExactly(expected);
@@ -54,7 +53,6 @@ public class ListContainsExactlyTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(List<Object> actual, List<Object> expected) {
         try {
             Assert.that(actual).containsExactly(expected);

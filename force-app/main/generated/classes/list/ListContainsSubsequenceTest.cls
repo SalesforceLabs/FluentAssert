@@ -48,7 +48,6 @@ public class ListContainsSubsequenceTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(List<Object> actual, List<Object> expected) {
         try {
             Assert.that(actual).containsSubsequence(expected);

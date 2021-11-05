@@ -16,7 +16,6 @@ public class MapIsNotEqualToTest {
         failureScenario(new Map<Object, Object>{'X' => 'X'}, new Map<Object, Object>{'X' => 'X'});
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Map<Object, Object> actual, Map<Object, Object> expected) {
         try {
             Assert.that(actual).isNotEqualTo(expected);
@@ -36,7 +35,6 @@ public class MapIsNotEqualToTest {
         validationScenario(new Map<Object, Object>{'X' => 'X'}, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Map<Object, Object> actual, Map<Object, Object> expected) {
         try {
             Assert.that(actual).isNotEqualTo(expected);

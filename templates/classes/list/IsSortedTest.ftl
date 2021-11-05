@@ -30,7 +30,6 @@ public class ListIsSortedTest {
         testFailureScenario(new List<Long>{5, 4, 3, 2, 1});
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void testFailureScenario(List<Object> actual) {
         try {
             Assert.that(actual).isSorted();

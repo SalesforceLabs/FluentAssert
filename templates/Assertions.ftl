@@ -56,7 +56,8 @@
             "method": "size",
             "returnType": "Integer"
         }
-        ]}
+        ]},
+    {"type":"SObject",     "asserts": ["Extracting", "HasErrors", "HasNoErrors", "IsClone", "IsRecordType"]}
 ]>
 <#list supportedAsserts as supportedAssert>
     <#assign asserts = supportedAssert.asserts![] />

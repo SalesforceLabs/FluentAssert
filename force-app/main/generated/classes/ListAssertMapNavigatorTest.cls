@@ -9,14 +9,14 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testBack() {
         // Given
-        MapAssert expectedMapAssert = Assert.that(new Map<Object, Object>());
-        ListAssertMapNavigator navigator = new ListAssertMapNavigator(null, expectedMapAssert);
+        MapAssert expectedAssert = Assert.that(new Map<Object, Object>());
+        ListAssertMapNavigator navigator = new ListAssertMapNavigator(null, expectedAssert);
 
         // When
-        MapAssert actualMapAssert = navigator.back();
+        MapAssert actualAssert = navigator.back();
 
         // Then
-        System.assert(expectedMapAssert === actualMapAssert, 'Returned navigator should be self');
+        System.assert(expectedAssert === actualAssert, 'Returned navigator should be self');
     }
 
     @IsTest

@@ -19,7 +19,6 @@ public class DateIsBeforeOrEqualToTest {
         failureScenario((Date) actual, actual.addDays(-1));
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Date actual, Date expected) {
         try {
             Assert.that(actual).isBeforeOrEqualTo(expected);
@@ -40,7 +39,6 @@ public class DateIsBeforeOrEqualToTest {
         validationScenario(null, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Date actual, Date expected) {
         try {
             Assert.that(actual).isBeforeOrEqualTo(expected);

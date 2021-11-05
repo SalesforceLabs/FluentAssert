@@ -16,7 +16,6 @@ public class SetIsNotEqualToTest {
         failureScenario(new Set<Object>{'X'}, new Set<Object>{'X'});
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Set<Object> actual, Set<Object> expected) {
         try {
             Assert.that(actual).isNotEqualTo(expected);
@@ -36,7 +35,6 @@ public class SetIsNotEqualToTest {
         validationScenario(new Set<Object>{'X'}, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Set<Object> actual, Set<Object> expected) {
         try {
             Assert.that(actual).isNotEqualTo(expected);

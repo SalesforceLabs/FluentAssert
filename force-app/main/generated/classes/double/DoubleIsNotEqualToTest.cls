@@ -18,7 +18,6 @@ public class DoubleIsNotEqualToTest {
         failureScenario(0, 0);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Double actual, Double expected) {
         try {
             Assert.that(actual).isNotEqualTo(expected);
@@ -38,7 +37,6 @@ public class DoubleIsNotEqualToTest {
         validationScenario(0, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Double actual, Double expected) {
         try {
             Assert.that(actual).isNotEqualTo(expected);

@@ -16,7 +16,6 @@ public class DecimalIsInSetTest {
         failureScenario((Decimal) 10.0, new Set<Object>());
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Decimal actual, Set<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);
@@ -36,7 +35,6 @@ public class DecimalIsInSetTest {
         validationScenario((Decimal) 10.0, (Set<Object>) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Decimal actual, Set<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);

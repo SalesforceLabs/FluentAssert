@@ -21,7 +21,6 @@ public class TimeIsStrictlyBetweenTest {
         failureScenario((Time) actual, actual, (Time) (actual.addMilliseconds(1)));
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Time actual, Time fromInclusive, Time toInclusive) {
         try {
             Assert.that(actual).isStrictlyBetween(fromInclusive, toInclusive);
@@ -44,7 +43,6 @@ public class TimeIsStrictlyBetweenTest {
         validationScenario(null, null, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Time actual, Time fromInclusive, Time toInclusive) {
         try {
             Assert.that(actual).isStrictlyBetween(fromInclusive, toInclusive);

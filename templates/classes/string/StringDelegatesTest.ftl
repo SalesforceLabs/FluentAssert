@@ -266,7 +266,6 @@ public class String${sd.method?cap_first}Test {
         </#list>
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(String actual<#if (sd.interface??)>, <#list sd.interface as sdi>${sdi.type} ${sdi.name}<#sep>, </#list></#if>) {
         try {
             Assert.that(actual).${sd.method}(<#if (sd.interface??)><#list sd.interface as sdi>${sdi.name}<#sep>, </#list></#if>);

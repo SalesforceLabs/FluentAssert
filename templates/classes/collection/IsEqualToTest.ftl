@@ -25,7 +25,6 @@ public class ${numberDataType.nativeDataType}IsEqualToTest {
         failureScenario(new ${numberDataType.castingValue}{${numberDataType.value1!'\'X\''}}, new ${numberDataType.castingValue}{${numberDataType.value2!'\'Y\''}});
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${numberDataType.castingValue} actual, ${numberDataType.castingValue} expected) {
         try {
             Assert.that(actual).isEqualTo(expected);
@@ -45,7 +44,6 @@ public class ${numberDataType.nativeDataType}IsEqualToTest {
         validationScenario(new ${numberDataType.castingValue}{${numberDataType.value1!'\'X\''}}, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${numberDataType.castingValue} actual, ${numberDataType.castingValue} expected) {
         try {
             Assert.that(actual).IsEqualTo(expected);

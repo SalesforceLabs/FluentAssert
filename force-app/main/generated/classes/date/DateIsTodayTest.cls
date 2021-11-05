@@ -19,7 +19,6 @@ public class DateIsTodayTest {
         failureScenario((Date) actual + 1);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Date actual) {
         try {
             Assert.that(actual).isToday();

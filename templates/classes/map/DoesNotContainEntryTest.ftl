@@ -43,7 +43,6 @@ public class MapDoesNotContainEntryTest {
         validationScenario(ABC, null, 'a');
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Map<Object, Object> actual, Object expectedKey, Object expectedValue) {
         try {
             Assert.that(actual).doesNotContainEntry(expectedKey, expectedValue);

@@ -16,7 +16,6 @@ public class IntegerIsInListTest {
         failureScenario((Integer) 10, new List<Object>());
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Integer actual, List<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);
@@ -36,7 +35,6 @@ public class IntegerIsInListTest {
         validationScenario((Integer) 10, (List<Object>) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Integer actual, List<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);

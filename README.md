@@ -1,5 +1,5 @@
 # Fluent Assertions for Apex
-This project aims provide better asserts for tests in Apex. Inspired by [AssertJ](https://assertj.github.io/doc/) and other fluent libraries. Currently supports Boolean, Decimal, Double, Integer, Long, List, Set, Map, Id, Blob, String, Date, Time, Datetime and generic Object.
+This project aims provide better asserts for tests in Apex. Inspired by [AssertJ](https://assertj.github.io/doc/) and other fluent libraries. Currently supports SObject, Boolean, Decimal, Double, Integer, Long, List, Set, Map, Id, Blob, String, Date, Time, Datetime and generic Object.
 
 ## Usage
 FluentAssert is available as a managed package in App Exchange (URL pending) under namespace `Fluent`.
@@ -57,8 +57,75 @@ Fluent__Assert.that(something).isSame(somethingElse);
 Fluent__Assert.that(something).isNotSame(somethingElse);
 
 // In some collection
-Fluent__Assert.that(something).isIn(someList));
+Fluent__Assert.that(something).isIn(someList);
 Fluent__Assert.that(something).isIn(someSet);
+```
+
+### SObject
+Also supports `isEqualTo`, `isNotEqualTo`, `isNull`, `isNotNull`, `isSame`, `isNotSame`, and `IsIn`.
+
+#### Extracting
+Use `extracting()` to dymanically extract fields and assert against them as as `List`.
+
+```
+Account a = ...
+
+// Works with either a comma seperated list in String...
+Fluent__Assert.that((a)
+              .extracting('Name, AccountNumber, AccountSource')
+                .containsExactly(expectedValues)
+                  .back()
+                .isSame(a);
+
+// or a `List<Schema.SObjectField>`
+Fluent__Assert.that((a)
+              .extracting(new List<Schema.SObjectField>{Schema.Account.Name, Schema.Account.AccountNumber, Schema.Account.AccountSource})
+                .containsExactly(expectedValues)
+                  .back()
+                .isSame(a);
+```
+
+#### hasErrors
+```
+// Pass
+Account a = new Account();
+a.addError('FluentAssert specific error');
+Assert.that(a).hasErrors();
+
+// Failure
+Assert.that(new Account()).hasErrors();
+```
+
+#### hasNoErrors
+```
+// Pass
+Assert.that(new Account()).hasNoErrors();
+
+// Failure
+Account a = new Account();
+a.addError('FluentAssert specific error');
+Assert.that(a).hasNoErrors();
+```
+
+#### isClone
+```
+// Pass
+User u = new User(Id = UserInfo.getUserId());
+User cu = u.clone();
+Fluent__Assert.that(cu).isClone();
+
+// Failure
+User u = new User(Id = UserInfo.getUserId());
+Fluent__Assert.that(u).isClone();
+```
+
+#### isRecordType
+```
+// Pass
+Assert.that(something).isRecordType('Master');
+
+// Failure
+Assert.that(something).isRecordType('NonExistingRecordType');
 ```
 
 ### Boolean

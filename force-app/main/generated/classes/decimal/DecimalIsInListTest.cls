@@ -16,7 +16,6 @@ public class DecimalIsInListTest {
         failureScenario((Decimal) 10.0, new List<Object>());
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Decimal actual, List<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);
@@ -36,7 +35,6 @@ public class DecimalIsInListTest {
         validationScenario((Decimal) 10.0, (List<Object>) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Decimal actual, List<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);

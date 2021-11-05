@@ -17,7 +17,6 @@ public class DecimalIsNegativeTest {
         failureScenario(1);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Decimal actual) {
         try {
             Assert.that(actual).isNegative();

@@ -16,7 +16,6 @@ public class IdIsNotEqualToTest {
         failureScenario((Id) UserInfo.getUserId(), UserInfo.getUserId());
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Id actual, Id expected) {
         try {
             Assert.that(actual).isNotEqualTo(expected);
@@ -36,7 +35,6 @@ public class IdIsNotEqualToTest {
         validationScenario(UserInfo.getUserId(), null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Id actual, Id expected) {
         try {
             Assert.that(actual).isNotEqualTo(expected);

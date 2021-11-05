@@ -30,7 +30,6 @@ public class IdIsSObjectTypeTest {
         validationScenario(UserInfo.getUserId(), null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Id actual, Schema.SObjectType expected) {
         try {
             Assert.that(actual).isSObjectType(expected);

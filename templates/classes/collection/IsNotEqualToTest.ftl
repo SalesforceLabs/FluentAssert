@@ -23,7 +23,6 @@ public class ${numberDataType.nativeDataType}IsNotEqualToTest {
         failureScenario(new ${numberDataType.castingValue}{${numberDataType.value1!'\'X\''}}, new ${numberDataType.castingValue}{${numberDataType.value1!'\'X\''}});
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${numberDataType.castingValue} actual, ${numberDataType.castingValue} expected) {
         try {
             Assert.that(actual).isNotEqualTo(expected);
@@ -43,7 +42,6 @@ public class ${numberDataType.nativeDataType}IsNotEqualToTest {
         validationScenario(new ${numberDataType.castingValue}{${numberDataType.value1!'\'X\''}}, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${numberDataType.castingValue} actual, ${numberDataType.castingValue} expected) {
         try {
             Assert.that(actual).isNotEqualTo(expected);

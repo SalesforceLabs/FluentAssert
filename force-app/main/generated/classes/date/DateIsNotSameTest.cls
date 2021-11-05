@@ -34,7 +34,6 @@ public class DateIsNotSameTest {
         validationScenario(null, (Date) SELF);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Date actual, Object expected) {
         try {
             Assert.that(actual).isNotSame(expected);

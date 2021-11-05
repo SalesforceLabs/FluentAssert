@@ -16,7 +16,6 @@ public class DateIsInSetTest {
         failureScenario((Date) Date.newInstance(2020, 5, 12), new Set<Object>());
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Date actual, Set<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);
@@ -36,7 +35,6 @@ public class DateIsInSetTest {
         validationScenario((Date) Date.newInstance(2020, 5, 12), (Set<Object>) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Date actual, Set<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);

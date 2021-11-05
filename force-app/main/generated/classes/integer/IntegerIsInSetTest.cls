@@ -16,7 +16,6 @@ public class IntegerIsInSetTest {
         failureScenario((Integer) 10, new Set<Object>());
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Integer actual, Set<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);
@@ -36,7 +35,6 @@ public class IntegerIsInSetTest {
         validationScenario((Integer) 10, (Set<Object>) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Integer actual, Set<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);

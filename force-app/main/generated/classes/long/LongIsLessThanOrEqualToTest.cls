@@ -19,7 +19,6 @@ public class LongIsLessThanOrEqualToTest {
         failureScenario((Long) actual, actual + (Long) -1);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Long actual, Long expected) {
         try {
             Assert.that(actual).isLessThanOrEqualTo(expected);
@@ -40,7 +39,6 @@ public class LongIsLessThanOrEqualToTest {
         validationScenario(null, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Long actual, Long expected) {
         try {
             Assert.that(actual).isLessThanOrEqualTo(expected);

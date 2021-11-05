@@ -21,7 +21,6 @@ public class LongIsStrictlyBetweenTest {
         failureScenario((Long) actual, actual, (Long) (actual + 1));
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Long actual, Long fromInclusive, Long toInclusive) {
         try {
             Assert.that(actual).isStrictlyBetween(fromInclusive, toInclusive);
@@ -44,7 +43,6 @@ public class LongIsStrictlyBetweenTest {
         validationScenario(null, null, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Long actual, Long fromInclusive, Long toInclusive) {
         try {
             Assert.that(actual).isStrictlyBetween(fromInclusive, toInclusive);

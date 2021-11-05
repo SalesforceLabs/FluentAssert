@@ -27,7 +27,6 @@ public class ${dataType.native}IsAfterOrEqualToTest {
         failureScenario((${dataType.native}) actual, actual${dataType.deltaTemplate?replace("DELTA", "1")});
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${dataType.native} actual, ${dataType.native} expected) {
         try {
             Assert.that(actual).isAfterOrEqualTo(expected);
@@ -48,7 +47,6 @@ public class ${dataType.native}IsAfterOrEqualToTest {
         validationScenario(null, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${dataType.native} actual, ${dataType.native} expected) {
         try {
             Assert.that(actual).isAfterOrEqualTo(expected);

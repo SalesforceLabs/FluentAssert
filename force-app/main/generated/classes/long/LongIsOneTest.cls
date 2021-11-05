@@ -17,7 +17,6 @@ public class LongIsOneTest {
         failureScenario(-1);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Long actual) {
         try {
             Assert.that(actual).isOne();
