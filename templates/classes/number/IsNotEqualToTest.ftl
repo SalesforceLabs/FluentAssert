@@ -27,7 +27,6 @@ public class ${numberDataType.nativeDataType}IsNotEqualToTest {
         failureScenario(0, 0);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${numberDataType.nativeDataType} actual, ${numberDataType.nativeDataType} expected) {
         try {
             Assert.that(actual).isNotEqualTo(expected);
@@ -47,7 +46,6 @@ public class ${numberDataType.nativeDataType}IsNotEqualToTest {
         validationScenario(0, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${numberDataType.nativeDataType} actual, ${numberDataType.nativeDataType} expected) {
         try {
             Assert.that(actual).isNotEqualTo(expected);

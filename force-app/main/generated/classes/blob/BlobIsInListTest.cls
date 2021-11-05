@@ -16,7 +16,6 @@ public class BlobIsInListTest {
         failureScenario((Blob) Blob.valueOf('X'), new List<Object>());
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Blob actual, List<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);
@@ -36,7 +35,6 @@ public class BlobIsInListTest {
         validationScenario((Blob) Blob.valueOf('X'), (List<Object>) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Blob actual, List<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);

@@ -24,7 +24,6 @@ public class ListContainsOnlyOnceTest {
         failureScenario(new List<Object>{'C', 'C'}, new List<String>{'C'});
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(List<Object> actual, List<String> expected) {
         try {
             Assert.that(actual).containsOnlyOnce(expected);
@@ -56,7 +55,6 @@ public class ListContainsOnlyOnceTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(List<Object> actual, List<Object> expected) {
         try {
             Assert.that(actual).containsOnlyOnce(expected);

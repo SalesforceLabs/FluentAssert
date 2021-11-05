@@ -22,7 +22,6 @@ public class StringIsAllUpperCaseTest {
         failureScenario(actual);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(String actual) {
         try {
             Assert.that(actual).isAllUpperCase();

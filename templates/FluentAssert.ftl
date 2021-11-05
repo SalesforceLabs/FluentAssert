@@ -19,7 +19,8 @@
     "Time",
     "String",
     "Map<Object, Object>",
-    "Blob"
+    "Blob",
+    "SObject"
 ]>
 <@pp.dropOutputFile />
 <@com.apexClass className="Assert" path="/classes/"/>

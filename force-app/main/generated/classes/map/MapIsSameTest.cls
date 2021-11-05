@@ -34,7 +34,6 @@ public class MapIsSameTest {
         validationScenario(null, (Map<Object, Object>) SELF);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Map<Object, Object> actual, Object expected) {
         try {
             Assert.that(actual).isSame(expected);

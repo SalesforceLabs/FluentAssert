@@ -32,7 +32,6 @@ public class MapHasSameSizeAsTest {
         validationScenario(new Map<Object, Object>(), (Map<Object, Object>) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Map<Object, Object> actual, Map<Object, Object> expected) {
         try {
             Assert.that(actual).hasSameSizeAs(expected);

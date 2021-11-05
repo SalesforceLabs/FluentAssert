@@ -16,7 +16,6 @@ public class DatetimeIsInListTest {
         failureScenario((Datetime) Datetime.newInstance(2020, 5, 12), new List<Object>());
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Datetime actual, List<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);
@@ -36,7 +35,6 @@ public class DatetimeIsInListTest {
         validationScenario((Datetime) Datetime.newInstance(2020, 5, 12), (List<Object>) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Datetime actual, List<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);

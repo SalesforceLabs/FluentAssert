@@ -16,7 +16,6 @@ public class DoubleIsInListTest {
         failureScenario((Double) 10.0, new List<Object>());
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Double actual, List<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);
@@ -36,7 +35,6 @@ public class DoubleIsInListTest {
         validationScenario((Double) 10.0, (List<Object>) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Double actual, List<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);

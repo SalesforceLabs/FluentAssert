@@ -28,7 +28,6 @@ public class ListContainsOnlyTest {
         failureScenario(ABC, new List<String>{'A', 'B', 'C', 'D'});
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(List<Object> actual, List<String> expected) {
         try {
             Assert.that(actual).containsOnly(expected);
@@ -60,7 +59,6 @@ public class ListContainsOnlyTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(List<Object> actual, List<Object> expected) {
         try {
             Assert.that(actual).containsOnly(expected);

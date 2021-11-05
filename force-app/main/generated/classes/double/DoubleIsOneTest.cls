@@ -17,7 +17,6 @@ public class DoubleIsOneTest {
         failureScenario(-1);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Double actual) {
         try {
             Assert.that(actual).isOne();

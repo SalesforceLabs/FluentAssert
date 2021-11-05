@@ -105,7 +105,6 @@ public class ${numberDataType.type?keep_before('<')}HasSameSizeAsTest {
     }
 <#list numberDataType.interface as i>
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${numberDataType.type} actual, ${i} expected) {
         try {
             Assert.that(actual).hasSameSizeAs(expected);

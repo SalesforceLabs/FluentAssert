@@ -23,7 +23,6 @@ public class DatetimeIsBetweenTest {
         failureScenario((Datetime) (actual.addSeconds(2).addSeconds(1)), actual.addSeconds(-2), actual.addSeconds(2));
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Datetime actual, Datetime fromInclusive, Datetime toInclusive) {
         try {
             Assert.that(actual).isBetween(fromInclusive, toInclusive);
@@ -46,7 +45,6 @@ public class DatetimeIsBetweenTest {
         validationScenario(null, null, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Datetime actual, Datetime fromInclusive, Datetime toInclusive) {
         try {
             Assert.that(actual).isBetween(fromInclusive, toInclusive);

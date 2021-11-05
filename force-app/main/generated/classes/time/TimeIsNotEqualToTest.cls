@@ -18,7 +18,6 @@ public class TimeIsNotEqualToTest {
         failureScenario(actual, actual);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Time actual, Time expected) {
         try {
             Assert.that((Time) actual).isNotEqualTo(expected);
@@ -38,7 +37,6 @@ public class TimeIsNotEqualToTest {
         validationScenario(Time.newInstance(1, 2, 3, 4), null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Time actual, Time expected) {
         try {
             Assert.that(actual).isNotEqualTo(expected);

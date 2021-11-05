@@ -34,7 +34,6 @@ public class LongIsSameTest {
         validationScenario(null, (Long) SELF);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Long actual, Object expected) {
         try {
             Assert.that(actual).isSame(expected);

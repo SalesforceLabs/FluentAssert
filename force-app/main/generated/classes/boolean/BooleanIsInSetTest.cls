@@ -16,7 +16,6 @@ public class BooleanIsInSetTest {
         failureScenario((Boolean) true, new Set<Object>());
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Boolean actual, Set<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);
@@ -36,7 +35,6 @@ public class BooleanIsInSetTest {
         validationScenario((Boolean) true, (Set<Object>) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Boolean actual, Set<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);

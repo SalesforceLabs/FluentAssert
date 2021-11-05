@@ -22,7 +22,6 @@ public class StringIsWhitespaceTest {
         failureScenario(actual);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(String actual) {
         try {
             Assert.that(actual).isWhitespace();

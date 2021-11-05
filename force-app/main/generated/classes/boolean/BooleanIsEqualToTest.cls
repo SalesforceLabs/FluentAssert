@@ -18,7 +18,6 @@ public class BooleanIsEqualToTest {
         failureScenario(false, true);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Boolean actual, Boolean expected) {
         try {
             Assert.that(actual).isEqualTo(expected);
@@ -40,7 +39,6 @@ public class BooleanIsEqualToTest {
         validationScenario(false, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Boolean actual, Boolean expected) {
         try {
             Assert.that(actual).IsEqualTo(expected);

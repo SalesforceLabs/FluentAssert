@@ -28,7 +28,6 @@ public class ${dataType.native}IsGreaterThanOrEqualToTest {
         failureScenario((${dataType.native}) actual, actual + (${dataType.native}) ${dataType.minimumDelta});
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${dataType.native} actual, ${dataType.native} expected) {
         try {
             Assert.that(actual).isGreaterThanOrEqualTo(expected);
@@ -49,7 +48,6 @@ public class ${dataType.native}IsGreaterThanOrEqualToTest {
         validationScenario(null, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${dataType.native} actual, ${dataType.native} expected) {
         try {
             Assert.that(actual).isGreaterThanOrEqualTo(expected);

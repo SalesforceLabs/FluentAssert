@@ -30,7 +30,6 @@ public class ${numberDataType.nativeDataType}ContainsOnlyOnceTest {
         failureScenario(new ${numberDataType.castingValue}{'C', 'C'}, new List<String>{'C'});
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${numberDataType.castingValue} actual, List<String> expected) {
         try {
             Assert.that(actual).containsOnlyOnce(expected);
@@ -62,7 +61,6 @@ public class ${numberDataType.nativeDataType}ContainsOnlyOnceTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${numberDataType.castingValue} actual, List<Object> expected) {
         try {
             Assert.that(actual).containsOnlyOnce(expected);

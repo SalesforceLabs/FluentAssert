@@ -43,7 +43,6 @@ public class ${numberDataType.type?keep_before('<')}HasSizeTest {
         validationScenario(${numberDataType.emptyValue}, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${numberDataType.type} actual, Integer expected) {
         try {
             Assert.that(actual).hasSize(expected);

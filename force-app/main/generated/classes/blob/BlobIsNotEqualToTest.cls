@@ -18,7 +18,6 @@ public class BlobIsNotEqualToTest {
         failureScenario(actual, actual);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Blob actual, Blob expected) {
         try {
             Assert.that((Blob) actual).isNotEqualTo(expected);
@@ -38,7 +37,6 @@ public class BlobIsNotEqualToTest {
         validationScenario(Blob.valueOf('X'), null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Blob actual, Blob expected) {
         try {
             Assert.that(actual).isNotEqualTo(expected);

@@ -104,7 +104,7 @@ global class ListAssert extends AssertBase {
         hasSameSizeAs(expected);
 
         for (Integer i = 0; i < expected.size(); i++) {
-            assert(expected[i].equals(actual[i]), 'Was expecting actual and expected elements at index {0} to match. Expected: {1}. Actual {2}', new List<Object> {i, expected[i], actual[i]});
+            assert(expected[i] == actual[i], 'Was expecting actual and expected elements at index {0} to match. Expected: {1}. Actual {2}', new List<Object> {i, expected[i], actual[i]});
         }
         return this;
     }

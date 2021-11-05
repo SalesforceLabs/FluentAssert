@@ -26,7 +26,6 @@ public class ${numberDataType.nativeDataType}IsNegativeTest {
         failureScenario(1);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${numberDataType.nativeDataType} actual) {
         try {
             Assert.that(actual).isNegative();

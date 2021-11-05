@@ -326,6 +326,10 @@
         "originatingType": "Map",
         "delegations":    delegations.list
     },{
+        "delegatingType":  "List<Object>",
+        "originatingType": "SObject",
+        "delegations":    delegations.list
+    },{
         "delegatingType":  "Integer",
         "originatingType": "Blob",
         "delegations":     delegations.integer

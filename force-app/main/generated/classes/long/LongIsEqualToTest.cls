@@ -18,8 +18,7 @@ public class LongIsEqualToTest {
         failureScenario(-1000, 1000);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
-    private static void failureScenario(Long actual, Long expected) {
+        private static void failureScenario(Long actual, Long expected) {
         try {
             Assert.that(actual).isEqualTo(expected);
             System.assert(false, 'No assert exception thrown');
@@ -38,8 +37,7 @@ public class LongIsEqualToTest {
         validationScenario(0, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
-    private static void validationScenario(Long actual, Long expected) {
+        private static void validationScenario(Long actual, Long expected) {
         try {
             Assert.that(actual).IsEqualTo(expected);
             System.assert(false, 'No assert exception thrown');

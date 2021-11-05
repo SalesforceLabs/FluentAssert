@@ -34,7 +34,6 @@ public class DecimalIsNotSameTest {
         validationScenario(null, (Decimal) SELF);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Decimal actual, Object expected) {
         try {
             Assert.that(actual).isNotSame(expected);

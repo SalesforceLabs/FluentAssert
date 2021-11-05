@@ -5,30 +5,40 @@
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
 <@pp.dropOutputFile />
-<@com.apexClass className="ListAssertMapNavigatorTest" path="/classes/"/>
+<#assign navigators = [
+    {
+        "delegatingType": "Map",
+        "instance":       "new Map<Object, Object>()"
+    },{
+        "delegatingType": "SObject",
+        "instance":       "new Account()"
+    }
+]>
+<#list navigators as n>
+<@com.apexClass className="ListAssert${n.delegatingType}NavigatorTest" path="/classes/"/>
 @IsTest
-public class ListAssertMapNavigatorTest {
+public class ListAssert${n.delegatingType}NavigatorTest {
     @IsTest
     static void testBack() {
         // Given
-        MapAssert expectedMapAssert = Assert.that(new Map<Object, Object>());
-        ListAssertMapNavigator navigator = new ListAssertMapNavigator(null, expectedMapAssert);
+        ${n.delegatingType}Assert expectedAssert = Assert.that(${n.instance});
+        ListAssert${n.delegatingType}Navigator navigator = new ListAssert${n.delegatingType}Navigator(null, expectedAssert);
 
         // When
-        MapAssert actualMapAssert = navigator.back();
+        ${n.delegatingType}Assert actualAssert = navigator.back();
 
         // Then
-        System.assert(expectedMapAssert === actualMapAssert, 'Returned navigator should be self');
+        System.assert(expectedAssert === actualAssert, 'Returned navigator should be self');
     }
 
     @IsTest
     static void testIsSame() {
         // Given
         List<Object> actual = new List<Object>();
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(actual, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(actual, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.isSame(actual);
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.isSame(actual);
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -37,10 +47,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testIsNotSame() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>(), (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>(), (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.isNotSame(new List<Object>());
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.isNotSame(new List<Object>());
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -49,10 +59,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testIsEmpty() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>(), (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>(), (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.isEmpty();
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.isEmpty();
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -61,10 +71,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testIsNotEmpty() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.isNotEmpty();
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.isNotEmpty();
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -73,10 +83,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testIsSorted() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.isSorted();
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.isSorted();
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -85,10 +95,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testIsNull() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator((List<Object>) null, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator((List<Object>) null, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.isNull();
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.isNull();
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -97,10 +107,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testIsNotNull() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.isNotNull();
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.isNotNull();
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -109,10 +119,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testContainsOnlyNulls() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{null}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{null}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.containsOnlyNulls();
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.containsOnlyNulls();
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -121,10 +131,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testContainsList() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.contains(new List<Object>{'X'});
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.contains(new List<Object>{'X'});
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -133,10 +143,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testContainsSet() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.contains(new Set<Object>{'X'});
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.contains(new Set<Object>{'X'});
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -145,10 +155,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testDoesNotContainList() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.doesNotContain(new List<Object>{'Y'});
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.doesNotContain(new List<Object>{'Y'});
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -157,10 +167,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testDoesNotContainSet() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.doesNotContain(new Set<Object>{'Y'});
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.doesNotContain(new Set<Object>{'Y'});
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -169,10 +179,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testHasSize() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.hasSize(1);
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.hasSize(1);
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -181,10 +191,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testHasSameSizeAsList() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.hasSameSizeAs(new List<Object>{'X'});
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.hasSameSizeAs(new List<Object>{'X'});
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -193,10 +203,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testHasSameSizeAsSet() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.hasSameSizeAs(new Set<Object>{'X'});
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.hasSameSizeAs(new Set<Object>{'X'});
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -205,10 +215,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testContainsAnyOfSet() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.containsAnyOf(new Set<Object>{'X'});
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.containsAnyOf(new Set<Object>{'X'});
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -217,10 +227,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testContainsAnyOfList() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.containsAnyOf(new List<Object>{'X'});
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.containsAnyOf(new List<Object>{'X'});
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -229,10 +239,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testContainsExactlyInAnyOrderList() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.containsExactlyInAnyOrder(new List<Object>{'X'});
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.containsExactlyInAnyOrder(new List<Object>{'X'});
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -241,10 +251,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testContainsExactlyInAnyOrderSet() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.containsExactlyInAnyOrder(new Set<Object>{'X'});
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.containsExactlyInAnyOrder(new Set<Object>{'X'});
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -253,10 +263,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testContainsExactly() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.containsExactly(new List<Object>{'X'});
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.containsExactly(new List<Object>{'X'});
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -265,10 +275,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testContainsSequence() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.containsSequence(new List<Object>{'X'});
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.containsSequence(new List<Object>{'X'});
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -277,10 +287,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testDoesNotContainSequence() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.doesNotContainSequence(new List<Object>{'Y'});
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.doesNotContainSequence(new List<Object>{'Y'});
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -289,10 +299,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testContainsSubsequence() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.containsSubsequence(new List<Object>{'X'});
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.containsSubsequence(new List<Object>{'X'});
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -301,10 +311,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testDoesNotContainSubsequence() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.doesNotContainSubsequence(new List<Object>{'Y'});
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.doesNotContainSubsequence(new List<Object>{'Y'});
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -313,10 +323,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testContainsOnly() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.containsOnly(new List<Object>{'X'});
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.containsOnly(new List<Object>{'X'});
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -325,10 +335,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testContainsOnlyOnce() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.containsOnlyOnce(new List<Object>{'X'});
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.containsOnlyOnce(new List<Object>{'X'});
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -337,10 +347,10 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testIsEqualTo() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.isEqualTo(new List<Object>{'X'});
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.isEqualTo(new List<Object>{'X'});
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
@@ -349,12 +359,13 @@ public class ListAssertMapNavigatorTest {
     @IsTest
     static void testIsNotEqualTo() {
         // Given
-        ListAssertMapNavigator expectedNavigator = new ListAssertMapNavigator(new List<Object>{'X'}, (MapAssert) null);
+        ListAssert${n.delegatingType}Navigator expectedNavigator = new ListAssert${n.delegatingType}Navigator(new List<Object>{'X'}, (${n.delegatingType}Assert) null);
 
         // When
-        ListAssertMapNavigator actualNavigator = expectedNavigator.isNotEqualTo(new List<Object>{'Y'});
+        ListAssert${n.delegatingType}Navigator actualNavigator = expectedNavigator.isNotEqualTo(new List<Object>{'Y'});
 
         // Then
         System.assert(expectedNavigator === actualNavigator, 'Returned navigator should be self');
     }
 }
+</#list>

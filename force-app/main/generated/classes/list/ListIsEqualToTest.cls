@@ -17,7 +17,6 @@ public class ListIsEqualToTest {
         failureScenario(new List<Object>{'X'}, new List<Object>{'Y'});
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(List<Object> actual, List<Object> expected) {
         try {
             Assert.that(actual).isEqualTo(expected);
@@ -37,7 +36,6 @@ public class ListIsEqualToTest {
         validationScenario(new List<Object>{'X'}, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(List<Object> actual, List<Object> expected) {
         try {
             Assert.that(actual).IsEqualTo(expected);

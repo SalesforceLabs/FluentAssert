@@ -34,7 +34,6 @@ public class TimeIsNotSameTest {
         validationScenario(null, (Time) SELF);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Time actual, Object expected) {
         try {
             Assert.that(actual).isNotSame(expected);

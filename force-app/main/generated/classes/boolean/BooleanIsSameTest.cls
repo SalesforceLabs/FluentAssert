@@ -34,7 +34,6 @@ public class BooleanIsSameTest {
         validationScenario(null, (Boolean) SELF);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Boolean actual, Object expected) {
         try {
             Assert.that(actual).isSame(expected);

@@ -10,7 +10,8 @@
     {"native":"Datetime","concreteValue": "Datetime.now()",               "notEqualToValue":"Datetime.now().addDays(1)"},
     {"native":"Time",    "concreteValue": "Time.newInstance(1, 2, 3, 4)", "notEqualToValue":"Time.newInstance(1, 2, 3, 4).addMilliseconds(1)"},
     {"native":"String",  "concreteValue": "'X'",                          "notEqualToValue":"'Y'"},
-    {"native":"Blob",    "concreteValue": "Blob.valueOf('X')",            "notEqualToValue":"Blob.valueOf('Y')"}
+    {"native":"Blob",    "concreteValue": "Blob.valueOf('X')",            "notEqualToValue":"Blob.valueOf('Y')"},
+    {"native":"SObject", "concreteValue": "new Account(Name = 'X')",      "notEqualToValue":"new Account(Name = 'Y')"}
 ]>
 
 <@pp.dropOutputFile />
@@ -30,7 +31,6 @@ public class ${dataType.native}IsNotEqualToTest {
         failureScenario(actual, actual);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${dataType.native} actual, ${dataType.native} expected) {
         try {
             Assert.that((${dataType.native}) actual).isNotEqualTo(expected);
@@ -50,7 +50,6 @@ public class ${dataType.native}IsNotEqualToTest {
         validationScenario(${dataType.concreteValue}, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${dataType.native} actual, ${dataType.native} expected) {
         try {
             Assert.that(actual).isNotEqualTo(expected);

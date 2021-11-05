@@ -34,7 +34,6 @@ public class BlobIsSameTest {
         validationScenario(null, (Blob) SELF);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Blob actual, Object expected) {
         try {
             Assert.that(actual).isSame(expected);

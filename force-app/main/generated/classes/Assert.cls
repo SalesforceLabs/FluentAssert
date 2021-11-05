@@ -126,6 +126,15 @@ global inherited sharing class Assert {
     }
 
     /**
+     * @description Fluent assert on `SObject`s
+     * @param actual The actual value to assert against.
+     * @return Fluent assert object for `SObject`
+     */
+    global static SObjectAssert that(SObject actual) {
+        return new SObjectAssert(actual);
+    }
+
+    /**
      * @description Fluent assert on `String`s
      * @param actual The actual value to assert against.
      * @return Fluent assert object for `String`

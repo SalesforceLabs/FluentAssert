@@ -16,7 +16,6 @@ public class TimeIsEqualToTest {
         failureScenario(Time.newInstance(1, 2, 3, 4), Time.newInstance(1, 2, 3, 4).addMilliseconds(1));
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Time actual, Time expected) {
         try {
             Assert.that(actual).isEqualTo(expected);
@@ -36,7 +35,6 @@ public class TimeIsEqualToTest {
         validationScenario(Time.newInstance(1, 2, 3, 4), null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Object actual, Object expected) {
         try {
             Assert.that(actual).IsEqualTo(expected);

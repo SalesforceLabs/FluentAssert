@@ -34,7 +34,6 @@ public class MapHasSizeTest {
         validationScenario(new Map<Object, Object>(), null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Map<Object, Object> actual, Integer expected) {
         try {
             Assert.that(actual).hasSize(expected);

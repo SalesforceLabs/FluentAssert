@@ -32,7 +32,6 @@ public class ${numberDataType.nativeDataType}ContainsTest {
         failureScenario(PART_OF_ALPHABET, new Set<Object>{'K'});
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${numberDataType.castingValue} actual, List<Object> expected) {
         try {
             Assert.that(actual).contains(expected);
@@ -46,7 +45,6 @@ public class ${numberDataType.nativeDataType}ContainsTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${numberDataType.castingValue} actual, Set<Object> expected) {
         try {
             Assert.that(actual).contains(expected);
@@ -91,7 +89,6 @@ public class ${numberDataType.nativeDataType}ContainsTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${numberDataType.castingValue} actual, List<Object> expected) {
         try {
             Assert.that(actual).contains(expected);
@@ -105,7 +102,6 @@ public class ${numberDataType.nativeDataType}ContainsTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${numberDataType.castingValue} actual, Set<Object> expected) {
         try {
             Assert.that(actual).contains(expected);

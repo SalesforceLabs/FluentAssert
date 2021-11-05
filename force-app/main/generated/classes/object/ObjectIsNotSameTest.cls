@@ -34,7 +34,6 @@ public class ObjectIsNotSameTest {
         validationScenario(null, (Object) SELF);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Object actual, Object expected) {
         try {
             Assert.that(actual).isNotSame(expected);

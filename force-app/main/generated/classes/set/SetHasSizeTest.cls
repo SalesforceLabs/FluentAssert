@@ -34,7 +34,6 @@ public class SetHasSizeTest {
         validationScenario(new Set<Object>(), null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Set<Object> actual, Integer expected) {
         try {
             Assert.that(actual).hasSize(expected);

@@ -16,7 +16,6 @@ public class TimeIsInListTest {
         failureScenario((Time) Time.newInstance(1, 2, 3, 4), new List<Object>());
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Time actual, List<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);
@@ -36,7 +35,6 @@ public class TimeIsInListTest {
         validationScenario((Time) Time.newInstance(1, 2, 3, 4), (List<Object>) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Time actual, List<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);

@@ -23,7 +23,6 @@ public class SetDoesNotContainTest {
         failureScenario(PART_OF_ALPHABET, new Set<Object>{'A'});
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Set<Object> actual, List<Object> expected) {
         try {
             Assert.that(actual).doesNotContain((List<Object>) expected);
@@ -37,7 +36,6 @@ public class SetDoesNotContainTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Set<Object> actual, Set<Object> expected) {
         try {
             Assert.that(actual).doesNotContain((Set<Object>) expected);
@@ -82,7 +80,6 @@ public class SetDoesNotContainTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Set<Object> actual, List<Object> expected) {
         try {
             Assert.that(actual).doesNotContain((List<Object>) expected);
@@ -96,7 +93,6 @@ public class SetDoesNotContainTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Set<Object> actual, Set<Object> expected) {
         try {
             Assert.that(actual).doesNotContain((Set<Object>) expected);

@@ -18,7 +18,6 @@ public class DateIsNotEqualToTest {
         failureScenario(actual, actual);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Date actual, Date expected) {
         try {
             Assert.that((Date) actual).isNotEqualTo(expected);
@@ -38,7 +37,6 @@ public class DateIsNotEqualToTest {
         validationScenario(Date.today(), null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Date actual, Date expected) {
         try {
             Assert.that(actual).isNotEqualTo(expected);

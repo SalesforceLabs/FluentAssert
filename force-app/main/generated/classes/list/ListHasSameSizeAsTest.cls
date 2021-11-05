@@ -46,7 +46,6 @@ public class ListHasSameSizeAsTest {
         validationScenario(new List<Object>(), (Set<Object>) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(List<Object> actual, List<Object> expected) {
         try {
             Assert.that(actual).hasSameSizeAs(expected);
@@ -60,7 +59,6 @@ public class ListHasSameSizeAsTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(List<Object> actual, Set<Object> expected) {
         try {
             Assert.that(actual).hasSameSizeAs(expected);

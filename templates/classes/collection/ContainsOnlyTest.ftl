@@ -35,7 +35,6 @@ public class ${numberDataType.nativeDataType}ContainsOnlyTest {
         failureScenario(ABC, new List<String>{'A', 'B', 'C', 'D'});
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${numberDataType.castingValue} actual, List<String> expected) {
         try {
             Assert.that(actual).containsOnly(expected);
@@ -67,7 +66,6 @@ public class ${numberDataType.nativeDataType}ContainsOnlyTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(${numberDataType.castingValue} actual, List<Object> expected) {
         try {
             Assert.that(actual).containsOnly(expected);

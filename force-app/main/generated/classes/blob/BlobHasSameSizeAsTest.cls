@@ -32,7 +32,6 @@ public class BlobHasSameSizeAsTest {
         validationScenario(Blob.valueOf('X'), (Blob) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Blob actual, Blob expected) {
         try {
             Assert.that(actual).hasSameSizeAs(expected);

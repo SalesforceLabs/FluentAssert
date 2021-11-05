@@ -23,7 +23,6 @@ public class SetContainsAnyOfTest {
         failureScenario(PART_OF_ALPHABET, new List<Object>{'K', 'L'});
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Set<Object> actual, List<Object> expected) {
         try {
             Assert.that(actual).containsAnyOf(expected);
@@ -68,7 +67,6 @@ public class SetContainsAnyOfTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenarioNPE(Set<Object> actual, List<Object> expected) {
         try {
             Assert.that(actual).containsAnyOf(expected);
@@ -82,7 +80,6 @@ public class SetContainsAnyOfTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenarioNPE(Set<Object> actual, Set<Object> expected) {
         try {
             Assert.that(actual).containsAnyOf(expected);

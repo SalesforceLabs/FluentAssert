@@ -30,7 +30,6 @@ public class ${numberDataType.nativeDataType}ContainsAnyOfTest {
         failureScenario(PART_OF_ALPHABET, new List<Object>{'K', 'L'});
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(${numberDataType.castingValue} actual, List<Object> expected) {
         try {
             Assert.that(actual).containsAnyOf(expected);
@@ -75,7 +74,6 @@ public class ${numberDataType.nativeDataType}ContainsAnyOfTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenarioNPE(${numberDataType.castingValue} actual, List<Object> expected) {
         try {
             Assert.that(actual).containsAnyOf(expected);
@@ -89,7 +87,6 @@ public class ${numberDataType.nativeDataType}ContainsAnyOfTest {
         }
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenarioNPE(${numberDataType.castingValue} actual, Set<Object> expected) {
         try {
             Assert.that(actual).containsAnyOf(expected);

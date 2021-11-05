@@ -16,7 +16,6 @@ public class IdIsInSetTest {
         failureScenario((Id) UserInfo.getOrganizationId(), new Set<Object>());
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Id actual, Set<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);
@@ -36,7 +35,6 @@ public class IdIsInSetTest {
         validationScenario((Id) UserInfo.getOrganizationId(), (Set<Object>) null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Id actual, Set<Object> expected) {
         try {
             Assert.that(actual).isIn(expected);

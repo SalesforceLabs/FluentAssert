@@ -19,7 +19,6 @@ public class DecimalIsLessThanTest {
         failureScenario((Decimal) actual, actual + (Decimal) -0.1);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void failureScenario(Decimal actual, Decimal expected) {
         try {
             Assert.that(actual).isLessThan(expected);
@@ -40,7 +39,6 @@ public class DecimalIsLessThanTest {
         validationScenario(null, null);
     }
 
-    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     private static void validationScenario(Decimal actual, Decimal expected) {
         try {
             Assert.that(actual).isLessThan(expected);
