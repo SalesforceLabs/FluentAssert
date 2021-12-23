@@ -2,7 +2,7 @@
 This project aims provide better asserts for tests in Apex. Inspired by [AssertJ](https://assertj.github.io/doc/) and other fluent libraries. Currently supports SObject, Boolean, Decimal, Double, Integer, Long, List, Set, Map, Id, Blob, String, Date, Time, Datetime and generic Object.
 
 ## Usage
-FluentAssert is available as a managed package in App Exchange (URL pending) under namespace `Fluent`.
+FluentAssert is available as [a managed package in App Exchange](https://appexchange.salesforce.com/appxListingDetail?listingId=a0N4V00000GYpAbUAL) under namespace `Fluent`.
 
 The asserts below can all be chanied like the example below.
 
