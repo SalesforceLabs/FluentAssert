@@ -8,7 +8,8 @@
 public class IntegerIsInListTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Integer) 10).isIn((List<Object>) new List<Object>{(Integer) 10});
+        Integer value = 10;
+        Assert.that(value).isIn((List<Object>) new List<Object>{value});
     }
 
     @IsTest

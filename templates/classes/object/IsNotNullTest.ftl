@@ -20,7 +20,8 @@
     {"nativeDataType":"String",   "castingValue": "String",              "instance": "'A'"},
     {"nativeDataType":"Map",      "castingValue": "Map<Object, Object>", "instance": "new Map<Object, Object>()"},
     {"nativeDataType":"Blob",     "castingValue": "Blob",                "instance": "Blob.valueOf('X')"},
-    {"nativeDataType":"SObject",  "castingValue": "SObject",             "instance": "new Account(Name = 'X')"}
+    {"nativeDataType":"SObject",  "castingValue": "SObject",             "instance": "new Account(Name = 'X')"},
+    {"nativeDataType":"Exception","castingValue": "Exception",           "instance": "new UnexpectedException('X')"}
 ]>
 <@pp.dropOutputFile />
 <#list numberDataTypes as numberDataType>

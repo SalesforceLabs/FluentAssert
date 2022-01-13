@@ -8,7 +8,8 @@
 public class ObjectIsEqualToTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Object) 'X').isEqualTo('X');
+        Object value = 'X';
+        Assert.that(value).isEqualTo(value);
     }
 
     @IsTest

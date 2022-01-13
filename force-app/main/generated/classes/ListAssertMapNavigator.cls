@@ -8,6 +8,7 @@
  * @description Navigator between `Map` and `List<Object>`
  */
 global class ListAssertMapNavigator {
+    private List<Object> actual;
     private ListAssert assertDelegate;
     private MapAssert originAssert;
 
@@ -17,6 +18,7 @@ global class ListAssertMapNavigator {
      * @param originAssert The asserting type to go back to.
      */
     global ListAssertMapNavigator(List<Object> actual, MapAssert originAssert) {
+        this.actual = actual;
         assertDelegate = new ListAssert(actual);
         this.originAssert = originAssert;
     }

@@ -8,7 +8,8 @@
 public class DoubleIsInListTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Double) 10.0).isIn((List<Object>) new List<Object>{(Double) 10.0});
+        Double value = 10.0;
+        Assert.that(value).isIn((List<Object>) new List<Object>{value});
     }
 
     @IsTest

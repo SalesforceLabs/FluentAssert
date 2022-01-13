@@ -8,6 +8,7 @@
  * @description Navigator between `Map` and `Integer`
  */
 global class IntegerAssertMapNavigator {
+    private Integer actual;
     private IntegerAssert assertDelegate;
     private MapAssert originAssert;
 
@@ -17,6 +18,7 @@ global class IntegerAssertMapNavigator {
      * @param originAssert The asserting type to go back to.
      */
     global IntegerAssertMapNavigator(Integer actual, MapAssert originAssert) {
+        this.actual = actual;
         assertDelegate = new IntegerAssert(actual);
         this.originAssert = originAssert;
     }

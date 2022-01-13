@@ -8,7 +8,8 @@
 public class DatetimeIsEqualToTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Datetime) Datetime.now()).isEqualTo(Datetime.now());
+        Datetime value = Datetime.now();
+        Assert.that(value).isEqualTo(value);
     }
 
     @IsTest

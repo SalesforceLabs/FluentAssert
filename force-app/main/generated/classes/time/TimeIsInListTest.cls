@@ -8,7 +8,8 @@
 public class TimeIsInListTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Time) Time.newInstance(1, 2, 3, 4)).isIn((List<Object>) new List<Object>{(Time) Time.newInstance(1, 2, 3, 4)});
+        Time value = Time.newInstance(1, 2, 3, 4);
+        Assert.that(value).isIn((List<Object>) new List<Object>{value});
     }
 
     @IsTest

@@ -8,7 +8,8 @@
 public class ObjectIsInSetTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Object) 'X').isIn((Set<Object>) new Set<Object>{(Object) 'X'});
+        Object value = 'X';
+        Assert.that(value).isIn((Set<Object>) new Set<Object>{value});
     }
 
     @IsTest

@@ -8,6 +8,7 @@
  * @description Navigator between `String` and `Integer`
  */
 global class IntegerAssertStringNavigator {
+    private Integer actual;
     private IntegerAssert assertDelegate;
     private StringAssert originAssert;
 
@@ -17,6 +18,7 @@ global class IntegerAssertStringNavigator {
      * @param originAssert The asserting type to go back to.
      */
     global IntegerAssertStringNavigator(Integer actual, StringAssert originAssert) {
+        this.actual = actual;
         assertDelegate = new IntegerAssert(actual);
         this.originAssert = originAssert;
     }

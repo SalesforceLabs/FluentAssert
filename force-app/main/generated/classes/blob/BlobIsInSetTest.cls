@@ -8,7 +8,8 @@
 public class BlobIsInSetTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Blob) Blob.valueOf('X')).isIn((Set<Object>) new Set<Object>{(Blob) Blob.valueOf('X')});
+        Blob value = Blob.valueOf('X');
+        Assert.that(value).isIn((Set<Object>) new Set<Object>{value});
     }
 
     @IsTest

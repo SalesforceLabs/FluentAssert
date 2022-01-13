@@ -8,7 +8,8 @@
 public class BlobIsEqualToTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Blob) Blob.valueOf('X')).isEqualTo(Blob.valueOf('X'));
+        Blob value = Blob.valueOf('X');
+        Assert.that(value).isEqualTo(value);
     }
 
     @IsTest

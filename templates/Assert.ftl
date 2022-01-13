@@ -20,7 +20,8 @@
     "String",
     "Map<Object, Object>",
     "Blob",
-    "SObject"
+    "SObject",
+    "Exception"
 ]>
 <@pp.dropOutputFile />
 <@com.apexClass className="Assert" path="/classes/"/>

@@ -57,7 +57,22 @@
             "returnType": "Integer"
         }
         ]},
-    {"type":"SObject",     "asserts": ["Extracting", "HasErrors", "HasNoErrors", "IsClone", "IsRecordType"]}
+    {"type":"SObject",     "asserts": ["Extracting", "HasErrors", "HasNoErrors", "IsClone", "IsRecordType"]},
+    {"type":"Exception",   "asserts": ["HasMessage", "HasCause", "HasNoCause"],
+        "navigators": [{
+            "name": "cause",
+            "method": "getCause",
+            "returnType": "Exception"
+        },{
+            "name":       "rootCause",
+            "method":     "getCause",
+            "util":       "ExceptionUtil.getRootCause",
+            "returnType": "Exception"
+        },{
+            "name": "message",
+            "method": "getMessage",
+            "returnType": "String"
+        }]}
 ]>
 <#list supportedAsserts as supportedAssert>
     <#assign asserts = supportedAssert.asserts![] />
@@ -96,7 +111,7 @@ global class ${supportedAssert.type?keep_before('<')}Assert extends AssertBase {
      */
     global ${n.returnType}Assert${supportedAssert.type?keep_before('<')}Navigator ${n.name}() {
         notNull(actual, 'actual');
-        return new ${n.returnType}Assert${supportedAssert.type?keep_before('<')}Navigator(actual.${n.method}(), this);
+        return new ${n.returnType}Assert${supportedAssert.type?keep_before('<')}Navigator(<#if n.util??>${n.util}(</#if>actual.${n.method}()<#if n.util??>)</#if>, this);
     }
     <#sep>
 

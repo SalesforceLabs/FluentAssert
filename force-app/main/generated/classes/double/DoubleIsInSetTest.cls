@@ -8,7 +8,8 @@
 public class DoubleIsInSetTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Double) 10.0).isIn((Set<Object>) new Set<Object>{(Double) 10.0});
+        Double value = 10.0;
+        Assert.that(value).isIn((Set<Object>) new Set<Object>{value});
     }
 
     @IsTest

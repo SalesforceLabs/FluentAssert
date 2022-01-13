@@ -8,7 +8,8 @@
 public class StringIsEqualToTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((String) 'X').isEqualTo('X');
+        String value = 'X';
+        Assert.that(value).isEqualTo(value);
     }
 
     @IsTest

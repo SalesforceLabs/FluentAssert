@@ -8,7 +8,8 @@
 public class IntegerIsInSetTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Integer) 10).isIn((Set<Object>) new Set<Object>{(Integer) 10});
+        Integer value = 10;
+        Assert.that(value).isIn((Set<Object>) new Set<Object>{value});
     }
 
     @IsTest
