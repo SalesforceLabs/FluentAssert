@@ -8,6 +8,7 @@
  * @description Navigator between `Blob` and `Integer`
  */
 global class IntegerAssertBlobNavigator {
+    private Integer actual;
     private IntegerAssert assertDelegate;
     private BlobAssert originAssert;
 
@@ -17,6 +18,7 @@ global class IntegerAssertBlobNavigator {
      * @param originAssert The asserting type to go back to.
      */
     global IntegerAssertBlobNavigator(Integer actual, BlobAssert originAssert) {
+        this.actual = actual;
         assertDelegate = new IntegerAssert(actual);
         this.originAssert = originAssert;
     }

@@ -8,6 +8,7 @@
  * @description Navigator between `List` and `Integer`
  */
 global class IntegerAssertListNavigator {
+    private Integer actual;
     private IntegerAssert assertDelegate;
     private ListAssert originAssert;
 
@@ -17,6 +18,7 @@ global class IntegerAssertListNavigator {
      * @param originAssert The asserting type to go back to.
      */
     global IntegerAssertListNavigator(Integer actual, ListAssert originAssert) {
+        this.actual = actual;
         assertDelegate = new IntegerAssert(actual);
         this.originAssert = originAssert;
     }

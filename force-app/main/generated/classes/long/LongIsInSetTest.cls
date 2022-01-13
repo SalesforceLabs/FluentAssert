@@ -8,7 +8,8 @@
 public class LongIsInSetTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Long) 10).isIn((Set<Object>) new Set<Object>{(Long) 10});
+        Long value = 10;
+        Assert.that(value).isIn((Set<Object>) new Set<Object>{value});
     }
 
     @IsTest

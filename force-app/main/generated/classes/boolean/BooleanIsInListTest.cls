@@ -8,7 +8,8 @@
 public class BooleanIsInListTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Boolean) true).isIn((List<Object>) new List<Object>{(Boolean) true});
+        Boolean value = true;
+        Assert.that(value).isIn((List<Object>) new List<Object>{value});
     }
 
     @IsTest

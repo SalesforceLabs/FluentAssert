@@ -8,7 +8,8 @@
 public class IdIsInSetTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Id) UserInfo.getOrganizationId()).isIn((Set<Object>) new Set<Object>{(Id) UserInfo.getOrganizationId()});
+        Id value = UserInfo.getOrganizationId();
+        Assert.that(value).isIn((Set<Object>) new Set<Object>{value});
     }
 
     @IsTest

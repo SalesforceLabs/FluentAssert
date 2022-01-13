@@ -8,7 +8,8 @@
 public class BooleanIsInSetTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Boolean) true).isIn((Set<Object>) new Set<Object>{(Boolean) true});
+        Boolean value = true;
+        Assert.that(value).isIn((Set<Object>) new Set<Object>{value});
     }
 
     @IsTest

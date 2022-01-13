@@ -5,13 +5,14 @@
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
 <#assign dataTypes = [
-    {"native":"Object",  "concreteValue": "'X'",                          "notEqualToValue":"'Y'"},
-    {"native":"Date",    "concreteValue": "Date.today()",                 "notEqualToValue":"Date.today().addDays(1)"},
-    {"native":"Datetime","concreteValue": "Datetime.now()",               "notEqualToValue":"Datetime.now().addDays(1)"},
-    {"native":"Time",    "concreteValue": "Time.newInstance(1, 2, 3, 4)", "notEqualToValue":"Time.newInstance(1, 2, 3, 4).addMilliseconds(1)"},
-    {"native":"String",  "concreteValue": "'X'",                          "notEqualToValue":"'Y'"},
-    {"native":"Blob",    "concreteValue": "Blob.valueOf('X')",            "notEqualToValue":"Blob.valueOf('Y')"},
-    {"native":"SObject", "concreteValue": "new Account(Name = 'X')",      "notEqualToValue":"new Account(Name = 'Y')"}
+    {"native":"Object",    "concreteValue": "'X'",                          "notEqualToValue":"'Y'"},
+    {"native":"Date",      "concreteValue": "Date.today()",                 "notEqualToValue":"Date.today().addDays(1)"},
+    {"native":"Datetime",  "concreteValue": "Datetime.now()",               "notEqualToValue":"Datetime.now().addDays(1)"},
+    {"native":"Time",      "concreteValue": "Time.newInstance(1, 2, 3, 4)", "notEqualToValue":"Time.newInstance(1, 2, 3, 4).addMilliseconds(1)"},
+    {"native":"String",    "concreteValue": "'X'",                          "notEqualToValue":"'Y'"},
+    {"native":"Blob",      "concreteValue": "Blob.valueOf('X')",            "notEqualToValue":"Blob.valueOf('Y')"},
+    {"native":"SObject",   "concreteValue": "new Account(Name = 'X')",      "notEqualToValue":"new Account(Name = 'Y')"},
+    {"native":"Exception", "concreteValue": "new UnexpectedException('X')", "notEqualToValue":"new UnexpectedException('Y')"}
 ]>
 
 <@pp.dropOutputFile />

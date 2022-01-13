@@ -8,6 +8,7 @@
  * @description Navigator between `SObject` and `List<Object>`
  */
 global class ListAssertSObjectNavigator {
+    private List<Object> actual;
     private ListAssert assertDelegate;
     private SObjectAssert originAssert;
 
@@ -17,6 +18,7 @@ global class ListAssertSObjectNavigator {
      * @param originAssert The asserting type to go back to.
      */
     global ListAssertSObjectNavigator(List<Object> actual, SObjectAssert originAssert) {
+        this.actual = actual;
         assertDelegate = new ListAssert(actual);
         this.originAssert = originAssert;
     }

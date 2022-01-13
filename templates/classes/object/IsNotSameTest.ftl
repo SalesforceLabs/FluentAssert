@@ -20,7 +20,8 @@
     {"type":"List<Object>",        "self": "new List<Object>()",                  "other":"new List<Object>()"},
     {"type":"Set<Object>",         "self": "new Set<Object>()",                   "other":"new Set<Object>()"},
     {"type":"Map<Object, Object>", "self": "new Map<Object, Object>{'X' => 'X'}", "other":"new Map<Object, Object>{'Y' => 'Y'}"},
-    {"type":"SObject",             "self": "new Account(Name = 'X')",             "other": "new Account(Name = 'Y')"}
+    {"type":"SObject",             "self": "new Account(Name = 'X')",             "other":"new Account(Name = 'Y')"},
+    {"type":"Exception",           "self": "new UnexpectedException('X')",        "other":"new UnexpectedException('Y')"}
 ]>
 <@pp.dropOutputFile />
 <#list dataTypes as dt>

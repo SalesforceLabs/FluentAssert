@@ -8,7 +8,8 @@
 public class BlobIsInListTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Blob) Blob.valueOf('X')).isIn((List<Object>) new List<Object>{(Blob) Blob.valueOf('X')});
+        Blob value = Blob.valueOf('X');
+        Assert.that(value).isIn((List<Object>) new List<Object>{value});
     }
 
     @IsTest

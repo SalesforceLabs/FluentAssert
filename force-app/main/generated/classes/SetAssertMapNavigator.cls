@@ -8,6 +8,7 @@
  * @description Navigator between `Map` and `Set<Object>`
  */
 global class SetAssertMapNavigator {
+    private Set<Object> actual;
     private SetAssert assertDelegate;
     private MapAssert originAssert;
 
@@ -17,6 +18,7 @@ global class SetAssertMapNavigator {
      * @param originAssert The asserting type to go back to.
      */
     global SetAssertMapNavigator(Set<Object> actual, MapAssert originAssert) {
+        this.actual = actual;
         assertDelegate = new SetAssert(actual);
         this.originAssert = originAssert;
     }

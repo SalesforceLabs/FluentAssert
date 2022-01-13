@@ -8,7 +8,8 @@
 public class DecimalIsInListTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Decimal) 10.0).isIn((List<Object>) new List<Object>{(Decimal) 10.0});
+        Decimal value = 10.0;
+        Assert.that(value).isIn((List<Object>) new List<Object>{value});
     }
 
     @IsTest

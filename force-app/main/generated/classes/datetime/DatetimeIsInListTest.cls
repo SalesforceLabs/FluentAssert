@@ -8,7 +8,8 @@
 public class DatetimeIsInListTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Datetime) Datetime.newInstance(2020, 5, 12)).isIn((List<Object>) new List<Object>{(Datetime) Datetime.newInstance(2020, 5, 12)});
+        Datetime value = Datetime.newInstance(2020, 5, 12);
+        Assert.that(value).isIn((List<Object>) new List<Object>{value});
     }
 
     @IsTest

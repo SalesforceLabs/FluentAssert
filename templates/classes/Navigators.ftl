@@ -298,6 +298,169 @@
                 "type": "Object", "name": "expected"
             }]
         }
+    ],
+    "exception": [
+        {
+            "method":    "isNull"
+        },{
+            "method":    "isNotNull"
+        },{
+            "method":    "isSame",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isNotSame",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isEqualTo",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isNotEqualTo",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isIn",
+            "interface": [{
+                "type": "List<Object>", "name": "expected"
+            }]
+        },{
+            "method":    "isIn",
+            "interface": [{
+                "type": "Set<Object>", "name": "expected"
+            }]
+        },{
+            "method":    "hasMessage",
+            "interface": [{
+                "type": "String", "name": "message"
+            }]
+        },{
+            "method":    "hasCause"
+        },{
+            "method":    "hasNoCause"
+        }
+    ],
+    "string": [
+        {
+            "method":    "isNull"
+        },{
+            "method":    "isNotNull"
+        },{
+            "method":    "isSame",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isNotSame",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isEqualTo",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isNotEqualTo",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isIn",
+            "interface": [{
+                "type": "List<Object>", "name": "expected"
+            }]
+        },{
+            "method":    "isIn",
+            "interface": [{
+                "type": "Set<Object>", "name": "expected"
+            }]
+        },{
+            "method":    "isAllLowerCase"
+        },{
+            "method":    "isAllUpperCase"
+        },{
+            "method":    "isAlpha"
+        },{
+            "method":    "isAlphaSpace"
+        },{
+            "method":    "isAlphanumeric"
+        },{
+            "method":    "isAlphanumericSpace"
+        },{
+            "method":    "isAsciiPrintable"
+        },{
+            "method":    "isNumeric"
+        },{
+            "method":    "isNumericSpace"
+        },{
+            "method":    "isWhitespace"
+        },{
+            "method":    "isBlank"
+        },{
+            "method":    "isEmpty"
+        },{
+            "method":    "isNotBlank"
+        },{
+            "method":    "isNotEmpty"
+        },{
+            "method":    "containsWhitespace"
+        },{
+            "method":    "contains",
+            "interface": [{
+                "type": "String", "name": "expected"
+            }]
+        },{
+            "method":    "containsAny",
+            "interface": [{
+                "type": "String", "name": "expected"
+            }]
+        },{
+            "method":    "containsIgnoreCase",
+            "interface": [{
+                "type": "String", "name": "expected"
+            }]
+        },{
+            "method":    "containsNone",
+            "interface": [{
+                "type": "String", "name": "expected"
+            }]
+        },{
+            "method":    "containsOnly",
+            "interface": [{
+                "type": "String", "name": "expected"
+            }]
+        },{
+            "method":    "endsWith",
+            "interface": [{
+                "type": "String", "name": "expected"
+            }]
+        },{
+            "method":    "endsWithIgnoreCase",
+            "interface": [{
+                "type": "String", "name": "expected"
+            }]
+        },{
+            "method":    "equalsIgnoreCase",
+            "interface": [{
+                "type": "String", "name": "expected"
+            }]
+        },{
+            "method":    "startsWith",
+            "interface": [{
+                "type": "String", "name": "expected"
+            }]
+        },{
+            "method":    "startsWithIgnoreCase",
+            "interface": [{
+                "type": "String", "name": "expected"
+            }]
+        }
     ]
 }>
 <#assign navigators = [
@@ -333,6 +496,28 @@
         "delegatingType":  "Integer",
         "originatingType": "Blob",
         "delegations":     delegations.integer
+    },{
+        "delegatingType":  "Exception",
+        "originatingType": "Exception",
+        "delegations":     delegations.exception,
+        "navigators": [{
+            "name":        "cause",
+            "method":      "getCause",
+            "returnType":  "Exception"
+        },{
+            "name":        "rootCause",
+            "method":      "getCause",
+            "util":        "ExceptionUtil.getRootCause",
+            "returnType":  "Exception"
+        },{
+            "name":        "message",
+            "method":      "getMessage",
+            "returnType":  "String"
+        }]
+    },{
+        "delegatingType":  "String",
+        "originatingType": "Exception",
+        "delegations":     delegations.string
     }
 ]>
 <#list navigators as n>
@@ -341,6 +526,7 @@
  * @description Navigator between `${n.originatingType}` and `${n.delegatingType}`
  */
 global class ${n.delegatingType?keep_before("<")}Assert${n.originatingType}Navigator {
+    private ${n.delegatingType} actual;
     private ${n.delegatingType?keep_before("<")}Assert assertDelegate;
     private ${n.originatingType}Assert originAssert;
 
@@ -350,6 +536,7 @@ global class ${n.delegatingType?keep_before("<")}Assert${n.originatingType}Navig
      * @param originAssert The asserting type to go back to.
      */
     global ${n.delegatingType?keep_before("<")}Assert${n.originatingType}Navigator(${n.delegatingType} actual, ${n.originatingType}Assert originAssert) {
+        this.actual = actual;
         assertDelegate = new ${n.delegatingType?keep_before("<")}Assert(actual);
         this.originAssert = originAssert;
     }
@@ -372,5 +559,16 @@ global class ${n.delegatingType?keep_before("<")}Assert${n.originatingType}Navig
 <#sep>
 
 </#list>
+<#if (n.navigators??)>
+<#list n.navigators as nav>
+    /**
+     * @see ${nav.returnType?keep_before("<")}Assert.${nav.method}()
+     */
+    global ${nav.returnType?keep_before("<")}Assert${n.originatingType}Navigator ${nav.name}() {
+        return new ${nav.returnType?keep_before("<")}Assert${n.originatingType}Navigator(<#if (nav.util??)>${nav.util}(</#if>actual.${nav.method}()<#if (nav.util??)>)</#if>, originAssert);
+    }
+<#sep>
+
+</#list></#if>
 }
 </#list>

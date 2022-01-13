@@ -8,7 +8,8 @@
 public class DateIsEqualToTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Date) Date.today()).isEqualTo(Date.today());
+        Date value = Date.today();
+        Assert.that(value).isEqualTo(value);
     }
 
     @IsTest

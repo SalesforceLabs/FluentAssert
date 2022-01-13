@@ -8,7 +8,8 @@
 public class SObjectIsInSetTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((SObject) new Account(Name = 'X')).isIn((Set<Object>) new Set<Object>{(SObject) new Account(Name = 'X')});
+        SObject value = new Account(Name = 'X');
+        Assert.that(value).isIn((Set<Object>) new Set<Object>{value});
     }
 
     @IsTest

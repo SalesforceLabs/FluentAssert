@@ -8,7 +8,8 @@
 public class DateIsInListTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Date) Date.newInstance(2020, 5, 12)).isIn((List<Object>) new List<Object>{(Date) Date.newInstance(2020, 5, 12)});
+        Date value = Date.newInstance(2020, 5, 12);
+        Assert.that(value).isIn((List<Object>) new List<Object>{value});
     }
 
     @IsTest

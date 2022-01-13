@@ -8,6 +8,7 @@
  * @description Navigator between `Set` and `Integer`
  */
 global class IntegerAssertSetNavigator {
+    private Integer actual;
     private IntegerAssert assertDelegate;
     private SetAssert originAssert;
 
@@ -17,6 +18,7 @@ global class IntegerAssertSetNavigator {
      * @param originAssert The asserting type to go back to.
      */
     global IntegerAssertSetNavigator(Integer actual, SetAssert originAssert) {
+        this.actual = actual;
         assertDelegate = new IntegerAssert(actual);
         this.originAssert = originAssert;
     }

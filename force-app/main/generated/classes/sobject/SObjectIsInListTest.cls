@@ -8,7 +8,8 @@
 public class SObjectIsInListTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((SObject) new Account(Name = 'X')).isIn((List<Object>) new List<Object>{(SObject) new Account(Name = 'X')});
+        SObject value = new Account(Name = 'X');
+        Assert.that(value).isIn((List<Object>) new List<Object>{value});
     }
 
     @IsTest

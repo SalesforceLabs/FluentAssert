@@ -8,7 +8,8 @@
 public class ObjectIsInListTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Object) 'X').isIn((List<Object>) new List<Object>{(Object) 'X'});
+        Object value = 'X';
+        Assert.that(value).isIn((List<Object>) new List<Object>{value});
     }
 
     @IsTest

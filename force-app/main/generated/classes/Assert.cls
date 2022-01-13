@@ -63,6 +63,15 @@ global inherited sharing class Assert {
     }
 
     /**
+     * @description Fluent assert on `Exception`s
+     * @param actual The actual value to assert against.
+     * @return Fluent assert object for `Exception`
+     */
+    global static ExceptionAssert that(Exception actual) {
+        return new ExceptionAssert(actual);
+    }
+
+    /**
      * @description Fluent assert on `Id`s
      * @param actual The actual value to assert against.
      * @return Fluent assert object for `Id`

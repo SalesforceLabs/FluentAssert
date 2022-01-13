@@ -8,7 +8,8 @@
 public class DecimalIsInSetTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Decimal) 10.0).isIn((Set<Object>) new Set<Object>{(Decimal) 10.0});
+        Decimal value = 10.0;
+        Assert.that(value).isIn((Set<Object>) new Set<Object>{value});
     }
 
     @IsTest

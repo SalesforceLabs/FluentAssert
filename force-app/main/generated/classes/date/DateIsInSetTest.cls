@@ -8,7 +8,8 @@
 public class DateIsInSetTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Date) Date.newInstance(2020, 5, 12)).isIn((Set<Object>) new Set<Object>{(Date) Date.newInstance(2020, 5, 12)});
+        Date value = Date.newInstance(2020, 5, 12);
+        Assert.that(value).isIn((Set<Object>) new Set<Object>{value});
     }
 
     @IsTest

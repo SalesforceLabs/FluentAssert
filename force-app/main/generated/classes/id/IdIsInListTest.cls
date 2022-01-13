@@ -8,7 +8,8 @@
 public class IdIsInListTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Id) UserInfo.getOrganizationId()).isIn((List<Object>) new List<Object>{(Id) UserInfo.getOrganizationId()});
+        Id value = UserInfo.getOrganizationId();
+        Assert.that(value).isIn((List<Object>) new List<Object>{value});
     }
 
     @IsTest

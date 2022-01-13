@@ -8,7 +8,8 @@
 public class LongIsInListTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((Long) 10).isIn((List<Object>) new List<Object>{(Long) 10});
+        Long value = 10;
+        Assert.that(value).isIn((List<Object>) new List<Object>{value});
     }
 
     @IsTest

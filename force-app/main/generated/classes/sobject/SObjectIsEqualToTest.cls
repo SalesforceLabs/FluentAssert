@@ -8,7 +8,8 @@
 public class SObjectIsEqualToTest {
     @IsTest
     static void testPassingScenarios() {
-        Assert.that((SObject) new Account(Name = 'X')).isEqualTo(new Account(Name = 'X'));
+        SObject value = new Account(Name = 'X');
+        Assert.that(value).isEqualTo(value);
     }
 
     @IsTest
