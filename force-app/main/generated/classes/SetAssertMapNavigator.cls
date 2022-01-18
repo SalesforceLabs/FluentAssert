@@ -34,7 +34,6 @@ global class SetAssertMapNavigator {
      * @description Go back to `Map`.
      * @see SetAssertMapNavigator.andThen()
      */
-    @Deprecated
     global MapAssert back() {
         return andThen();
     }

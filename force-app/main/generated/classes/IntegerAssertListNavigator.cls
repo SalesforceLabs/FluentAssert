@@ -34,7 +34,6 @@ global class IntegerAssertListNavigator {
      * @description Go back to `List`.
      * @see IntegerAssertListNavigator.andThen()
      */
-    @Deprecated
     global ListAssert back() {
         return andThen();
     }

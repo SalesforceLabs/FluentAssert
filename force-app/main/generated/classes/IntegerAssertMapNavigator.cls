@@ -34,7 +34,6 @@ global class IntegerAssertMapNavigator {
      * @description Go back to `Map`.
      * @see IntegerAssertMapNavigator.andThen()
      */
-    @Deprecated
     global MapAssert back() {
         return andThen();
     }

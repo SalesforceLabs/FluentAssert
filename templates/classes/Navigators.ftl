@@ -552,7 +552,6 @@ global class ${n.delegatingType?keep_before("<")}Assert${n.originatingType}Navig
      * @description Go back to `${n.originatingType}`.
      * @see ${n.delegatingType?keep_before('<')}Assert${n.originatingType}Navigator.andThen()
      */
-    @Deprecated
     global ${n.originatingType}Assert back() {
         return andThen();
     }

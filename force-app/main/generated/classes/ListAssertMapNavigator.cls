@@ -34,7 +34,6 @@ global class ListAssertMapNavigator {
      * @description Go back to `Map`.
      * @see ListAssertMapNavigator.andThen()
      */
-    @Deprecated
     global MapAssert back() {
         return andThen();
     }

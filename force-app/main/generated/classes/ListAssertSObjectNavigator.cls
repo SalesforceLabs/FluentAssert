@@ -34,7 +34,6 @@ global class ListAssertSObjectNavigator {
      * @description Go back to `SObject`.
      * @see ListAssertSObjectNavigator.andThen()
      */
-    @Deprecated
     global SObjectAssert back() {
         return andThen();
     }
