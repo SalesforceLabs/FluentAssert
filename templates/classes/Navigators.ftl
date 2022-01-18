@@ -531,7 +531,7 @@ global class ${n.delegatingType?keep_before("<")}Assert${n.originatingType}Navig
     private ${n.originatingType}Assert originAssert;
 
     /**
-     * @description Constructs an instance with an actual `${n.delegatingType}` value. Use `back()` to go back to `${n.originatingType}`.
+     * @description Constructs an instance with an actual `${n.delegatingType}` value. Use `andThen()` to continue asserting on `${n.originatingType}`.
      * @param actual The actual value to assert against.
      * @param originAssert The asserting type to go back to.
      */
@@ -542,10 +542,19 @@ global class ${n.delegatingType?keep_before("<")}Assert${n.originatingType}Navig
     }
 
     /**
-     * @description Go back to `${n.originatingType}`.
+     * @description Continue asserting on `${n.originatingType}`.
      */
-    global ${n.originatingType}Assert back() {
+    global ${n.originatingType}Assert andThen() {
         return originAssert;
+    }
+
+    /**
+     * @description Go back to `${n.originatingType}`.
+     * @see ${n.delegatingType?keep_before('<')}Assert${n.originatingType}Navigator.andThen()
+     */
+    @Deprecated
+    global ${n.originatingType}Assert back() {
+        return andThen();
     }
 
 <#list n.delegations as nd>

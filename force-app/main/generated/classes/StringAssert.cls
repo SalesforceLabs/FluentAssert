@@ -19,7 +19,7 @@ global class StringAssert extends AssertBase {
     }
 
     /**
-     * @description Constructs a navigator that allows asserts on length(). Use `back()` to get back to asserts on `String`.
+     * @description Constructs a navigator that allows asserts on length(). Use `andThen()` to continue asserting on `String`.
      * @return a navigator on length().
      */
     global IntegerAssertStringNavigator length() {

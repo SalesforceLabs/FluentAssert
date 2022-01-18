@@ -19,16 +19,18 @@
 @IsTest
 public class ListAssert${n.delegatingType}NavigatorTest {
     @IsTest
-    static void testBack() {
+    static void testAndThen() {
         // Given
         ${n.delegatingType}Assert expectedAssert = Assert.that(${n.instance});
         ListAssert${n.delegatingType}Navigator navigator = new ListAssert${n.delegatingType}Navigator(null, expectedAssert);
 
         // When
-        ${n.delegatingType}Assert actualAssert = navigator.back();
+        ${n.delegatingType}Assert actualAssert     = navigator.andThen();
+        ${n.delegatingType}Assert deprecatedAssert = navigator.back();
 
         // Then
-        System.assert(expectedAssert === actualAssert, 'Returned navigator should be self');
+        Assert.that(expectedAssert).isSame(actualAssert);
+        Assert.that(deprecatedAssert).isSame(actualAssert);
     }
 
     @IsTest

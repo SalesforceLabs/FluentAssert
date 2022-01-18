@@ -13,7 +13,7 @@ global class StringAssertExceptionNavigator {
     private ExceptionAssert originAssert;
 
     /**
-     * @description Constructs an instance with an actual `String` value. Use `back()` to go back to `Exception`.
+     * @description Constructs an instance with an actual `String` value. Use `andThen()` to continue asserting on `Exception`.
      * @param actual The actual value to assert against.
      * @param originAssert The asserting type to go back to.
      */
@@ -24,10 +24,19 @@ global class StringAssertExceptionNavigator {
     }
 
     /**
-     * @description Go back to `Exception`.
+     * @description Continue asserting on `Exception`.
      */
-    global ExceptionAssert back() {
+    global ExceptionAssert andThen() {
         return originAssert;
+    }
+
+    /**
+     * @description Go back to `Exception`.
+     * @see StringAssertExceptionNavigator.andThen()
+     */
+    @Deprecated
+    global ExceptionAssert back() {
+        return andThen();
     }
 
     /**

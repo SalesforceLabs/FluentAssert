@@ -13,7 +13,7 @@ global class IntegerAssertSetNavigator {
     private SetAssert originAssert;
 
     /**
-     * @description Constructs an instance with an actual `Integer` value. Use `back()` to go back to `Set`.
+     * @description Constructs an instance with an actual `Integer` value. Use `andThen()` to continue asserting on `Set`.
      * @param actual The actual value to assert against.
      * @param originAssert The asserting type to go back to.
      */
@@ -24,10 +24,19 @@ global class IntegerAssertSetNavigator {
     }
 
     /**
-     * @description Go back to `Set`.
+     * @description Continue asserting on `Set`.
      */
-    global SetAssert back() {
+    global SetAssert andThen() {
         return originAssert;
+    }
+
+    /**
+     * @description Go back to `Set`.
+     * @see IntegerAssertSetNavigator.andThen()
+     */
+    @Deprecated
+    global SetAssert back() {
+        return andThen();
     }
 
     /**

@@ -14,7 +14,7 @@ public class ExceptionHasMessageTest {
         Assert.that(new UnexpectedException(expectedMessage))
               .message()
                  .isEqualTo(expectedMessage)
-              .back()
+              .andThen()
               .hasMessage(expectedMessage);
     }
 

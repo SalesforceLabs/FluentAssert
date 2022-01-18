@@ -8,16 +8,18 @@
 public class IntegerAssertSetNavigatorTest {
 
     @IsTest
-    static void testBack() {
+    static void testAndThen() {
         // Given
         SetAssert expectedSetAssert = Assert.that(new Set<Object>());
         IntegerAssertSetNavigator navigator = new IntegerAssertSetNavigator(null, expectedSetAssert);
 
         // When
-        SetAssert actualSetAssert = navigator.back();
+        SetAssert actualSetAssert     = navigator.andThen();
+        SetAssert deprecatedSetAssert = navigator.back();
 
         // Then
-        System.assert(expectedSetAssert === actualSetAssert, 'Returned navigator should be self');
+        Assert.that(expectedSetAssert).isSame(actualSetAssert);
+        Assert.that(deprecatedSetAssert).isSame(actualSetAssert);
     }
 
     @IsTest

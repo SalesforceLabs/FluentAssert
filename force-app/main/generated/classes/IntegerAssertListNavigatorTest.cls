@@ -8,16 +8,18 @@
 public class IntegerAssertListNavigatorTest {
 
     @IsTest
-    static void testBack() {
+    static void testAndThen() {
         // Given
         ListAssert expectedListAssert = Assert.that(new List<Object>());
         IntegerAssertListNavigator navigator = new IntegerAssertListNavigator(null, expectedListAssert);
 
         // When
-        ListAssert actualListAssert = navigator.back();
+        ListAssert actualListAssert     = navigator.andThen();
+        ListAssert deprecatedListAssert = navigator.back();
 
         // Then
-        System.assert(expectedListAssert === actualListAssert, 'Returned navigator should be self');
+        Assert.that(expectedListAssert).isSame(actualListAssert);
+        Assert.that(deprecatedListAssert).isSame(actualListAssert);
     }
 
     @IsTest

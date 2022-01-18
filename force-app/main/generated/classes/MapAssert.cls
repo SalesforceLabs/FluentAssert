@@ -19,7 +19,7 @@ global class MapAssert extends AssertBase {
     }
 
     /**
-     * @description Constructs a navigator that allows asserts on keys(). Use `back()` to get back to asserts on `Map`.
+     * @description Constructs a navigator that allows asserts on keys(). Use `andThen()` to continue asserting on `Map`.
      * @return a navigator on keys().
      */
     global SetAssertMapNavigator keys() {
@@ -28,7 +28,7 @@ global class MapAssert extends AssertBase {
     }
 
     /**
-     * @description Constructs a navigator that allows asserts on size(). Use `back()` to get back to asserts on `Map`.
+     * @description Constructs a navigator that allows asserts on size(). Use `andThen()` to continue asserting on `Map`.
      * @return a navigator on size().
      */
     global IntegerAssertMapNavigator size() {
@@ -37,7 +37,7 @@ global class MapAssert extends AssertBase {
     }
 
     /**
-     * @description Constructs a navigator that allows asserts on values(). Use `back()` to get back to asserts on `Map`.
+     * @description Constructs a navigator that allows asserts on values(). Use `andThen()` to continue asserting on `Map`.
      * @return a navigator on values().
      */
     global ListAssertMapNavigator values() {

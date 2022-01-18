@@ -4,7 +4,7 @@ Fluent.Assert.that(true)
 Fluent.Assert.that('Hello World!')
               .length()
                   .isLessThan(100)
-              .back()
+              .andThen()
               .startsWith('Hello')
               .contains('World');
 
@@ -16,10 +16,10 @@ Exception e         = new UnexpectedException('FluentAssert Exception', cause);
 Fluent.Assert.that(e)
              .message()
                 .contains('FluentAssert')
-             .back()
+             .andThen()
              .cause()
                 .hasMessage('Cause Exception')
-             .back()
+             .andThen()
              .rootCause()
                 .hasNoCause()
                 .isSame(rootCause);

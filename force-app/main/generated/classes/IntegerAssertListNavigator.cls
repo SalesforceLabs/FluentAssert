@@ -13,7 +13,7 @@ global class IntegerAssertListNavigator {
     private ListAssert originAssert;
 
     /**
-     * @description Constructs an instance with an actual `Integer` value. Use `back()` to go back to `List`.
+     * @description Constructs an instance with an actual `Integer` value. Use `andThen()` to continue asserting on `List`.
      * @param actual The actual value to assert against.
      * @param originAssert The asserting type to go back to.
      */
@@ -24,10 +24,19 @@ global class IntegerAssertListNavigator {
     }
 
     /**
-     * @description Go back to `List`.
+     * @description Continue asserting on `List`.
      */
-    global ListAssert back() {
+    global ListAssert andThen() {
         return originAssert;
+    }
+
+    /**
+     * @description Go back to `List`.
+     * @see IntegerAssertListNavigator.andThen()
+     */
+    @Deprecated
+    global ListAssert back() {
+        return andThen();
     }
 
     /**

@@ -19,7 +19,7 @@ global class ListAssert extends AssertBase {
     }
 
     /**
-     * @description Constructs a navigator that allows asserts on size(). Use `back()` to get back to asserts on `List`.
+     * @description Constructs a navigator that allows asserts on size(). Use `andThen()` to continue asserting on `List`.
      * @return a navigator on size().
      */
     global IntegerAssertListNavigator size() {

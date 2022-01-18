@@ -10,20 +10,20 @@ The asserts below can all be chanied like the example below.
 Fluent.Assert.that('Hello World!')
              .length()
                 .isLessThan(100)
-             .back()
+             .andThen()
              .startsWith('Hello')
              .contains('World');
 
 Fluent.Assert.that(aList)
              .size()
                 .isGreaterThan(10)
-             .back()
+             .andThen()
              .contains(someOtherList)
              .isSorted();
 ```
 
 ### Navigators
-A navigator is a handy feature that allows to zoom in on a specific part of a value, do some asserts and get back to the initial value. Once done using the navigator, simply do `back()` to get back to the initial value.
+A navigator is a handy feature that allows to zoom in on a specific part of a value, do some asserts and get back to the initial value. Once done using the navigator, simply do `andThen()` to continue asserting on the initial value.
 
 Type     | Navigators
 ---------|-------------------------------
@@ -74,14 +74,14 @@ Account a = ...
 Fluent.Assert.that((a)
              .extracting('Name, AccountNumber, AccountSource')
                 .containsExactly(expectedValues)
-                .back()
+                .andThen()
              .isSame(a);
 
 // or a `List<Schema.SObjectField>`
 Fluent.Assert.that((a)
              .extracting(new List<Schema.SObjectField>{Schema.Account.Name, Schema.Account.AccountNumber, Schema.Account.AccountSource})
                 .containsExactly(expectedValues)
-                .back()
+                .andThen()
              .isSame(a);
 ```
 
@@ -492,10 +492,10 @@ Exception e         = new UnexpectedException('FluentAssert Exception', cause);
 Fluent.Assert.that(e)
              .message()
                 .contains('FluentAssert')
-             .back()
+             .andThen()
              .cause()
                 .hasMessage('Cause Exception')
-             .back()
+             .andThen()
              .rootCause()
                 .hasNoCause()
                 .isSame(rootCause);

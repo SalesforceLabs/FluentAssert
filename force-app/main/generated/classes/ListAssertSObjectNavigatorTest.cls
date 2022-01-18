@@ -7,16 +7,18 @@
 @IsTest
 public class ListAssertSObjectNavigatorTest {
     @IsTest
-    static void testBack() {
+    static void testAndThen() {
         // Given
         SObjectAssert expectedAssert = Assert.that(new Account());
         ListAssertSObjectNavigator navigator = new ListAssertSObjectNavigator(null, expectedAssert);
 
         // When
-        SObjectAssert actualAssert = navigator.back();
+        SObjectAssert actualAssert     = navigator.andThen();
+        SObjectAssert deprecatedAssert = navigator.back();
 
         // Then
-        System.assert(expectedAssert === actualAssert, 'Returned navigator should be self');
+        Assert.that(expectedAssert).isSame(actualAssert);
+        Assert.that(deprecatedAssert).isSame(actualAssert);
     }
 
     @IsTest

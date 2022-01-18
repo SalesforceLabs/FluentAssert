@@ -7,16 +7,18 @@
 @IsTest
 public class ListAssertMapNavigatorTest {
     @IsTest
-    static void testBack() {
+    static void testAndThen() {
         // Given
         MapAssert expectedAssert = Assert.that(new Map<Object, Object>());
         ListAssertMapNavigator navigator = new ListAssertMapNavigator(null, expectedAssert);
 
         // When
-        MapAssert actualAssert = navigator.back();
+        MapAssert actualAssert     = navigator.andThen();
+        MapAssert deprecatedAssert = navigator.back();
 
         // Then
-        System.assert(expectedAssert === actualAssert, 'Returned navigator should be self');
+        Assert.that(expectedAssert).isSame(actualAssert);
+        Assert.that(deprecatedAssert).isSame(actualAssert);
     }
 
     @IsTest

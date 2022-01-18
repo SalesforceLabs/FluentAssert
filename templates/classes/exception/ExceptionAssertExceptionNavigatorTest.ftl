@@ -9,16 +9,18 @@
 @IsTest
 public class ExceptionAssertExceptionNavigatorTest {
     @IsTest
-    static void testBack() {
+    static void testAndThen() {
         // Given
         ExceptionAssert expectedAssert = Assert.that(new UnexpectedException());
         ExceptionAssertExceptionNavigator navigator = new ExceptionAssertExceptionNavigator(null, expectedAssert);
 
         // When
-        ExceptionAssert actualAssert = navigator.back();
+        ExceptionAssert actualAssert     = navigator.andThen();
+        ExceptionAssert deprecatedAssert = navigator.back();
 
         // Then
-        System.assert(expectedAssert === actualAssert, 'Returned navigator should be self');
+        Assert.that(expectedAssert).isSame(actualAssert);
+        Assert.that(deprecatedAssert).isSame(actualAssert);
     }
 
     /*

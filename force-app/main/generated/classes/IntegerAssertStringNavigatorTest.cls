@@ -8,16 +8,18 @@
 public class IntegerAssertStringNavigatorTest {
 
     @IsTest
-    static void testBack() {
+    static void testAndThen() {
         // Given
         StringAssert expectedStringAssert = Assert.that('');
         IntegerAssertStringNavigator navigator = new IntegerAssertStringNavigator(null, expectedStringAssert);
 
         // When
-        StringAssert actualStringAssert = navigator.back();
+        StringAssert actualStringAssert     = navigator.andThen();
+        StringAssert deprecatedStringAssert = navigator.back();
 
         // Then
-        System.assert(expectedStringAssert === actualStringAssert, 'Returned navigator should be self');
+        Assert.that(expectedStringAssert).isSame(actualStringAssert);
+        Assert.that(deprecatedStringAssert).isSame(actualStringAssert);
     }
 
     @IsTest

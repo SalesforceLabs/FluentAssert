@@ -13,7 +13,7 @@ global class IntegerAssertBlobNavigator {
     private BlobAssert originAssert;
 
     /**
-     * @description Constructs an instance with an actual `Integer` value. Use `back()` to go back to `Blob`.
+     * @description Constructs an instance with an actual `Integer` value. Use `andThen()` to continue asserting on `Blob`.
      * @param actual The actual value to assert against.
      * @param originAssert The asserting type to go back to.
      */
@@ -24,10 +24,19 @@ global class IntegerAssertBlobNavigator {
     }
 
     /**
-     * @description Go back to `Blob`.
+     * @description Continue asserting on `Blob`.
      */
-    global BlobAssert back() {
+    global BlobAssert andThen() {
         return originAssert;
+    }
+
+    /**
+     * @description Go back to `Blob`.
+     * @see IntegerAssertBlobNavigator.andThen()
+     */
+    @Deprecated
+    global BlobAssert back() {
+        return andThen();
     }
 
     /**

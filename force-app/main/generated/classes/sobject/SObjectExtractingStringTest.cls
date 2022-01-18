@@ -23,7 +23,7 @@ public class SObjectExtractingStringTest {
         Assert.that((SObject) a)
               .extracting('Name , AccountNumber,AccountSource')
                 .containsExactly(expectedValues)
-                .back()
+                .andThen()
               .isSame(a);
     }
 
