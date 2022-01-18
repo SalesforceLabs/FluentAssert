@@ -21,7 +21,7 @@ public class MapContainsTest {
                     .containsEntry('A', 'a')
                     .values()
                         .contains(new List<Object>{'b'})
-                    .back()
+                    .andThen()
                     .keys()
                         .contains(new List<Object>{'B'});
     }

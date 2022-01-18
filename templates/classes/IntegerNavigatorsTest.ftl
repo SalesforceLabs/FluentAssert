@@ -18,16 +18,18 @@
 public class IntegerAssert${n.nativeDataType}NavigatorTest {
 
     @IsTest
-    static void testBack() {
+    static void testAndThen() {
         // Given
         ${n.nativeDataType}Assert expected${n.nativeDataType}Assert = Assert.that(${n.emptyValue});
         IntegerAssert${n.nativeDataType}Navigator navigator = new IntegerAssert${n.nativeDataType}Navigator(null, expected${n.nativeDataType}Assert);
 
         // When
-        ${n.nativeDataType}Assert actual${n.nativeDataType}Assert = navigator.back();
+        ${n.nativeDataType}Assert actual${n.nativeDataType}Assert     = navigator.andThen();
+        ${n.nativeDataType}Assert deprecated${n.nativeDataType}Assert = navigator.back();
 
         // Then
-        System.assert(expected${n.nativeDataType}Assert === actual${n.nativeDataType}Assert, 'Returned navigator should be self');
+        Assert.that(expected${n.nativeDataType}Assert).isSame(actual${n.nativeDataType}Assert);
+        Assert.that(deprecated${n.nativeDataType}Assert).isSame(actual${n.nativeDataType}Assert);
     }
 
     @IsTest

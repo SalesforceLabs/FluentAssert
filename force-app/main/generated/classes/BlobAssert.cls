@@ -19,7 +19,7 @@ global class BlobAssert extends AssertBase {
     }
 
     /**
-     * @description Constructs a navigator that allows asserts on size(). Use `back()` to get back to asserts on `Blob`.
+     * @description Constructs a navigator that allows asserts on size(). Use `andThen()` to continue asserting on `Blob`.
      * @return a navigator on size().
      */
     global IntegerAssertBlobNavigator size() {

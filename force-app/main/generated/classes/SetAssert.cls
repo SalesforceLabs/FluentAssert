@@ -19,7 +19,7 @@ global class SetAssert extends AssertBase {
     }
 
     /**
-     * @description Constructs a navigator that allows asserts on size(). Use `back()` to get back to asserts on `Set`.
+     * @description Constructs a navigator that allows asserts on size(). Use `andThen()` to continue asserting on `Set`.
      * @return a navigator on size().
      */
     global IntegerAssertSetNavigator size() {

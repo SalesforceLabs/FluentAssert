@@ -23,7 +23,7 @@ public class SObjectExtractingSObjectFieldTest {
         Assert.that((SObject) a)
               .extracting(new List<Schema.SObjectField>{Schema.Account.Name,Schema.Account.AccountNumber,Schema.Account.AccountSource})
                 .containsExactly(expectedValues)
-                .back()
+                .andThen()
               .isSame(a);
     }
 

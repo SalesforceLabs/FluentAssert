@@ -13,7 +13,7 @@ global class IntegerAssertStringNavigator {
     private StringAssert originAssert;
 
     /**
-     * @description Constructs an instance with an actual `Integer` value. Use `back()` to go back to `String`.
+     * @description Constructs an instance with an actual `Integer` value. Use `andThen()` to continue asserting on `String`.
      * @param actual The actual value to assert against.
      * @param originAssert The asserting type to go back to.
      */
@@ -24,10 +24,19 @@ global class IntegerAssertStringNavigator {
     }
 
     /**
-     * @description Go back to `String`.
+     * @description Continue asserting on `String`.
      */
-    global StringAssert back() {
+    global StringAssert andThen() {
         return originAssert;
+    }
+
+    /**
+     * @description Go back to `String`.
+     * @see IntegerAssertStringNavigator.andThen()
+     */
+    @Deprecated
+    global StringAssert back() {
+        return andThen();
     }
 
     /**

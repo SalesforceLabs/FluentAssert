@@ -7,16 +7,18 @@
 @IsTest
 public class StringAssertExceptionNavigatorTest {
     @IsTest
-    static void testBack() {
+    static void testAndThen() {
         // Given
         ExceptionAssert expectedExceptionAssert = Assert.that(new UnexpectedException('FluentAssert message'));
         StringAssertExceptionNavigator navigator = new StringAssertExceptionNavigator(null, expectedExceptionAssert);
 
         // When
-        ExceptionAssert actualExceptionAssert = navigator.back();
+        ExceptionAssert actualExceptionAssert     = navigator.andThen();
+        ExceptionAssert deprecatedExceptionAssert = navigator.back();
 
         // Then
         Assert.that(expectedExceptionAssert).isSame(actualExceptionAssert);
+        Assert.that(deprecatedExceptionAssert).isSame(actualExceptionAssert);
     }
 
     @IsTest

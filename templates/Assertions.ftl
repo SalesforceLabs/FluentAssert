@@ -106,7 +106,7 @@ global class ${supportedAssert.type?keep_before('<')}Assert extends AssertBase {
 
     <#if supportedAssert.navigators?has_content><#list supportedAssert.navigators?sort_by("name") as n>
     /**
-     * @description Constructs a navigator that allows asserts on ${n.name}(). Use `back()` to get back to asserts on `${supportedAssert.type?keep_before('<')}`.
+     * @description Constructs a navigator that allows asserts on ${n.name}(). Use `andThen()` to continue asserting on `${supportedAssert.type?keep_before('<')}`.
      * @return a navigator on ${n.name}().
      */
     global ${n.returnType}Assert${supportedAssert.type?keep_before('<')}Navigator ${n.name}() {

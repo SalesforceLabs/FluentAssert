@@ -14,16 +14,18 @@
 @IsTest
 public class StringAssert${n.nativeDataType}NavigatorTest {
     @IsTest
-    static void testBack() {
+    static void testAndThen() {
         // Given
         ${n.nativeDataType}Assert expected${n.nativeDataType}Assert = Assert.that(${n.emptyValue});
         StringAssert${n.nativeDataType}Navigator navigator = new StringAssert${n.nativeDataType}Navigator(null, expected${n.nativeDataType}Assert);
 
         // When
-        ${n.nativeDataType}Assert actual${n.nativeDataType}Assert = navigator.back();
+        ${n.nativeDataType}Assert actual${n.nativeDataType}Assert     = navigator.andThen();
+        ${n.nativeDataType}Assert deprecated${n.nativeDataType}Assert = navigator.back();
 
         // Then
         Assert.that(expected${n.nativeDataType}Assert).isSame(actual${n.nativeDataType}Assert);
+        Assert.that(deprecated${n.nativeDataType}Assert).isSame(actual${n.nativeDataType}Assert);
     }
 
     @IsTest

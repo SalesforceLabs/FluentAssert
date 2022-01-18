@@ -13,7 +13,7 @@ global class ListAssertSObjectNavigator {
     private SObjectAssert originAssert;
 
     /**
-     * @description Constructs an instance with an actual `List<Object>` value. Use `back()` to go back to `SObject`.
+     * @description Constructs an instance with an actual `List<Object>` value. Use `andThen()` to continue asserting on `SObject`.
      * @param actual The actual value to assert against.
      * @param originAssert The asserting type to go back to.
      */
@@ -24,10 +24,19 @@ global class ListAssertSObjectNavigator {
     }
 
     /**
-     * @description Go back to `SObject`.
+     * @description Continue asserting on `SObject`.
      */
-    global SObjectAssert back() {
+    global SObjectAssert andThen() {
         return originAssert;
+    }
+
+    /**
+     * @description Go back to `SObject`.
+     * @see ListAssertSObjectNavigator.andThen()
+     */
+    @Deprecated
+    global SObjectAssert back() {
+        return andThen();
     }
 
     /**

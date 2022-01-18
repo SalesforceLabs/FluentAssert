@@ -12,7 +12,7 @@ public class ExceptionHasCauseTest {
               .hasCause()
               .cause()
                 .isNotNull()
-              .back();
+              .andThen();
     }
 
     @IsTest

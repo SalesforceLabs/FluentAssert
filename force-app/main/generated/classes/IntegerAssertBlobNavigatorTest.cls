@@ -8,16 +8,18 @@
 public class IntegerAssertBlobNavigatorTest {
 
     @IsTest
-    static void testBack() {
+    static void testAndThen() {
         // Given
         BlobAssert expectedBlobAssert = Assert.that(Blob.valueOf('X'));
         IntegerAssertBlobNavigator navigator = new IntegerAssertBlobNavigator(null, expectedBlobAssert);
 
         // When
-        BlobAssert actualBlobAssert = navigator.back();
+        BlobAssert actualBlobAssert     = navigator.andThen();
+        BlobAssert deprecatedBlobAssert = navigator.back();
 
         // Then
-        System.assert(expectedBlobAssert === actualBlobAssert, 'Returned navigator should be self');
+        Assert.that(expectedBlobAssert).isSame(actualBlobAssert);
+        Assert.that(deprecatedBlobAssert).isSame(actualBlobAssert);
     }
 
     @IsTest

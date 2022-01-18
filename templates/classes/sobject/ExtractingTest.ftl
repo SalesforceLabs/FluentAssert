@@ -49,7 +49,7 @@ public class SObjectExtracting${dt.type}Test {
         Assert.that((SObject) a)
               .extracting(${p})
                 .containsExactly(expectedValues)
-                .back()
+                .andThen()
               .isSame(a);
 </#list>
     }

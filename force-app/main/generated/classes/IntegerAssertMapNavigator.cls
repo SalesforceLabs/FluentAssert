@@ -13,7 +13,7 @@ global class IntegerAssertMapNavigator {
     private MapAssert originAssert;
 
     /**
-     * @description Constructs an instance with an actual `Integer` value. Use `back()` to go back to `Map`.
+     * @description Constructs an instance with an actual `Integer` value. Use `andThen()` to continue asserting on `Map`.
      * @param actual The actual value to assert against.
      * @param originAssert The asserting type to go back to.
      */
@@ -24,10 +24,19 @@ global class IntegerAssertMapNavigator {
     }
 
     /**
-     * @description Go back to `Map`.
+     * @description Continue asserting on `Map`.
      */
-    global MapAssert back() {
+    global MapAssert andThen() {
         return originAssert;
+    }
+
+    /**
+     * @description Go back to `Map`.
+     * @see IntegerAssertMapNavigator.andThen()
+     */
+    @Deprecated
+    global MapAssert back() {
+        return andThen();
     }
 
     /**

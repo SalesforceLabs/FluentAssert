@@ -19,7 +19,7 @@ global class ExceptionAssert extends AssertBase {
     }
 
     /**
-     * @description Constructs a navigator that allows asserts on cause(). Use `back()` to get back to asserts on `Exception`.
+     * @description Constructs a navigator that allows asserts on cause(). Use `andThen()` to continue asserting on `Exception`.
      * @return a navigator on cause().
      */
     global ExceptionAssertExceptionNavigator cause() {
@@ -28,7 +28,7 @@ global class ExceptionAssert extends AssertBase {
     }
 
     /**
-     * @description Constructs a navigator that allows asserts on message(). Use `back()` to get back to asserts on `Exception`.
+     * @description Constructs a navigator that allows asserts on message(). Use `andThen()` to continue asserting on `Exception`.
      * @return a navigator on message().
      */
     global StringAssertExceptionNavigator message() {
@@ -37,7 +37,7 @@ global class ExceptionAssert extends AssertBase {
     }
 
     /**
-     * @description Constructs a navigator that allows asserts on rootCause(). Use `back()` to get back to asserts on `Exception`.
+     * @description Constructs a navigator that allows asserts on rootCause(). Use `andThen()` to continue asserting on `Exception`.
      * @return a navigator on rootCause().
      */
     global ExceptionAssertExceptionNavigator rootCause() {
