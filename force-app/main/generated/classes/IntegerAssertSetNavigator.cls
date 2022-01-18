@@ -34,7 +34,6 @@ global class IntegerAssertSetNavigator {
      * @description Go back to `Set`.
      * @see IntegerAssertSetNavigator.andThen()
      */
-    @Deprecated
     global SetAssert back() {
         return andThen();
     }

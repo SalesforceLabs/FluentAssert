@@ -34,7 +34,6 @@ global class StringAssertExceptionNavigator {
      * @description Go back to `Exception`.
      * @see StringAssertExceptionNavigator.andThen()
      */
-    @Deprecated
     global ExceptionAssert back() {
         return andThen();
     }

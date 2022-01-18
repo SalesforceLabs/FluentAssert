@@ -34,7 +34,6 @@ global class ExceptionAssertExceptionNavigator {
      * @description Go back to `Exception`.
      * @see ExceptionAssertExceptionNavigator.andThen()
      */
-    @Deprecated
     global ExceptionAssert back() {
         return andThen();
     }

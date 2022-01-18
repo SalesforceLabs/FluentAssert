@@ -34,7 +34,6 @@ global class IntegerAssertStringNavigator {
      * @description Go back to `String`.
      * @see IntegerAssertStringNavigator.andThen()
      */
-    @Deprecated
     global StringAssert back() {
         return andThen();
     }

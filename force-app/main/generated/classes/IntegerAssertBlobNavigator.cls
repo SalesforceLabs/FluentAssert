@@ -34,7 +34,6 @@ global class IntegerAssertBlobNavigator {
      * @description Go back to `Blob`.
      * @see IntegerAssertBlobNavigator.andThen()
      */
-    @Deprecated
     global BlobAssert back() {
         return andThen();
     }
