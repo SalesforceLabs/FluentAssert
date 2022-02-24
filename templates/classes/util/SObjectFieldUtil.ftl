@@ -11,11 +11,7 @@
  */
 public class SObjectFieldUtil {
     public static List<Schema.SObjectField> toList(Schema.SObjectType objectType, String fieldsList) {
-        if(fieldsList == null) {
-            NullPointerException npe = new NullPointerException();
-            npe.setMessage('Fields cannot be null');
-            throw npe;
-        }
+        notNull(fieldsList);
 
         Map<String, Schema.SObjectField> fieldMap = objectType.getDescribe().fields.getMap();
         List<Schema.SObjectField> result = new List<Schema.SObjectField>();
@@ -37,5 +33,13 @@ public class SObjectFieldUtil {
         }
 
         return result;
+    }
+
+    private static void notNull(String fieldsList) {
+        if(fieldsList == null) {
+            NullPointerException npe = new NullPointerException();
+            npe.setMessage('Fields cannot be null');
+            throw npe;
+        }
     }
 }
