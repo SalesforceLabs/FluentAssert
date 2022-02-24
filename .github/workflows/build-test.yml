@@ -47,7 +47,7 @@ jobs:
       - name: Run Code Scanner / PMD
         run: |
           sfdx plugins:install @salesforce/sfdx-scanner
-          sfdx scanner:run --target './**/*.cls' --pmdconfig=ruleset.xml --severity-threshold=2
+          sfdx scanner:run --target './**/*.cls' --pmdconfig=ruleset.xml --severity-threshold=3
   test:
     runs-on: ubuntu-latest
     needs: [generate, code-quality]
