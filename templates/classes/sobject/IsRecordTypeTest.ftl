@@ -14,10 +14,6 @@ public class SObjectIsRecordTypeTest {
 
         Assert.that(new Account())
               .isRecordType(defaultRT.getDeveloperName());
-
-        // Welcome reviewers! There was no way to get RecordTypeId on Account without creating a 
-        // RecordType, and since this is a managed package where the Records will go to real customer
-        // Org, I decided against that ;-)
     }
 
     @IsTest
@@ -26,9 +22,9 @@ public class SObjectIsRecordTypeTest {
             Assert.that(new Account())
                   .isRecordType('FluentAssert_NonExistingRT');
             System.assert(false, 'No assert exception thrown');
-        } catch(AssertException ae) {
+        } catch(IllegalArgumentException iae) {
             // Success! Correct exception being thrown
-            System.debug(LoggingLevel.INTERNAL, ae);
+            System.debug(LoggingLevel.INTERNAL, iae);
         } catch(Exception e) {
             System.assert(false, 'Wrong exception thrown, got: ' + e.getTypeName() + ', message: \\n' + e.getMessage());
             System.debug(LoggingLevel.ERROR, e);

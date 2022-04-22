@@ -1,11 +1,13 @@
 {
     "packageDirectories": [
         {
-            "path": "force-app",
+            "path": "force-app/main/generated",
             "default": true,
             "package": "FluentAssert",
             "versionName": "ver 0.1",
             "versionNumber": "0.1.0.NEXT"
+        },{
+            "path": "force-app/main/verification"
         }
     ],
     "namespace": "Fluent",
