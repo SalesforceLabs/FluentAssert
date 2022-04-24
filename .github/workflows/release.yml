@@ -21,12 +21,19 @@ jobs:
           sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
       - name: Create Package Version
         run: |
-          sfdx force:package:version:create -p FluentAssert -w 30 -c -x -a ${{ steps.get_release.outputs.tag_name }} -n ${{ steps.get_release.outputs.tag_name }}.$GITHUB_RUN_NUMBER -e '${{ steps.get_release.outputs.body }}'
+          sfdx force:package:version:create -p FluentAssert -w 30 -c -x -a ${{ steps.get_release.outputs.tag_name }} -n ${{ steps.get_release.outputs.tag_name }}.$GITHUB_RUN_NUMBER -e '${{ steps.get_release.outputs.body }}' -d force-app/main/generated
       - name: Verify package
         run: |
+          # Create SOrg
           sfdx force:org:create --setdefaultusername --definitionfile config/project-scratch-def.json --wait 10 --durationdays 1
+          # Install managed package
           sfdx force:package:install --package FluentAssert@${{ steps.get_release.outputs.tag_name }}-$GITHUB_RUN_NUMBER -w 10
-          sfdx force:apex:execute -f .github/workflows/verify.apex
+          # Deploy verification
+          sfdx force:source:deploy -p force-app/main/verification
+          # Execute tests
+          sfdx force:apex:test:run --wait 10 --resultformat human -d apex-test-result --codecoverage --testlevel RunLocalTests
+          # Delete SOrg
+          sfdx force:org:delete -p
       - name: Promote package
         if: ${{ steps.get_release.outputs.prerelease == 'false' && steps.get_release.outputs.draft == 'false' }}
         run: |
