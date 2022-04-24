@@ -3,6 +3,11 @@ name: Package & Release
 on:
   release:
     types: [published]
+
+env:
+  SFDX_DISABLE_DNS_CHECK: true
+  SFDX_DISABLE_SOURCE_MEMBER_POLLING: true
+
 jobs:
   release:
     name: Release
@@ -25,7 +30,7 @@ jobs:
       - name: Verify package
         run: |
           # Create SOrg
-          sfdx force:org:create --setdefaultusername --definitionfile config/project-scratch-def.json --wait 10 --durationdays 1
+          sfdx force:org:create --setdefaultusername --nonamespace --definitionfile config/project-scratch-def.json --wait 10 --durationdays 1
           # Install managed package
           sfdx force:package:install --package FluentAssert@${{ steps.get_release.outputs.tag_name }}-$GITHUB_RUN_NUMBER -w 10
           # Deploy verification

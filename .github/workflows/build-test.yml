@@ -1,6 +1,11 @@
 name: Quality, Build & Test
 
 on: [push]
+
+env:
+  SFDX_DISABLE_DNS_CHECK: true
+  SFDX_DISABLE_SOURCE_MEMBER_POLLING: true
+
 jobs:
   generate:
     name: Apex generated?
