@@ -47,7 +47,7 @@ public with sharing class GithubIssue14Test {
         try {
             Fluent.Assert.that(a).isRecordType(ACC_NONCUST_RT_DEVNAME);
             System.assert(false, 'No assert exception thrown');
-        } catch (AssertException ae) {
+        } catch (Fluent.AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
@@ -67,7 +67,7 @@ public with sharing class GithubIssue14Test {
         try {
             Fluent.Assert.that(a).isRecordType(ACC_NONCUST_RT_ID);
             System.assert(false, 'No assert exception thrown');
-        } catch (AssertException ae) {
+        } catch (Fluent.AssertException ae) {
             // Success! Correct exception being thrown
             System.debug(LoggingLevel.INTERNAL, ae);
         } catch(Exception e) {
