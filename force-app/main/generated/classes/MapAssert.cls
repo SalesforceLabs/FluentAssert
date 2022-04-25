@@ -7,6 +7,9 @@
 /**
  * @description Holds asserts for `Map`s
  */
+// PMD Suppression Justifications
+// CyclomaticComplexity: It's the nature of assert classes to have a huge interface, meaning it'll be pretty complex
+@SuppressWarnings('PMD.CyclomaticComplexity')
 global class MapAssert extends AssertBase {
     private Map<Object, Object> actual;
 

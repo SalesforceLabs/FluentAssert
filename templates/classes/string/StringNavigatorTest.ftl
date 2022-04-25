@@ -401,6 +401,18 @@ public class StringAssert${n.nativeDataType}NavigatorTest {
         Assert.that(expectedNavigator).isSame(actualNavigator);
     }
 
+    @IsTest
+    static void testHasLineCount() {
+        // Given
+        StringAssert${n.nativeDataType}Navigator expectedNavigator = new StringAssert${n.nativeDataType}Navigator('abc', (${n.nativeDataType}Assert) null);
+
+        // When
+        StringAssert${n.nativeDataType}Navigator actualNavigator = expectedNavigator.hasLineCount(1);
+
+        // Then
+        Assert.that(expectedNavigator).isSame(actualNavigator);
+    }
+
 <#list ["Set", "List"] as colType>
     @IsTest
     static void testIsIn${colType}() {

@@ -7,6 +7,9 @@
 /**
  * @description Holds asserts for `Blob`s
  */
+// PMD Suppression Justifications
+// CyclomaticComplexity: It's the nature of assert classes to have a huge interface, meaning it'll be pretty complex
+@SuppressWarnings('PMD.CyclomaticComplexity')
 global class BlobAssert extends AssertBase {
     private Blob actual;
 

@@ -7,6 +7,9 @@
 /**
  * @description Holds asserts for `List`s
  */
+// PMD Suppression Justifications
+// CyclomaticComplexity: It's the nature of assert classes to have a huge interface, meaning it'll be pretty complex
+@SuppressWarnings('PMD.CyclomaticComplexity')
 global class ListAssert extends AssertBase {
     private List<Object> actual;
 
