@@ -12,6 +12,7 @@ Fluent.Assert.that('Hello World!')
                 .isLessThan(100)
              .andThen()
              .startsWith('Hello')
+             .hasLineCount(1)
              .contains('World');
 
 Fluent.Assert.that(aList)
@@ -30,7 +31,7 @@ Type     | Navigators
 `Set`    | `size()`
 `List`   | `size()`
 `Map`    | `size()`, `values()`, `keys()`
-`String` | `length()`
+`String` | `length()`, `lineCount()`
 `Blob`   | `size()`
 
 While one could do the same asserts in other ways, using a navigator allows a much more fluent way of expression.
@@ -409,6 +410,18 @@ This method will pass if the String has a length as expected.
 // Pass
 Fluent.Assert.that('').hasLength(0);
 Fluent.Assert.that('ABC').hasLength(3);
+
+// Failure
+Fluent.Assert.that('ABC').hasLength(4);
+```
+
+#### hasLength
+This method will pass if the Strings line count is as expected.
+```
+// Pass
+Fluent.Assert.that('').hasLength(0);
+Fluent.Assert.that('ABC').hasLength(1);
+Fluent.Assert.that('ABC\nABC').hasLength(2);
 
 // Failure
 Fluent.Assert.that('ABC').hasLength(4);

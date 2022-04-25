@@ -16,44 +16,48 @@
     {"type":"Set<Object>", "isCollection": true, "asserts": ["Contains", "DoesNotContain", "ContainsAnyOf", "ContainsExactlyInAnyOrder", "ContainsOnly", "ContainsOnlyNulls"],
         "navigators": [{
             "name": "size",
-            "method": "size",
+            "value": "actual.size()",
             "returnType": "Integer"
         }]},
     {"type":"List<Object>", "isCollection": true, "asserts": ["Contains", "DoesNotContain", "ContainsAnyOf", "ContainsExactlyInAnyOrder", "ContainsExactly", "ContainsSequence", "DoesNotContainSequence", "ContainsSubsequence", "DoesNotContainSubsequence", "IsSorted", "ContainsOnly", "ContainsOnlyOnce", "ContainsOnlyNulls"],
         "navigators": [{
             "name": "size",
-            "method": "size",
+            "value": "actual.size()",
             "returnType": "Integer"
         }]},
     {"type":"Date",         "isDatetime": true, "asserts": ["IsToday"]},
     {"type":"Datetime",     "isDatetime": true},
     {"type":"Time",         "isDatetime": true, "comparableHelper":"TimeUtil.toMillisecondsOfDay"},
-    {"type":"String",       "asserts": ["StringDelegates", "HasLength"],
+    {"type":"String",       "asserts": ["StringDelegates", "HasLength", "HasLineCount"],
         "navigators": [{
             "name": "length",
-            "method": "length",
+            "value": "actual.length()",
+            "returnType": "Integer"
+        },{
+            "name": "lineCount",
+            "value": "String.isBlank(actual) ? 0 : actual.split('\\n').size()",
             "returnType": "Integer"
         }
         ]},
     {"type":"Map<Object, Object>", "isCollection": true, "isMap": true, "asserts": ["ContainsEntry", "DoesNotContainEntry"],
         "navigators": [{
             "name": "size",
-            "method": "size",
+            "value": "actual.size()",
             "returnType": "Integer"
         },{
             "name": "values",
-            "method": "values",
+            "value": "actual.values()",
             "returnType": "List"
         },{
             "name": "keys",
-            "method": "keySet",
+            "value": "actual.keySet()",
             "returnType": "Set"
         }
         ]},
     {"type":"Blob", "asserts": ["HasSize", "HasSameSizeAs"],
         "navigators": [{
             "name": "size",
-            "method": "size",
+            "value": "actual.size()",
             "returnType": "Integer"
         }
         ]},
@@ -61,16 +65,15 @@
     {"type":"Exception",   "asserts": ["HasMessage", "HasCause", "HasNoCause"],
         "navigators": [{
             "name": "cause",
-            "method": "getCause",
+            "value": "actual.getCause()",
             "returnType": "Exception"
         },{
             "name":       "rootCause",
-            "method":     "getCause",
-            "util":       "ExceptionUtil.getRootCause",
+            "value":      "ExceptionUtil.getRootCause(actual.getCause())",
             "returnType": "Exception"
         },{
             "name": "message",
-            "method": "getMessage",
+            "value": "actual.getMessage()",
             "returnType": "String"
         }]}
 ]>
@@ -93,6 +96,9 @@
 /**
  * @description Holds asserts for `${supportedAssert.type?keep_before('<')}`s
  */
+// PMD Suppression Justifications
+// CyclomaticComplexity: It's the nature of assert classes to have a huge interface, meaning it'll be pretty complex
+@SuppressWarnings('PMD.CyclomaticComplexity')
 global class ${supportedAssert.type?keep_before('<')}Assert extends AssertBase {
     private ${supportedAssert.type} actual;
 
@@ -111,7 +117,7 @@ global class ${supportedAssert.type?keep_before('<')}Assert extends AssertBase {
      */
     global ${n.returnType}Assert${supportedAssert.type?keep_before('<')}Navigator ${n.name}() {
         notNull(actual, 'actual');
-        return new ${n.returnType}Assert${supportedAssert.type?keep_before('<')}Navigator(<#if n.util??>${n.util}(</#if>actual.${n.method}()<#if n.util??>)</#if>, this);
+        return new ${n.returnType}Assert${supportedAssert.type?keep_before('<')}Navigator(${n.value!"actual"}, this);
     }
     <#sep>
 

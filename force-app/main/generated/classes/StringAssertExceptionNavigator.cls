@@ -301,4 +301,12 @@ global class StringAssertExceptionNavigator {
         assertDelegate.startsWithIgnoreCase(expected);
         return this;
     }
+
+    /**
+     * @see StringAssert.hasLineCount(Integer)
+     */
+    global StringAssertExceptionNavigator hasLineCount(Integer expected) {
+        assertDelegate.hasLineCount(expected);
+        return this;
+    }
 }

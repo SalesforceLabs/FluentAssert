@@ -460,6 +460,11 @@
             "interface": [{
                 "type": "String", "name": "expected"
             }]
+        },{
+            "method":    "hasLineCount",
+            "interface": [{
+                "type": "Integer", "name": "expected"
+            }]
         }
     ]
 }>

@@ -395,6 +395,18 @@ public class StringAssertExceptionNavigatorTest {
     }
 
     @IsTest
+    static void testHasLineCount() {
+        // Given
+        StringAssertExceptionNavigator expectedNavigator = new StringAssertExceptionNavigator('abc', (ExceptionAssert) null);
+
+        // When
+        StringAssertExceptionNavigator actualNavigator = expectedNavigator.hasLineCount(1);
+
+        // Then
+        Assert.that(expectedNavigator).isSame(actualNavigator);
+    }
+
+    @IsTest
     static void testIsInSet() {
         // Given
         StringAssertExceptionNavigator expectedNavigator = new StringAssertExceptionNavigator('X', (ExceptionAssert) null);

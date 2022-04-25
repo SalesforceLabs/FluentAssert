@@ -7,6 +7,9 @@
 /**
  * @description Holds asserts for `String`s
  */
+// PMD Suppression Justifications
+// CyclomaticComplexity: It's the nature of assert classes to have a huge interface, meaning it'll be pretty complex
+@SuppressWarnings('PMD.CyclomaticComplexity')
 global class StringAssert extends AssertBase {
     private String actual;
 
@@ -26,6 +29,15 @@ global class StringAssert extends AssertBase {
         notNull(actual, 'actual');
         return new IntegerAssertStringNavigator(actual.length(), this);
     }
+
+    /**
+     * @description Constructs a navigator that allows asserts on lineCount(). Use `andThen()` to continue asserting on `String`.
+     * @return a navigator on lineCount().
+     */
+    global IntegerAssertStringNavigator lineCount() {
+        notNull(actual, 'actual');
+        return new IntegerAssertStringNavigator(String.isBlank(actual) ? 0 : actual.split('\n').size(), this);
+    }
     
    /**
      * @description Verifies that the lenght of the String matches.
@@ -38,6 +50,20 @@ global class StringAssert extends AssertBase {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
         assert(actual.length() == expected, 'Expecting actual to have a length of {0}, but found {1}', new List<Object> {actual.length(), expected});
+        return this;
+    } 
+   /**
+     * @description Verifies that the line count of the String matches. Blank Strings have a line count of zero.
+     * @param expected expected line count of actual
+     * @return this to allow further assert in a fluent manner
+     * @throws NullPointerException if actual or expected is null
+     * @throws AssertException if length of actual is not as expected
+     */
+    global StringAssert hasLineCount(Integer expected) {
+        notNull(actual, 'actual');
+        notNull(expected, 'expected');
+        Integer actualLineCount = String.isBlank(actual) ? 0 : actual.split('\\n').size();
+        assert(actualLineCount == expected, 'Expecting actual to have a line count of {0}, but found {1}', new List<Object> {actualLineCount, expected});
         return this;
     } 
     /**
