@@ -38,6 +38,25 @@
             "value": "String.isBlank(actual) ? 0 : actual.split('\\n').size()",
             "returnType": "Integer"
         }
+        ],
+        "casters": [{
+            "returnType": "Integer"
+        },{
+            "returnType": "Decimal"
+        },{
+            "returnType": "Boolean",
+            "util":       true
+        },{
+            "returnType": "Date"
+        },{
+            "returnType": "Datetime"
+        },{
+            "returnType": "Long"
+        },{
+            "returnType": "Double"
+        },{
+            "returnType": "Id"
+        }
         ]},
     {"type":"Map<Object, Object>", "isCollection": true, "isMap": true, "asserts": ["ContainsEntry", "DoesNotContainEntry"],
         "navigators": [{
@@ -92,7 +111,7 @@
     <#if !supportedAssert.isCollection!false>
         <#assign asserts = asserts + ["IsIn"] />
     </#if>
-<@com.apexClass className="${supportedAssert.type?keep_before('<')}Assert" path="/classes/"/>
+<@com.apexClass className="${supportedAssert.type?keep_before('<')}Assert" path="/classes/${supportedAssert.type?keep_before('<')?lower_case}/"/>
 /**
  * @description Holds asserts for `${supportedAssert.type?keep_before('<')}`s
  */
@@ -118,6 +137,26 @@ global class ${supportedAssert.type?keep_before('<')}Assert extends AssertBase {
     global ${n.returnType}Assert${supportedAssert.type?keep_before('<')}Navigator ${n.name}() {
         notNull(actual, 'actual');
         return new ${n.returnType}Assert${supportedAssert.type?keep_before('<')}Navigator(${n.value!"actual"}, this);
+    }
+    <#sep>
+
+    </#list></#if>
+
+    <#if supportedAssert.casters?has_content><#list supportedAssert.casters?sort_by("returnType") as cast>
+    /**
+     * @description Casts `actual` to `${cast.returnType}` using `${cast.returnType}.valueOf()` and returns the object to assert on. Any assert thrown will be rethrown as AssertException. Use `andThen()` to continue asserting on `String`.
+     * @see ${cast.returnType}.valueOf()
+     * @return a navigator on the casted value.
+     */
+    global ${cast.returnType}AssertStringNavigator as${cast.returnType}() {
+        notNull(actual, 'actual');
+        try {
+            return new ${cast.returnType}AssertStringNavigator(${cast.returnType}<#if cast.util!false>Util</#if>.valueOf(actual), this);
+        } catch (Exception e) {
+            AssertException ae = new AssertException();
+            ae.initCause(e);
+            throw ae; 
+        }
     }
     <#sep>
 
