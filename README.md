@@ -376,6 +376,13 @@ Fluent.Assert.that(Date.today().addDays(-1)).isToday();
 ### String
 Most support for `String` delegates to methods already on `String` (see table below) but is here to support a fluent programming style. Also supports `isEqualTo`, `isNotEqualTo`, `isNull`, `isNotNull`, `isSame`, `isNotSame`, and `IsIn`.
 
+Strings can also be casted to `Integer`, `Long`, `Decimal`, `Double`, `Boolean`, `Date`, `Datetime`, `Id` using `asXxx()` like below.
+```
+Fluent.Assert.that(someString)
+             .asInteger()
+             .isEqualTo(1000);
+```
+
 Method                                                                                                                                                                  | Description
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------
 [`contains`](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_string.htm#apex_System_String_contains)                         | contains the specified sequence of characters in substring

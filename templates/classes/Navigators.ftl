@@ -6,7 +6,7 @@
 -->
 <@pp.dropOutputFile />
 <#assign delegations = {
-    "integer": [
+    "number": [
         {
             "method":    "isNegative"
         },{
@@ -28,46 +28,46 @@
         },{
             "method":    "isBetween",
             "interface": [{
-                "type": "Integer", "name": "fromInclusive"
+                "type": "%SELF%", "name": "fromInclusive"
             },{
-                "type": "Integer", "name": "toInclusive"
+                "type": "%SELF%", "name": "toInclusive"
             }]
         },{
             "method":    "isStrictlyBetween",
             "interface": [{
-                "type": "Integer", "name": "fromExclusive"
+                "type": "%SELF%", "name": "fromExclusive"
             },{
-                "type": "Integer", "name": "toExclusive"
+                "type": "%SELF%", "name": "toExclusive"
             }]
         },{
             "method":    "isEqualTo",
             "interface": [{
-                "type": "Integer", "name": "expected"
+                "type": "%SELF%", "name": "expected"
             }]
         },{
             "method":    "isNotEqualTo",
             "interface": [{
-                "type": "Integer", "name": "expected"
+                "type": "%SELF%", "name": "expected"
             }]
         },{
             "method":    "isLessThan",
             "interface": [{
-                "type": "Integer", "name": "expected"
+                "type": "%SELF%", "name": "expected"
             }]
         },{
             "method":    "isLessThanOrEqualTo",
             "interface": [{
-                "type": "Integer", "name": "expected"
+                "type": "%SELF%", "name": "expected"
             }]
         },{
             "method":    "isGreaterThan",
             "interface": [{
-                "type": "Integer", "name": "expected"
+                "type": "%SELF%", "name": "expected"
             }]
         },{
             "method":    "isGreaterThanOrEqualTo",
             "interface": [{
-                "type": "Integer", "name": "expected"
+                "type": "%SELF%", "name": "expected"
             }]
         },{
             "method":    "isIn",
@@ -466,25 +466,207 @@
                 "type": "Integer", "name": "expected"
             }]
         }
+    ],
+    "id": [
+        {
+            "method":    "isNull"
+        },{
+            "method":    "isNotNull"
+        },{
+            "method":    "isSame",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isNotSame",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isEqualTo",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isNotEqualTo",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isIn",
+            "interface": [{
+                "type": "List<Object>", "name": "expected"
+            }]
+        },{
+            "method":    "isIn",
+            "interface": [{
+                "type": "Set<Object>", "name": "expected"
+            }]
+        },{
+            "method":    "isSObjectType",
+            "interface": [{
+                "type": "Schema.SObjectType", "name": "sObjectType"
+            }]
+        }
+    ],
+    "datetime": [
+        {
+            "method":    "isNull"
+        },{
+            "method":    "isNotNull"
+        },{
+            "method":    "isSame",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isNotSame",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isEqualTo",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isNotEqualTo",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isIn",
+            "interface": [{
+                "type": "List<Object>", "name": "expected"
+            }]
+        },{
+            "method":    "isIn",
+            "interface": [{
+                "type": "Set<Object>", "name": "expected"
+            }]
+        },{
+            "method":    "isBetween",
+            "interface": [{
+                "type": "%SELF%", "name": "fromInclusive"
+            },{
+                "type": "%SELF%", "name": "toInclusive"
+            }]
+        },{
+            "method":    "isStrictlyBetween",
+            "interface": [{
+                "type": "%SELF%", "name": "fromExclusive"
+            },{
+                "type": "%SELF%", "name": "toExclusive"
+            }]
+        },{
+            "method":    "isAfterOrEqualTo",
+            "interface": [{
+                "type": "%SELF%", "name": "expected"
+            }]
+        },{
+            "method":    "isAfter",
+            "interface": [{
+                "type": "%SELF%", "name": "expected"
+            }]
+        },{
+            "method":    "isBefore",
+            "interface": [{
+                "type": "%SELF%", "name": "expected"
+            }]
+        },{
+            "method":    "isBeforeOrEqualTo",
+            "interface": [{
+                "type": "%SELF%", "name": "expected"
+            }]
+        }
+    ],
+    "boolean": [
+        {
+            "method":    "isNull"
+        },{
+            "method":    "isNotNull"
+        },{
+            "method":    "isSame",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isNotSame",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isEqualTo",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isNotEqualTo",
+            "interface": [{
+                "type": "Object", "name": "expected"
+            }]
+        },{
+            "method":    "isIn",
+            "interface": [{
+                "type": "List<Object>", "name": "expected"
+            }]
+        },{
+            "method":    "isIn",
+            "interface": [{
+                "type": "Set<Object>", "name": "expected"
+            }]
+        }{
+            "method":    "isTrue"
+        },{
+            "method":    "isFalse"
+        }
     ]
 }>
 <#assign navigators = [
     {
         "delegatingType":  "Integer",
         "originatingType": "Set",
-        "delegations":    delegations.integer
+        "delegations":    delegations.number
     },{
         "delegatingType":  "Integer",
         "originatingType": "List",
-        "delegations":    delegations.integer
+        "delegations":    delegations.number
     },{
         "delegatingType":  "Integer",
         "originatingType": "Map",
-        "delegations":    delegations.integer
+        "delegations":    delegations.number
     },{
         "delegatingType":  "Integer",
         "originatingType": "String",
-        "delegations":    delegations.integer
+        "delegations":    delegations.number
+    },{
+        "delegatingType":  "Long",
+        "originatingType": "String",
+        "delegations":    delegations.number
+    },{
+        "delegatingType":  "Decimal",
+        "originatingType": "String",
+        "delegations":    delegations.number
+    },{
+        "delegatingType":  "Double",
+        "originatingType": "String",
+        "delegations":    delegations.number
+    },{
+        "delegatingType":  "Id",
+        "originatingType": "String",
+        "delegations":    delegations.id
+    },{
+        "delegatingType":  "Datetime",
+        "originatingType": "String",
+        "delegations":    delegations.datetime
+    },{
+        "delegatingType":  "Date",
+        "originatingType": "String",
+        "delegations":    delegations.datetime
+    },{
+        "delegatingType":  "Boolean",
+        "originatingType": "String",
+        "delegations":    delegations.boolean
     },{
         "delegatingType":  "Set<Object>",
         "originatingType": "Map",
@@ -500,7 +682,7 @@
     },{
         "delegatingType":  "Integer",
         "originatingType": "Blob",
-        "delegations":     delegations.integer
+        "delegations":     delegations.number
     },{
         "delegatingType":  "Exception",
         "originatingType": "Exception",
@@ -526,7 +708,7 @@
     }
 ]>
 <#list navigators as n>
-<@com.apexClass className="${n.delegatingType?keep_before('<')}Assert${n.originatingType}Navigator" path="/classes/"/>
+<@com.apexClass className="${n.delegatingType?keep_before('<')}Assert${n.originatingType}Navigator" path="/classes/${n.originatingType?lower_case}/"/>
 /**
  * @description Navigator between `${n.originatingType}` and `${n.delegatingType}`
  */
@@ -563,9 +745,9 @@ global class ${n.delegatingType?keep_before("<")}Assert${n.originatingType}Navig
 
 <#list n.delegations as nd>
     /**
-     * @see ${n.delegatingType?keep_before("<")}Assert.${nd.method}(<#if (nd.interface??)><#list nd.interface as ndi>${ndi.type?keep_before("<")}<#sep>, </#list></#if>)
+     * @see ${n.delegatingType?keep_before("<")}Assert.${nd.method}(<#if (nd.interface??)><#list nd.interface as ndi>${ndi.type?keep_before("<")?replace("%SELF%", n.delegatingType)}<#sep>, </#list></#if>)
      */
-    global ${n.delegatingType?keep_before("<")}Assert${n.originatingType}Navigator ${nd.method}(<#if (nd.interface??)><#list nd.interface as ndi>${ndi.type} ${ndi.name}<#sep>, </#list></#if>) {
+    global ${n.delegatingType?keep_before("<")}Assert${n.originatingType}Navigator ${nd.method}(<#if (nd.interface??)><#list nd.interface as ndi>${ndi.type?replace("%SELF%", n.delegatingType)} ${ndi.name}<#sep>, </#list></#if>) {
         assertDelegate.${nd.method}(<#if (nd.interface??)><#list nd.interface as ndi>${ndi.name}<#sep>, </#list></#if>);
         return this;
     }
