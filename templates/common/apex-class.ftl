@@ -1,5 +1,5 @@
 <#--
-  - Copyright (c) 2021, salesforce.com, inc.
+  - Copyright (c) 2021, Salesforce Inc.
   - All rights reserved.
   - SPDX-License-Identifier: BSD-3-Clause
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -13,7 +13,7 @@
 </ApexClass>
 <@pp.changeOutputFile name=path+"/"+className+".cls" />
 /*
- * Copyright (c) 2020, salesforce.com, inc.
+ * Copyright (c) 2020, Salesforce Inc.
  * All rights reserved.
  * SPDX-License-Identifier: BSD-3-Clause
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause

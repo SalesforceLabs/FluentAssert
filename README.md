@@ -422,16 +422,16 @@ Fluent.Assert.that('ABC').hasLength(3);
 Fluent.Assert.that('ABC').hasLength(4);
 ```
 
-#### hasLength
+#### hasLineCount
 This method will pass if the Strings line count is as expected.
 ```
 // Pass
-Fluent.Assert.that('').hasLength(0);
-Fluent.Assert.that('ABC').hasLength(1);
-Fluent.Assert.that('ABC\nABC').hasLength(2);
+Fluent.Assert.that('').hasLineCount(0);
+Fluent.Assert.that('ABC').hasLineCount(1);
+Fluent.Assert.that('ABC\nABC').hasLineCount(2);
 
 // Failure
-Fluent.Assert.that('ABC').hasLength(4);
+Fluent.Assert.that('ABC').hasLineCount(4);
 ```
 
 ### Map
