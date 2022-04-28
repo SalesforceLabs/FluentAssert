@@ -5,7 +5,7 @@ modes: [
     ignore(generate.sh)
 ]
 data: {
-    "apiVersion": "52.0"
+    "apiVersion": "54.0"
 }
 borders: [
     header("<#import '/common/apex-class.ftl' as com>", **/*.ftl)

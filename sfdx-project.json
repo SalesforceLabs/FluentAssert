@@ -13,7 +13,7 @@
     ],
     "namespace": "Fluent",
     "sfdcLoginUrl": "https://login.salesforce.com",
-    "sourceApiVersion": "52.0",
+    "sourceApiVersion": "54.0",
     "packageAliases": {
         "FluentAssert": "0Ho5f000000PB1bCAG"
     }
