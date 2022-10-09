@@ -13,7 +13,8 @@ public class SetIsNotEqualToTest {
 
     @IsTest
     static void testFailureScenarios() {
-        failureScenario(new Set<Object>{'X'}, new Set<Object>{'X'});
+        Set<Object> actual = new Set<Object>{'X'};
+        failureScenario(actual, actual);
     }
 
     private static void failureScenario(Set<Object> actual, Set<Object> expected) {
@@ -48,4 +49,3 @@ public class SetIsNotEqualToTest {
         }
     }
 }
-  

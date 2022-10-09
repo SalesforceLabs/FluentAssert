@@ -11,7 +11,7 @@
      * @throws NullPointerException if actual is null
      * @throws AssertException if actual is not sorted
      */
-    global ${supportedAssert.type?keep_before('<')}Assert isSorted() {
+    global ${com.classPrefix(supportedAssert.type)}Assert isSorted() {
         notNull(actual, 'actual');
 
         List<Object> expected = new List<Object>(actual);

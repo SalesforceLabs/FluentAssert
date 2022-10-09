@@ -14,7 +14,7 @@ global class SetAssert extends AssertBase {
     private Set<Object> actual;
 
     /**
-     * @description Constructs an instance with an actual `Set` value.
+     * @description Constructs an instance with an actual `Set<Object>` value.
      * @param actual The actual value to assert against.
      */
     global SetAssert(Set<Object> actual) {

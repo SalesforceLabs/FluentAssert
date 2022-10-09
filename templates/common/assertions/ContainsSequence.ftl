@@ -12,7 +12,7 @@
      * @throws IllegalArgumentException if expected is empty
      * @throws AssertException if actual doesn't contain the sequence from expected
      */
-    global ${supportedAssert.type?keep_before('<')}Assert containsSequence(List<Object> expected) {
+    global ${com.classPrefix(supportedAssert.type)}Assert containsSequence(List<Object> expected) {
         notNull(actual, 'actual');
         notEmpty(expected, 'expected');
         assert(ListSequenceUtil.containsSequence(expected, actual), 'Was expecting actual to contain the sequence {0}', new List<Object> {expected});

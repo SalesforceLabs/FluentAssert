@@ -10,16 +10,16 @@ public class DecimalAssertStringNavigatorTest {
     @IsTest
     static void testAndThen() {
         // Given
-        StringAssert expectedStringAssert = Assert.that('');
-        DecimalAssertStringNavigator navigator = new DecimalAssertStringNavigator(null, expectedStringAssert);
+        StringAssert expectedAssert = Assert.that('');
+        DecimalAssertStringNavigator navigator = new DecimalAssertStringNavigator(null, expectedAssert);
 
         // When
-        StringAssert actualStringAssert     = navigator.andThen();
-        StringAssert deprecatedStringAssert = navigator.back();
+        StringAssert actualAssert     = navigator.andThen();
+        StringAssert deprecatedAssert = navigator.back();
 
         // Then
-        Assert.that(expectedStringAssert).isSame(actualStringAssert);
-        Assert.that(deprecatedStringAssert).isSame(actualStringAssert);
+        Assert.that(expectedAssert).isSame(actualAssert);
+        Assert.that(deprecatedAssert).isSame(actualAssert);
     }
 
     @IsTest

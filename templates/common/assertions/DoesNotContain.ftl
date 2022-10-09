@@ -13,7 +13,7 @@
      * @throws IllegalArgumentException if expected is empty
      * @throws AssertException if actual did contain any of the values
      */
-    global ${supportedAssert.type?keep_before('<')}Assert doesNotContain(${colType}<Object> expected) {
+    global ${com.classPrefix(supportedAssert.type)}Assert doesNotContain(${colType}<Object> expected) {
         notNull(actual, 'actual');
         notEmpty(expected, 'expected');
         assert(!${supportedAssert.type?keep_before('<')}ContainsUtil.contains(expected.iterator(), actual), 'Was expecting actual not to contain {0}', new List<Object> {expected});

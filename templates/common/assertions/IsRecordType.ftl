@@ -11,7 +11,7 @@
      * @throws IllegalArgumentException if `developerName` is a invalid recordtype for the SObject
      * @throws AssertException if SObject is not a given record type
      */
-    global ${supportedAssert.type?keep_before('<')}Assert isRecordType(String developerName) {
+    global ${com.classPrefix(supportedAssert.type)}Assert isRecordType(String developerName) {
         notNull(actual, 'actual');
         notNull(developerName, 'developerName');
 
@@ -29,7 +29,7 @@
      * @throws IllegalArgumentException if `recordTypeId` is a invalid recordtype for the SObject
      * @throws AssertException if SObject is not a given record type
      */
-    global ${supportedAssert.type?keep_before('<')}Assert isRecordType(Id recordTypeId) {
+    global ${com.classPrefix(supportedAssert.type)}Assert isRecordType(Id recordTypeId) {
         notNull(actual, 'actual');
         notNull(recordTypeId, 'recordTypeId');
 

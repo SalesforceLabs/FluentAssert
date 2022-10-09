@@ -10,7 +10,7 @@
      * @throws NullPointerException if actual is null
      * @throws AssertException if actual is empty or contains non-null values
      */
-    global ${supportedAssert.type?keep_before('<')}Assert containsOnlyNulls() {
+    global ${com.classPrefix(supportedAssert.type)}Assert containsOnlyNulls() {
         notEmpty(actual, 'actual');
         assert(IteratorUtil.containsOnlyNulls(actual.iterator()), 'Expecting actual to contain only null, but found values', new List<Object>());
         return this;

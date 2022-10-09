@@ -11,7 +11,7 @@
      * @throws NullPointerException if actual or sObjectType is null
      * @throws AssertException if actual is not the right SObjectType
      */
-    global ${supportedAssert.type?keep_before('<')}Assert isSObjectType(Schema.SObjectType sObjectType) {
+    global ${com.classPrefix(supportedAssert.type)}Assert isSObjectType(Schema.SObjectType sObjectType) {
         notNull(actual, 'actual');
         notNull(sObjectType, 'sObjectType');
         assert(sObjectType == actual.getSobjectType(), 'Was expecting actual to be Id of type {0} but was {1}', new List<Object> {actual.getSobjectType().getDescribe().getName(), sObjectType.getDescribe().getName()});

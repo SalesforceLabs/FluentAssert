@@ -10,6 +10,6 @@
      * @throws NullPointerException if actual is null
      * @throws AssertException if actual is not one
      */
-    global ${supportedAssert.type?keep_before('<')}Assert isOne() {
+    global ${com.classPrefix(supportedAssert.type)}Assert isOne() {
         return isEqualTo(1);
     }

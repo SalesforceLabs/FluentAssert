@@ -11,7 +11,7 @@
      * @throws NullPointerException if actual or expected is null
      * @throws AssertException if size of actual is not equal
      */
-    global ${supportedAssert.type?keep_before('<')}Assert hasSize(Integer expected) {
+    global ${com.classPrefix(supportedAssert.type)}Assert hasSize(Integer expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
         assert(actual.size() == expected, 'Was expecting size of actual list to be {0}', new List<Object> {expected});

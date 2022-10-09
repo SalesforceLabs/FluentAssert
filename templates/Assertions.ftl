@@ -5,30 +5,38 @@
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
 <@pp.dropOutputFile />
+<#assign asserts = {
+    "number":       ["IsBetween", "IsStrictlyBetween", "IsNegative", "IsNotNegative", "IsPositive", "IsNotPositive", "IsOne", "IsZero", "IsNotZero", "IsLessThan", "IsLessThanOrEqualTo", "IsGreaterThan", "IsGreaterThanOrEqualTo"],
+    "collection":   ["IsEmpty", "IsNotEmpty", "HasSize", "HasSameSizeAs"],
+    "iterable":     ["Contains", "DoesNotContain", "ContainsAnyOf", "ContainsExactlyInAnyOrder", "ContainsOnly", "ContainsOnlyNulls"],
+    "datetime":     ["IsBetween", "IsStrictlyBetween", "IsAfterOrEqualTo", "IsAfter", "IsBefore", "IsBeforeOrEqualTo"],
+    "listdbresult": ["IsAllSuccesses", "IsAllFailures"]
+}>
+
 <#assign supportedAsserts = [
-    {"type":"Boolean",     "asserts": ["IsTrue", "IsFalse"]},
-    {"type":"Decimal",     "isNumber": true},
-    {"type":"Double",      "isNumber": true},
-    {"type":"Integer",     "isNumber": true},
-    {"type":"Long",        "isNumber": true},
-    {"type":"Id",          "asserts": ["IsSObjectType"]},
     {"type":"Object"},
-    {"type":"Set<Object>", "isCollection": true, "asserts": ["Contains", "DoesNotContain", "ContainsAnyOf", "ContainsExactlyInAnyOrder", "ContainsOnly", "ContainsOnlyNulls"],
+    {"type":"Boolean",             "asserts": ["IsTrue", "IsFalse"]},
+    {"type":"Decimal",             "asserts": asserts.number},
+    {"type":"Double",              "asserts": asserts.number},
+    {"type":"Integer",             "asserts": asserts.number},
+    {"type":"Long",                "asserts": asserts.number},
+    {"type":"Id",                  "asserts": ["IsSObjectType"]},
+    {"type":"Set<Object>",         "asserts": asserts.collection + asserts.iterable,
         "navigators": [{
             "name": "size",
             "value": "actual.size()",
             "returnType": "Integer"
         }]},
-    {"type":"List<Object>", "isCollection": true, "asserts": ["Contains", "DoesNotContain", "ContainsAnyOf", "ContainsExactlyInAnyOrder", "ContainsExactly", "ContainsSequence", "DoesNotContainSequence", "ContainsSubsequence", "DoesNotContainSubsequence", "IsSorted", "ContainsOnly", "ContainsOnlyOnce", "ContainsOnlyNulls"],
+    {"type":"List<Object>",        "asserts": asserts.collection + asserts.iterable + ["ContainsExactly", "ContainsSequence", "DoesNotContainSequence", "ContainsSubsequence", "DoesNotContainSubsequence", "IsSorted", "ContainsOnlyOnce"],
         "navigators": [{
             "name": "size",
             "value": "actual.size()",
             "returnType": "Integer"
         }]},
-    {"type":"Date",         "isDatetime": true, "asserts": ["IsToday"]},
-    {"type":"Datetime",     "isDatetime": true},
-    {"type":"Time",         "isDatetime": true, "comparableHelper":"TimeUtil.toMillisecondsOfDay"},
-    {"type":"String",       "asserts": ["StringDelegates", "HasLength", "HasLineCount"],
+    {"type":"Date",                "asserts": asserts.datetime + ["IsToday"]},
+    {"type":"Datetime",            "asserts": asserts.datetime},
+    {"type":"Time",                "asserts": asserts.datetime, "comparableHelper":"TimeUtil.toMillisecondsOfDay"},
+    {"type":"String",              "asserts": ["StringDelegates", "HasLength", "HasLineCount"],
         "navigators": [{
             "name": "length",
             "value": "actual.length()",
@@ -58,7 +66,7 @@
             "returnType": "Id"
         }
         ]},
-    {"type":"Map<Object, Object>", "isCollection": true, "isMap": true, "asserts": ["ContainsEntry", "DoesNotContainEntry"],
+    {"type":"Map<Object, Object>", "asserts": asserts.collection + ["ContainsEntry", "DoesNotContainEntry"],
         "navigators": [{
             "name": "size",
             "value": "actual.size()",
@@ -73,15 +81,15 @@
             "returnType": "Set"
         }
         ]},
-    {"type":"Blob", "asserts": ["HasSize", "HasSameSizeAs"],
+    {"type":"Blob",                "asserts": ["HasSize", "HasSameSizeAs"],
         "navigators": [{
             "name": "size",
             "value": "actual.size()",
             "returnType": "Integer"
         }
         ]},
-    {"type":"SObject",     "asserts": ["Extracting", "HasErrors", "HasNoErrors", "IsClone", "IsRecordType"]},
-    {"type":"Exception",   "asserts": ["HasMessage", "HasCause", "HasNoCause"],
+    {"type":"SObject",             "asserts": ["Extracting", "HasErrors", "HasNoErrors", "IsClone", "IsRecordType"]},
+    {"type":"Exception",           "asserts": ["HasMessage", "HasCause", "HasNoCause"],
         "navigators": [{
             "name": "cause",
             "value": "actual.getCause()",
@@ -94,38 +102,88 @@
             "name": "message",
             "value": "actual.getMessage()",
             "returnType": "String"
+        }]},
+    {"type":"List<Database.DeleteResult>",     "asserts": asserts.listdbresult, "mixins": ["classes/db/AssertMixin"],
+        "navigators": [{
+            "name": "size",
+            "value": "actual.size()",
+            "returnType": "Integer"
+        },{
+            "name": "failureIds",
+            "value": "failureIds",
+            "returnType": "List<Object>"
+        },{
+            "name": "successIds",
+            "value": "successIds",
+            "returnType": "List<Object>"
+        }]},
+    {"type":"List<Database.SaveResult>", "asserts": asserts.listdbresult, "mixins": ["classes/db/AssertMixin"], 
+        "navigators": [{
+            "name": "size",
+            "value": "actual.size()",
+            "returnType": "Integer"
+        },{
+            "name": "failureIds",
+            "value": "failureIds",
+            "returnType": "List<Object>"
+        },{
+            "name": "successIds",
+            "value": "successIds",
+            "returnType": "List<Object>"
+        }]},
+    {"type":"List<Database.UndeleteResult>", "asserts": asserts.listdbresult, "mixins": ["classes/db/AssertMixin"], 
+        "navigators": [{
+            "name": "size",
+            "value": "actual.size()",
+            "returnType": "Integer"
+        },{
+            "name": "failureIds",
+            "value": "failureIds",
+            "returnType": "List<Object>"
+        },{
+            "name": "successIds",
+            "value": "successIds",
+            "returnType": "List<Object>"
+        }]},
+    {"type":"List<Database.UpsertResult>", "asserts": asserts.listdbresult, "mixins": ["classes/db/AssertMixin"], 
+        "navigators": [{
+            "name": "size",
+            "value": "actual.size()",
+            "returnType": "Integer"
+        },{
+            "name": "failureIds",
+            "value": "failureIds",
+            "returnType": "List<Object>"
+        },{
+            "name": "successIds",
+            "value": "successIds",
+            "returnType": "List<Object>"
         }]}
 ]>
 <#list supportedAsserts as supportedAssert>
     <#assign asserts = supportedAssert.asserts![] />
     <#assign asserts = asserts + ["IsNull", "IsNotNull", "IsEqualTo", "IsNotEqualTo", "IsSame", "IsNotSame"] />
-    <#if supportedAssert.isCollection!false>
-        <#assign asserts = asserts + ["HasSize", "HasSameSizeAs", "IsEmpty", "IsNotEmpty"] />
-    </#if>
-    <#if supportedAssert.isNumber!false>
-        <#assign asserts = asserts + ["IsBetween", "IsStrictlyBetween", "IsNegative", "IsNotNegative", "IsPositive", "IsNotPositive", "IsOne", "IsZero", "IsNotZero", "IsLessThan", "IsLessThanOrEqualTo", "IsGreaterThan", "IsGreaterThanOrEqualTo"] />
-    </#if>
-    <#if supportedAssert.isDatetime!false>
-        <#assign asserts = asserts + ["IsBetween", "IsStrictlyBetween", "IsAfterOrEqualTo", "IsAfter", "IsBefore", "IsBeforeOrEqualTo"] />
-    </#if>
-    <#if !supportedAssert.isCollection!false>
+    <#if !supportedAssert.type?contains("<")>
         <#assign asserts = asserts + ["IsIn"] />
     </#if>
-<@com.apexClass className="${supportedAssert.type?keep_before('<')}Assert" path="/classes/${supportedAssert.type?keep_before('<')?lower_case}/"/>
+<@com.apexClass className="${com.classPrefix(supportedAssert.type)}Assert" path="${com.classFilePath(supportedAssert.type)}"/>
 /**
  * @description Holds asserts for `${supportedAssert.type?keep_before('<')}`s
  */
 // PMD Suppression Justifications
 // CyclomaticComplexity: It's the nature of assert classes to have a huge interface, meaning it'll be pretty complex
 @SuppressWarnings('PMD.CyclomaticComplexity')
-global class ${supportedAssert.type?keep_before('<')}Assert extends AssertBase {
+global class ${com.classPrefix(supportedAssert.type)}Assert extends AssertBase {
     private ${supportedAssert.type} actual;
+    <#list supportedAssert.mixins![] as m>
+        <#include "${m}.ftl">
+    </#list>
 
     /**
-     * @description Constructs an instance with an actual `${supportedAssert.type?keep_before('<')}` value.
+     * @description Constructs an instance with an actual `${supportedAssert.type}` value.
      * @param actual The actual value to assert against.
      */
-    global ${supportedAssert.type?keep_before('<')}Assert(${supportedAssert.type} actual) {
+    global ${com.classPrefix(supportedAssert.type)}Assert(${supportedAssert.type} actual) {
         this.actual = actual;
     }
 
@@ -134,9 +192,9 @@ global class ${supportedAssert.type?keep_before('<')}Assert extends AssertBase {
      * @description Constructs a navigator that allows asserts on ${n.name}(). Use `andThen()` to continue asserting on `${supportedAssert.type?keep_before('<')}`.
      * @return a navigator on ${n.name}().
      */
-    global ${n.returnType}Assert${supportedAssert.type?keep_before('<')}Navigator ${n.name}() {
+    global ${com.navigatorClass(n.returnType, supportedAssert.type)} ${n.name}() {
         notNull(actual, 'actual');
-        return new ${n.returnType}Assert${supportedAssert.type?keep_before('<')}Navigator(${n.value!"actual"}, this);
+        return new ${com.navigatorClass(n.returnType, supportedAssert.type)}(${n.value!"actual"}, this);
     }
     <#sep>
 

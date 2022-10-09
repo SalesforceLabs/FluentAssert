@@ -10,7 +10,7 @@
      * @throws NullPointerException if actual is null
      * @throws AssertException if SObject has errors
      */
-    global ${supportedAssert.type?keep_before('<')}Assert hasNoErrors() {
+    global ${com.classPrefix(supportedAssert.type)}Assert hasNoErrors() {
         notNull(actual, 'actual');
         assert(!actual.hasErrors(), 'Expecting actual to have no errors', new List<String>());
         return this;

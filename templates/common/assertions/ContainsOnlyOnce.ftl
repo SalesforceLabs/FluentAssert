@@ -10,7 +10,7 @@
      * @throws NullPointerException if actual or expected is null
      * @throws AssertException if actual is has unexpected or missing values.
      */
-    global ${supportedAssert.type?keep_before('<')}Assert containsOnlyOnce(List<Object> expected) {
+    global ${com.classPrefix(supportedAssert.type)}Assert containsOnlyOnce(List<Object> expected) {
         notNull(actual,    'actual');
         notEmpty(expected, 'expected');
         assert(ListContainsUtil.containsOnlyOnce(expected, actual), 'Was expecting actual to contain {0} only once, but found {1} had dublicates', new List<Object>{expected, actual});

@@ -13,7 +13,7 @@
      * @throws IllegalArgumentException if expected is empty
      * @throws AssertException if actual doesn't have any elements of expected
      */
-    global ${supportedAssert.type?keep_before('<')}Assert containsAnyOf(${colType}<Object> expected) {
+    global ${com.classPrefix(supportedAssert.type)}Assert containsAnyOf(${colType}<Object> expected) {
         notNull(actual, 'actual');
         notEmpty(expected, 'expected');
         isNotEmpty();

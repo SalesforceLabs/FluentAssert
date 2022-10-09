@@ -10,16 +10,16 @@ public class IntegerAssertListNavigatorTest {
     @IsTest
     static void testAndThen() {
         // Given
-        ListAssert expectedListAssert = Assert.that(new List<Object>());
-        IntegerAssertListNavigator navigator = new IntegerAssertListNavigator(null, expectedListAssert);
+        ListAssert expectedAssert = Assert.that(new List<Object>());
+        IntegerAssertListNavigator navigator = new IntegerAssertListNavigator(null, expectedAssert);
 
         // When
-        ListAssert actualListAssert     = navigator.andThen();
-        ListAssert deprecatedListAssert = navigator.back();
+        ListAssert actualAssert     = navigator.andThen();
+        ListAssert deprecatedAssert = navigator.back();
 
         // Then
-        Assert.that(expectedListAssert).isSame(actualListAssert);
-        Assert.that(deprecatedListAssert).isSame(actualListAssert);
+        Assert.that(expectedAssert).isSame(actualAssert);
+        Assert.that(deprecatedAssert).isSame(actualAssert);
     }
 
     @IsTest

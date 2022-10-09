@@ -13,7 +13,7 @@
      * @throws IllegalArgumentException if expected is empty
      * @throws AssertException if actual doesn't contain exactly the elements from expected
      */
-    global ${supportedAssert.type?keep_before('<')}Assert containsExactlyInAnyOrder(${colType}<Object> expected) {
+    global ${com.classPrefix(supportedAssert.type)}Assert containsExactlyInAnyOrder(${colType}<Object> expected) {
         notEmpty(expected, 'expected');
         hasSameSizeAs(expected);
         contains(expected);

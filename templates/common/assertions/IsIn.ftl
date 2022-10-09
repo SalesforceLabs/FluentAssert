@@ -12,7 +12,7 @@
      * @throws NullPointerException if actual or expectedIn is null
      * @throws AssertException if actual is not in expectedIn
      */
-    global ${supportedAssert.type?keep_before('<')}Assert isIn(${colType}<Object> expectedIn) {
+    global ${com.classPrefix(supportedAssert.type)}Assert isIn(${colType}<Object> expectedIn) {
         notNull(actual, 'actual');
         assert(expectedIn.contains(actual), 'Was expecting {1} to be in {0}', new List<Object> {expectedIn, actual});
         return this;

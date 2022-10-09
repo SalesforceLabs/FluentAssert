@@ -11,7 +11,7 @@
      * @throws NullPointerException if actual or expected is null
      * @throws AssertException if length of actual is not as expected
      */
-    global ${supportedAssert.type?keep_before('<')}Assert hasLength(Integer expected) {
+    global ${com.classPrefix(supportedAssert.type)}Assert hasLength(Integer expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
         assert(actual.length() == expected, 'Expecting actual to have a length of {0}, but found {1}', new List<Object> {actual.length(), expected});

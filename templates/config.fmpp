@@ -2,11 +2,12 @@ recommendedDefaults: 0.9.16
 modes: [
     ignore(apex/),
     ignore(common/),
-    ignore(generate.sh)
+    ignore(generate.sh),
+    ignore(**/*Mixin*.ftl)
 ]
 data: {
     "apiVersion": "54.0"
 }
 borders: [
-    header("<#import '/common/apex-class.ftl' as com>", **/*.ftl)
+    header("<#import '/common/util.ftl' as com>", **/*.ftl)
 ]

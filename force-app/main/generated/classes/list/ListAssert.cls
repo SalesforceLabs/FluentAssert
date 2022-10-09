@@ -14,7 +14,7 @@ global class ListAssert extends AssertBase {
     private List<Object> actual;
 
     /**
-     * @description Constructs an instance with an actual `List` value.
+     * @description Constructs an instance with an actual `List<Object>` value.
      * @param actual The actual value to assert against.
      */
     global ListAssert(List<Object> actual) {

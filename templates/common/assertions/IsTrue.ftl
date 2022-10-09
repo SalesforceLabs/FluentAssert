@@ -9,7 +9,7 @@
      * @return this to allow further assert in a fluent manner
      * @throws AssertException if actual is not `true`.
      */
-    global ${supportedAssert.type?keep_before('<')}Assert isTrue() {
+    global ${com.classPrefix(supportedAssert.type)}Assert isTrue() {
         notNull(actual, 'actual');
         isEqualTo(true);
         return this;

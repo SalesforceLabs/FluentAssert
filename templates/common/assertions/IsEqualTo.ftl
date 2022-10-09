@@ -11,7 +11,7 @@
      * @throws NullPointerException if actual or expected is null.
      * @throws AssertException if actual is not equal to `expected`.
      */
-    global ${supportedAssert.type?keep_before('<')}Assert isEqualTo(Object expected) {
+    global ${com.classPrefix(supportedAssert.type)}Assert isEqualTo(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
         assert(actual == expected, 'Expecting {0} and {1} to be equal', new List<Object> {expected, actual});
