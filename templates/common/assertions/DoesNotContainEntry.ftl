@@ -12,7 +12,7 @@
      * @throws NullPointerException if actual or key is null
      * @throws AssertException if expected entry was found in map
      */
-    global ${supportedAssert.type?keep_before('<')}Assert doesNotContainEntry(Object key, Object value) {
+    global ${com.classPrefix(supportedAssert.type)}Assert doesNotContainEntry(Object key, Object value) {
         notNull(actual, 'actual');
         notNull(key, 'key');
 

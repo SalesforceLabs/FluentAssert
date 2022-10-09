@@ -12,7 +12,7 @@
      * @throws NullPointerException if actual, fromExclusive and/or toExclusive is null
      * @throws AssertException if actual is not between [start, end]
      */
-    global ${supportedAssert.type?keep_before('<')}Assert isStrictlyBetween(${supportedAssert.type} fromExclusive, ${supportedAssert.type} toExclusive) {
+    global ${com.classPrefix(supportedAssert.type)}Assert isStrictlyBetween(${supportedAssert.type} fromExclusive, ${supportedAssert.type} toExclusive) {
         notNull(actual, 'actual');
         notNull(fromExclusive, 'fromExclusive');
         notNull(toExclusive, 'toExclusive');

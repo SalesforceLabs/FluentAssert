@@ -9,7 +9,7 @@
      * @return this to allow further assert in a fluent manner
      * @throws AssertException if actual is not `true`.
      */
-    global ${supportedAssert.type?keep_before('<')}Assert hasMessage(String message) {
+    global ${com.classPrefix(supportedAssert.type)}Assert hasMessage(String message) {
         notNull(actual, 'actual');
         assert(actual.getMessage() == message, 'Expecting {0} to have message, {1}', new List<Object> {actual, message});
         return this;

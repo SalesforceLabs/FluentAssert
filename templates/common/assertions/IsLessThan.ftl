@@ -11,7 +11,7 @@
      * @throws NullPointerException if actual or expected is null
      * @throws AssertException if actual is not less than to expected
      */
-    global ${supportedAssert.type?keep_before('<')}Assert isLessThan(${supportedAssert.type} expected) {
+    global ${com.classPrefix(supportedAssert.type)}Assert isLessThan(${supportedAssert.type} expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
         assert((<#if supportedAssert.comparableHelper?has_content>${supportedAssert.comparableHelper}(</#if>actual<#if supportedAssert.comparableHelper?has_content>)</#if> < <#if supportedAssert.comparableHelper?has_content>${supportedAssert.comparableHelper}(</#if>expected<#if supportedAssert.comparableHelper?has_content>)</#if>), 'Expecting {1} to be less than {0}', new List<Object> {expected, actual});

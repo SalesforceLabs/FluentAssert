@@ -11,7 +11,7 @@
      * @throws NullPointerException if actual or expected is null
      * @throws AssertException if length of actual is not as expected
      */
-    global ${supportedAssert.type?keep_before('<')}Assert hasLineCount(Integer expected) {
+    global ${com.classPrefix(supportedAssert.type)}Assert hasLineCount(Integer expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
         Integer actualLineCount = String.isBlank(actual) ? 0 : actual.split('\\n').size();

@@ -1,3 +1,4 @@
+<#ftl strip_whitespace=true >
 <#--
   - Copyright (c) 2021, Salesforce Inc.
   - All rights reserved.
@@ -21,7 +22,11 @@
     "Map<Object, Object>",
     "Blob",
     "SObject",
-    "Exception"
+    "Exception",
+    "List<Database.DeleteResult>",
+    "List<Database.SaveResult>",
+    "List<Database.UndeleteResult>",
+    "List<Database.UpsertResult>"
 ]>
 <@pp.dropOutputFile />
 <@com.apexClass className="Assert" path="/classes/"/>
@@ -31,14 +36,12 @@
 global inherited sharing class Assert {
 <#list supportedAsserts?sort as type>
     /**
-     * @description Fluent assert on `${type?keep_before('<')}`s
+     * @description Fluent assert on `${type}`s
      * @param actual The actual value to assert against.
-     * @return Fluent assert object for `${type?keep_before('<')}`
+     * @return Fluent assert object for `${type}`
      */
-    global static ${type?keep_before('<')}Assert that(${type} actual) {
-        return new ${type?keep_before('<')}Assert(actual);
+    global static ${com.classPrefix(type)}Assert that(${type} actual) {
+        return new ${com.classPrefix(type)}Assert(actual);
     }
-<#sep>
-
 </#list>
 }

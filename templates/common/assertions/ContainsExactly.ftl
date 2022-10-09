@@ -12,7 +12,7 @@
      * @throws IllegalArgumentException if expected is empty
      * @throws AssertException if actual doesn't contain exactly all elements from expected
      */
-    global ${supportedAssert.type?keep_before('<')}Assert containsExactly(List<Object> expected) {
+    global ${com.classPrefix(supportedAssert.type)}Assert containsExactly(List<Object> expected) {
         notEmpty(expected, 'expected');
         hasSameSizeAs(expected);
 

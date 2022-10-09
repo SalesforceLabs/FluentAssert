@@ -19,7 +19,7 @@
      * @throws NullPointerException if actual or expected is null
      * @throws AssertException if actual doesn't have the same size as expected
      */
-    global ${supportedAssert.type?keep_before('<')}Assert hasSameSizeAs(${cdt} expected) {
+    global ${com.classPrefix(supportedAssert.type)}Assert hasSameSizeAs(${cdt} expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
 

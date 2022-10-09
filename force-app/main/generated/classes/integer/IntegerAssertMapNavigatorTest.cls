@@ -10,16 +10,16 @@ public class IntegerAssertMapNavigatorTest {
     @IsTest
     static void testAndThen() {
         // Given
-        MapAssert expectedMapAssert = Assert.that(new Map<Object, Object>());
-        IntegerAssertMapNavigator navigator = new IntegerAssertMapNavigator(null, expectedMapAssert);
+        MapAssert expectedAssert = Assert.that(new Map<Object, Object>());
+        IntegerAssertMapNavigator navigator = new IntegerAssertMapNavigator(null, expectedAssert);
 
         // When
-        MapAssert actualMapAssert     = navigator.andThen();
-        MapAssert deprecatedMapAssert = navigator.back();
+        MapAssert actualAssert     = navigator.andThen();
+        MapAssert deprecatedAssert = navigator.back();
 
         // Then
-        Assert.that(expectedMapAssert).isSame(actualMapAssert);
-        Assert.that(deprecatedMapAssert).isSame(actualMapAssert);
+        Assert.that(expectedAssert).isSame(actualAssert);
+        Assert.that(deprecatedAssert).isSame(actualAssert);
     }
 
     @IsTest

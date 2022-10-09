@@ -5,14 +5,19 @@
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
 <#assign numberDataTypes = [
-    {"nativeDataType":"List", "castingValue": "List<Object>"},
-    {"nativeDataType":"Set",  "castingValue": "Set<Object>"},
-    {"nativeDataType":"Map",  "castingValue": "Map<Object, Object>", "value1": "'X' => 'X'", "value2": "'Y' => 'Y'"}
+    {"castingValue": "List<Object>"},
+    {"castingValue": "Set<Object>"},
+    {"castingValue": "Map<Object, Object>",          "value1": "'X' => 'X'",                                    "value2": "'Y' => 'Y'"},
+    {"castingValue": "List<Database.DeleteResult>",  "value1": "DatabaseXResultUtil.createDeleteResult(true)",  "value2": "DatabaseXResultUtil.createDeleteResult(false)"},
+    {"castingValue": "List<Database.SaveResult>",    "value1": "DatabaseXResultUtil.createSaveResult(true)",    "value2": "DatabaseXResultUtil.createSaveResult(false)"},
+    {"castingValue": "List<Database.UndeleteResult>","value1": "DatabaseXResultUtil.createUndeleteResult(true)","value2": "DatabaseXResultUtil.createUndeleteResult(false)"},
+    {"castingValue": "List<Database.UpsertResult>",  "value1": "DatabaseXResultUtil.createUpsertResult(true, true)",  "value2": "DatabaseXResultUtil.createUpsertResult(false, false)"}
 ]>
 <@pp.dropOutputFile />
 <#list numberDataTypes as numberDataType>
-  <@com.apexClass className="${numberDataType.nativeDataType}IsNotEqualToTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>@IsTest
-public class ${numberDataType.nativeDataType}IsNotEqualToTest {
+  <@com.apexClass className="${com.classPrefix(numberDataType.castingValue)}IsNotEqualToTest" path="${com.classFilePath(numberDataType.castingValue)}"/>
+@IsTest
+public class ${com.classPrefix(numberDataType.castingValue)}IsNotEqualToTest {
     @IsTest
     static void testPassingScenarios() {
         Assert.that(new ${numberDataType.castingValue}{${numberDataType.value1!'\'X\''}}).isNotEqualTo(new ${numberDataType.castingValue}{${numberDataType.value2!'\'Y\''}});
@@ -20,7 +25,8 @@ public class ${numberDataType.nativeDataType}IsNotEqualToTest {
 
     @IsTest
     static void testFailureScenarios() {
-        failureScenario(new ${numberDataType.castingValue}{${numberDataType.value1!'\'X\''}}, new ${numberDataType.castingValue}{${numberDataType.value1!'\'X\''}});
+        ${numberDataType.castingValue} actual = new ${numberDataType.castingValue}{${numberDataType.value1!'\'X\''}};
+        failureScenario(actual, actual);
     }
 
     private static void failureScenario(${numberDataType.castingValue} actual, ${numberDataType.castingValue} expected) {

@@ -10,16 +10,16 @@ public class IntegerAssertSetNavigatorTest {
     @IsTest
     static void testAndThen() {
         // Given
-        SetAssert expectedSetAssert = Assert.that(new Set<Object>());
-        IntegerAssertSetNavigator navigator = new IntegerAssertSetNavigator(null, expectedSetAssert);
+        SetAssert expectedAssert = Assert.that(new Set<Object>());
+        IntegerAssertSetNavigator navigator = new IntegerAssertSetNavigator(null, expectedAssert);
 
         // When
-        SetAssert actualSetAssert     = navigator.andThen();
-        SetAssert deprecatedSetAssert = navigator.back();
+        SetAssert actualAssert     = navigator.andThen();
+        SetAssert deprecatedAssert = navigator.back();
 
         // Then
-        Assert.that(expectedSetAssert).isSame(actualSetAssert);
-        Assert.that(deprecatedSetAssert).isSame(actualSetAssert);
+        Assert.that(expectedAssert).isSame(actualAssert);
+        Assert.that(deprecatedAssert).isSame(actualAssert);
     }
 
     @IsTest

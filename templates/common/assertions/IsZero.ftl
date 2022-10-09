@@ -10,6 +10,6 @@
      * @throws NullPointerException if actual is null
      * @throws AssertException if actual is not zero
      */
-    global ${supportedAssert.type?keep_before('<')}Assert isZero() {
+    global ${com.classPrefix(supportedAssert.type)}Assert isZero() {
         return isEqualTo(0);
     }

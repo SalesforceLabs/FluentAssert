@@ -9,7 +9,7 @@
      * @return this to allow further assert in a fluent manner
      * @throws AssertException if actual is not today.
      */
-    global ${supportedAssert.type?keep_before('<')}Assert isToday() {
+    global ${com.classPrefix(supportedAssert.type)}Assert isToday() {
         notNull(actual, 'actual');
         return isEqualTo(Date.today());
     }

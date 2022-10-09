@@ -11,7 +11,7 @@
      * @throws NullPointerException if actual or expected is null.
      * @throws AssertException if actual is not same (part of memory) as `expected`.
      */
-    global ${supportedAssert.type?keep_before('<')}Assert isNotSame(Object expected) {
+    global ${com.classPrefix(supportedAssert.type)}Assert isNotSame(Object expected) {
         notNull(actual, 'actual');
         notNull(expected, 'expected');
         assert(actual !== expected, 'Expecting {0} and {1} not to be same', new List<Object> {expected, actual});

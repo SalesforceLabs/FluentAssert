@@ -9,7 +9,7 @@
      * @return this to allow further assert in a fluent manner
      * @throws AssertException if actual is not `true`.
      */
-    global ${supportedAssert.type?keep_before('<')}Assert hasNoCause() {
+    global ${com.classPrefix(supportedAssert.type)}Assert hasNoCause() {
         notNull(actual, 'actual');
         assert(actual.getCause() == null, 'Expecting {0} to have no cause', new List<Object> {actual});
         return this;

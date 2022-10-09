@@ -10,7 +10,7 @@
      * @throws NullPointerException if actual or expected is null
      * @throws AssertException if actual is empty or contains non-null values
      */
-    global ${supportedAssert.type?keep_before('<')}Assert containsOnly(List<Object> expected) {
+    global ${com.classPrefix(supportedAssert.type)}Assert containsOnly(List<Object> expected) {
         notNull(actual,   'actual');
         notEmpty(expected, 'expected');
 

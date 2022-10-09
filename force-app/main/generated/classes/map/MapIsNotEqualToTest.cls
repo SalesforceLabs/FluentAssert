@@ -13,7 +13,8 @@ public class MapIsNotEqualToTest {
 
     @IsTest
     static void testFailureScenarios() {
-        failureScenario(new Map<Object, Object>{'X' => 'X'}, new Map<Object, Object>{'X' => 'X'});
+        Map<Object, Object> actual = new Map<Object, Object>{'X' => 'X'};
+        failureScenario(actual, actual);
     }
 
     private static void failureScenario(Map<Object, Object> actual, Map<Object, Object> expected) {

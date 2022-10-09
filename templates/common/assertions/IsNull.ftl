@@ -9,7 +9,7 @@
      * @return this to allow further assert in a fluent manner
      * @throws AssertException if actual is not null.
      */
-    global ${supportedAssert.type?keep_before('<')}Assert isNull() {
+    global ${com.classPrefix(supportedAssert.type)}Assert isNull() {
         assert(actual == null, 'Expecting {0} to be null', new List<Object> {actual});
         return this;
     }

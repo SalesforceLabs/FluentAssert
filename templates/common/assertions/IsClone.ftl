@@ -10,7 +10,7 @@
      * @throws NullPointerException if actual is null
      * @throws AssertException if SObject is a clone
      */
-    global ${supportedAssert.type?keep_before('<')}Assert isClone() {
+    global ${com.classPrefix(supportedAssert.type)}Assert isClone() {
         notNull(actual, 'actual');
         assert(actual.isClone(), 'Expecting actual to be a clone', new List<String>());
         return this;

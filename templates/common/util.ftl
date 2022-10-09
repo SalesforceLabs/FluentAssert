@@ -19,3 +19,26 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 </#macro>
+<#function classPrefix type>
+  <#assign s = type?keep_before('<')>
+  <#if type?contains('.')>
+    <#assign s += type?keep_before('>')?keep_after('.')>
+  </#if>
+  <#return s>
+</#function>
+<#function navigatorClass from to>
+  <#assign s = from?keep_before("<")>
+  <#assign s += 'Assert'>
+  <#assign s += to?keep_before("<")>
+  <#if to?contains('Database.')>
+    <#assign s += 'DB' + to?keep_before('>')?keep_after('.')?keep_before('Result')>
+  </#if>
+  <#assign s += 'Navigator'>
+  <#return s>
+</#function>
+<#function classFilePath type>
+  <#if type?contains('Database.')>
+    <#return '/classes/db/'>
+  </#if>
+  <#return '/classes/' + type?keep_before('<')?lower_case + '/'>
+</#function>

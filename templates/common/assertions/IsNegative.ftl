@@ -10,7 +10,7 @@
      * @throws NullPointerException if actual is null
      * @throws AssertException if actual is not negative
      */
-    global ${supportedAssert.type?keep_before('<')}Assert isNegative() {
+    global ${com.classPrefix(supportedAssert.type)}Assert isNegative() {
         notNull(actual, 'actual');
         assert(actual < 0, 'Expecting {0} to be negative', new List<Object> {actual});
         return this;

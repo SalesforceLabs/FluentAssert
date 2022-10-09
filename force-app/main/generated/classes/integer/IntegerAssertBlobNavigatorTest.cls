@@ -10,16 +10,16 @@ public class IntegerAssertBlobNavigatorTest {
     @IsTest
     static void testAndThen() {
         // Given
-        BlobAssert expectedBlobAssert = Assert.that(Blob.valueOf('X'));
-        IntegerAssertBlobNavigator navigator = new IntegerAssertBlobNavigator(null, expectedBlobAssert);
+        BlobAssert expectedAssert = Assert.that(Blob.valueOf('X'));
+        IntegerAssertBlobNavigator navigator = new IntegerAssertBlobNavigator(null, expectedAssert);
 
         // When
-        BlobAssert actualBlobAssert     = navigator.andThen();
-        BlobAssert deprecatedBlobAssert = navigator.back();
+        BlobAssert actualAssert     = navigator.andThen();
+        BlobAssert deprecatedAssert = navigator.back();
 
         // Then
-        Assert.that(expectedBlobAssert).isSame(actualBlobAssert);
-        Assert.that(deprecatedBlobAssert).isSame(actualBlobAssert);
+        Assert.that(expectedAssert).isSame(actualAssert);
+        Assert.that(deprecatedAssert).isSame(actualAssert);
     }
 
     @IsTest

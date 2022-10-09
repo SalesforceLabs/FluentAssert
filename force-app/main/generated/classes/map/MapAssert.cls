@@ -14,7 +14,7 @@ global class MapAssert extends AssertBase {
     private Map<Object, Object> actual;
 
     /**
-     * @description Constructs an instance with an actual `Map` value.
+     * @description Constructs an instance with an actual `Map<Object, Object>` value.
      * @param actual The actual value to assert against.
      */
     global MapAssert(Map<Object, Object> actual) {

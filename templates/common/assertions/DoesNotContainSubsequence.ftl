@@ -12,7 +12,7 @@
      * @throws IllegalArgumentException if expected is empty
      * @throws AssertException if actual contains the subsequence
      */
-    global ${supportedAssert.type?keep_before('<')}Assert doesNotContainSubsequence(List<Object> expected) {
+    global ${com.classPrefix(supportedAssert.type)}Assert doesNotContainSubsequence(List<Object> expected) {
         notNull(actual, 'actual');
         notEmpty(expected, 'expected');
         assert(!ListSubsequenceUtil.containsSubsequence(expected, actual), 'Was expecting actual not to contain the subsequence {0}', new List<Object> {expected});

@@ -42,7 +42,7 @@
      * @throws AssertException if not ${stringDelegate.assertDescription}.
      * @see String.${stringDelegate.method}
      */
-    global ${supportedAssert.type?keep_before('<')}Assert ${stringDelegate.method}(<#if (stringDelegate.interface??)><#list stringDelegate.interface as sdi>${sdi.type} ${sdi.name}<#sep>, </#list></#if>) {
+    global ${com.classPrefix(supportedAssert.type)}Assert ${stringDelegate.method}(<#if (stringDelegate.interface??)><#list stringDelegate.interface as sdi>${sdi.type} ${sdi.name}<#sep>, </#list></#if>) {
         assert(<#if (stringDelegate.staticOnString)>String<#else>actual</#if>.${stringDelegate.method}(<#if (stringDelegate.staticOnString)>actual</#if><#if (stringDelegate.interface??)><#list stringDelegate.interface as sdi>${sdi.name}<#sep>, </#list></#if>), 'Expecting ${stringDelegate.assertDescription?replace("'", "\\'")}, but found {0}', new List<Object> {actual});
         return this;
     }

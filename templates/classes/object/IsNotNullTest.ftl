@@ -5,29 +5,33 @@
   - For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 -->
 <#assign numberDataTypes = [
-    {"nativeDataType":"Integer",  "castingValue": "Integer",             "instance": "0"},
-    {"nativeDataType":"Long",     "castingValue": "Long",                "instance": "0"},
-    {"nativeDataType":"Decimal",  "castingValue": "Decimal",             "instance": "0"},
-    {"nativeDataType":"Double",   "castingValue": "Double",              "instance": "0"},
-    {"nativeDataType":"List",     "castingValue": "List<Object>",        "instance": "new List<Object>()"},
-    {"nativeDataType":"Set",      "castingValue": "Set<Object>",         "instance": "new Set<Object>()"},
-    {"nativeDataType":"Id",       "castingValue": "Id",                  "instance": "UserInfo.getUserId()"},
-    {"nativeDataType":"Boolean",  "castingValue": "Boolean",             "instance": "false"},
-    {"nativeDataType":"Object",   "castingValue": "Object",              "instance": "'A'"},
-    {"nativeDataType":"Date",     "castingValue": "Date",                "instance": "Date.today()"},
-    {"nativeDataType":"Datetime", "castingValue": "Datetime",            "instance": "Datetime.now()"},
-    {"nativeDataType":"Time",     "castingValue": "Time",                "instance": "Time.newInstance(12, 13, 14, 15)"},
-    {"nativeDataType":"String",   "castingValue": "String",              "instance": "'A'"},
-    {"nativeDataType":"Map",      "castingValue": "Map<Object, Object>", "instance": "new Map<Object, Object>()"},
-    {"nativeDataType":"Blob",     "castingValue": "Blob",                "instance": "Blob.valueOf('X')"},
-    {"nativeDataType":"SObject",  "castingValue": "SObject",             "instance": "new Account(Name = 'X')"},
-    {"nativeDataType":"Exception","castingValue": "Exception",           "instance": "new UnexpectedException('X')"}
+    {"castingValue": "Integer",                      "instance": "0"},
+    {"castingValue": "Long",                         "instance": "0"},
+    {"castingValue": "Decimal",                      "instance": "0"},
+    {"castingValue": "Double",                       "instance": "0"},
+    {"castingValue": "List<Object>",                 "instance": "new List<Object>()"},
+    {"castingValue": "Set<Object>",                  "instance": "new Set<Object>()"},
+    {"castingValue": "Id",                           "instance": "UserInfo.getUserId()"},
+    {"castingValue": "Boolean",                      "instance": "false"},
+    {"castingValue": "Object",                       "instance": "'A'"},
+    {"castingValue": "Date",                         "instance": "Date.today()"},
+    {"castingValue": "Datetime",                     "instance": "Datetime.now()"},
+    {"castingValue": "Time",                         "instance": "Time.newInstance(12, 13, 14, 15)"},
+    {"castingValue": "String",                       "instance": "'A'"},
+    {"castingValue": "Map<Object, Object>",          "instance": "new Map<Object, Object>()"},
+    {"castingValue": "Blob",                         "instance": "Blob.valueOf('X')"},
+    {"castingValue": "SObject",                      "instance": "new Account(Name = 'X')"},
+    {"castingValue": "Exception",                    "instance": "new UnexpectedException('X')"},
+    {"castingValue": "List<Database.DeleteResult>",  "instance": "new List<Database.DeleteResult>()"},
+    {"castingValue": "List<Database.SaveResult>",    "instance": "new List<Database.SaveResult>()"},
+    {"castingValue": "List<Database.UndeleteResult>","instance": "new List<Database.UndeleteResult>()"},
+    {"castingValue": "List<Database.UpsertResult>",  "instance": "new List<Database.UpsertResult>()"}
 ]>
 <@pp.dropOutputFile />
 <#list numberDataTypes as numberDataType>
-  <@com.apexClass className="${numberDataType.nativeDataType}IsNotNullTest" path="/classes/${numberDataType.nativeDataType?lower_case}/"/>
+  <@com.apexClass className="${com.classPrefix(numberDataType.castingValue)}IsNotNullTest" path="${com.classFilePath(numberDataType.castingValue)}"/>
 @IsTest
-public class ${numberDataType.nativeDataType}IsNotNullTest {
+public class ${com.classPrefix(numberDataType.castingValue)}IsNotNullTest {
     @IsTest
     static void testPassingScenarios() {
         Assert.that((${numberDataType.castingValue}) ${numberDataType.instance}).isNotNull();

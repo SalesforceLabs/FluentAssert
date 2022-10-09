@@ -13,7 +13,8 @@ public class ListIsNotEqualToTest {
 
     @IsTest
     static void testFailureScenarios() {
-        failureScenario(new List<Object>{'X'}, new List<Object>{'X'});
+        List<Object> actual = new List<Object>{'X'};
+        failureScenario(actual, actual);
     }
 
     private static void failureScenario(List<Object> actual, List<Object> expected) {
@@ -48,4 +49,3 @@ public class ListIsNotEqualToTest {
         }
     }
 }
-  

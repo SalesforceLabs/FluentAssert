@@ -1,5 +1,5 @@
 # Fluent Assertions for Apex
-This project aims provide better asserts for tests in Apex. Inspired by [AssertJ](https://assertj.github.io/doc/) and other fluent libraries. Currently supports SObject, Boolean, Decimal, Double, Integer, Long, List, Set, Map, Id, Blob, String, Date, Time, Datetime, Exception and generic Object.
+This project aims provide better asserts for tests in Apex. Inspired by [AssertJ](https://assertj.github.io/doc/) and other fluent libraries. Currently supports SObject, Boolean, Decimal, Double, Integer, Long, List, Set, Map, Id, Blob, String, Date, Time, Datetime, Database.*Result, Exception and generic Object.
 
 ## Usage
 FluentAssert is available as [a managed package in App Exchange](https://appexchange.salesforce.com/appxListingDetail?listingId=a0N4V00000GYpAbUAL) under namespace `Fluent`.
@@ -371,6 +371,37 @@ Fluent.Assert.that(Date.today()).isToday();
 
 // Failure
 Fluent.Assert.that(Date.today().addDays(-1)).isToday();
+```
+
+### List<Database.*Result>
+Supports `List<SaveResult>`, `List<UpsertResult>`, `List<DeleteResult>`, and `List<UndeleteResult>`. Also supports `isEqualTo`, `isNotEqualTo`, `isNull`, `isNotNull`, `isSame`, `isNotSame`, and `IsIn`.
+
+#### isAllFailures
+This method will pass if all results in the list are failures.
+```
+List<SaveResult> result = Database.insert(...);
+
+// or List<SaveResult>     result = Database.update(...);
+// or List<UpsertResult>   result = Database.upsert(...);
+// or List<DeleteResult>   result = Database.delete(...);
+// or List<UndeleteResult> result = Database.undelete(...);
+
+Fluent.Assert.that(result)
+             .isAllFailures();
+```
+
+#### IsAllSuccesses
+This method will pass if all results in the list are successes.
+```
+List<SaveResult> result = Database.insert(...);
+
+// or List<SaveResult>     result = Database.update(...);
+// or List<UpsertResult>   result = Database.upsert(...);
+// or List<DeleteResult>   result = Database.delete(...);
+// or List<UndeleteResult> result = Database.undelete(...);
+
+Fluent.Assert.that(result)
+             .IsAllSuccesses();
 ```
 
 ### String

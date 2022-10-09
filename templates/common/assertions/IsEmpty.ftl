@@ -10,7 +10,7 @@
      * @throws NullPointerException if actual is null
      * @throws AssertException if actual is not empty
      */
-    global ${supportedAssert.type?keep_before('<')}Assert isEmpty() {
+    global ${com.classPrefix(supportedAssert.type)}Assert isEmpty() {
         notNull(actual, 'actual');
         assert(actual.isEmpty(), 'Was expecting actual list not to be empty', new List<Object>());
         return this;
